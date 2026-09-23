@@ -1,0 +1,996 @@
+{
+  "nodes": [
+    {
+      "id": "MATH_001",
+      "name": "Whole-number place value and magnitude",
+      "category": "Arithmetic foundations",
+      "grade": "≤5",
+      "definition": "Interpret whole numbers using base-ten units, relative size, and positions on a number line.",
+      "prerequisites": []
+    },
+    {
+      "id": "MATH_002",
+      "name": "Whole-number addition and subtraction",
+      "category": "Arithmetic foundations",
+      "grade": "≤5",
+      "definition": "Combine, separate, and compare whole-number quantities, including regrouping across place values.",
+      "prerequisites": [
+        "MATH_001"
+      ]
+    },
+    {
+      "id": "MATH_003",
+      "name": "Whole-number multiplication and division",
+      "category": "Arithmetic foundations",
+      "grade": "≤5–6",
+      "definition": "Reason about equal groups, multiplicative comparisons, products, and quotients.",
+      "prerequisites": [
+        "MATH_002"
+      ]
+    },
+    {
+      "id": "MATH_004",
+      "name": "Factors and multiples",
+      "category": "Number structure",
+      "grade": "5–6",
+      "definition": "Identify divisibility relationships, including common factors and common multiples.",
+      "prerequisites": [
+        "MATH_003"
+      ]
+    },
+    {
+      "id": "MATH_005",
+      "name": "Fraction meaning",
+      "category": "Fractions",
+      "grade": "≤5",
+      "definition": "Interpret a fraction as a number, a quantity of equal-sized parts, and a quotient.",
+      "prerequisites": [
+        "MATH_003"
+      ]
+    },
+    {
+      "id": "MATH_006",
+      "name": "Equivalent fractions",
+      "category": "Fractions",
+      "grade": "≤5–6",
+      "definition": "Generate, recognize, and simplify fractions that represent the same number.",
+      "prerequisites": [
+        "MATH_004",
+        "MATH_005"
+      ]
+    },
+    {
+      "id": "MATH_007",
+      "name": "Fraction addition and subtraction",
+      "category": "Fractions",
+      "grade": "5–6",
+      "definition": "Add and subtract nonnegative fractions by expressing quantities in common fractional units.",
+      "prerequisites": [
+        "MATH_006"
+      ]
+    },
+    {
+      "id": "MATH_008",
+      "name": "Fraction multiplication and division",
+      "category": "Fractions",
+      "grade": "5–6",
+      "definition": "Multiply and divide nonnegative fractions using scaling, grouping, and reciprocal relationships.",
+      "prerequisites": [
+        "MATH_005"
+      ]
+    },
+    {
+      "id": "MATH_009",
+      "name": "Decimal place value",
+      "category": "Decimals",
+      "grade": "≤5–6",
+      "definition": "Interpret decimal digits as tenths, hundredths, and successive powers-of-ten fractional units.",
+      "prerequisites": [
+        "MATH_005"
+      ]
+    },
+    {
+      "id": "MATH_010",
+      "name": "Decimal operations",
+      "category": "Decimals",
+      "grade": "5–6",
+      "definition": "Add, subtract, multiply, and divide nonnegative decimals while accounting for place value.",
+      "prerequisites": [
+        "MATH_009"
+      ]
+    },
+    {
+      "id": "MATH_011",
+      "name": "Fraction–decimal conversion",
+      "category": "Rational numbers",
+      "grade": "5–7",
+      "definition": "Express fractions as terminating or repeating decimals and terminating decimals as fractions.",
+      "prerequisites": [
+        "MATH_006",
+        "MATH_010"
+      ]
+    },
+    {
+      "id": "MATH_012",
+      "name": "Signed numbers and order",
+      "category": "Signed numbers",
+      "grade": "6",
+      "definition": "Interpret positive and negative integers, opposites, zero, and order on a number line.",
+      "prerequisites": [
+        "MATH_001"
+      ]
+    },
+    {
+      "id": "MATH_013",
+      "name": "Integer addition and subtraction",
+      "category": "Signed numbers",
+      "grade": "6–7",
+      "definition": "Add and subtract integers using signed changes, opposites, and additive inverses.",
+      "prerequisites": [
+        "MATH_002",
+        "MATH_012"
+      ]
+    },
+    {
+      "id": "MATH_014",
+      "name": "Integer multiplication and division",
+      "category": "Signed numbers",
+      "grade": "6–7",
+      "definition": "Multiply and divide integers with consistent reasoning about signs.",
+      "prerequisites": [
+        "MATH_003",
+        "MATH_013"
+      ]
+    },
+    {
+      "id": "MATH_015",
+      "name": "Signed rational-number operations",
+      "category": "Rational numbers",
+      "grade": "7",
+      "definition": "Compute with positive and negative fractions and decimals, including mixed representations.",
+      "prerequisites": [
+        "MATH_007",
+        "MATH_008",
+        "MATH_011",
+        "MATH_014"
+      ]
+    },
+    {
+      "id": "MATH_016",
+      "name": "Ratios",
+      "category": "Ratios and proportionality",
+      "grade": "6",
+      "definition": "Interpret an ordered comparison of quantities in multiplicative terms.",
+      "prerequisites": [
+        "MATH_003"
+      ]
+    },
+    {
+      "id": "MATH_017",
+      "name": "Unit rates",
+      "category": "Ratios and proportionality",
+      "grade": "6–7",
+      "definition": "Determine and interpret an amount per one unit, including rates involving fractions.",
+      "prerequisites": [
+        "MATH_016",
+        "MATH_008"
+      ]
+    },
+    {
+      "id": "MATH_018",
+      "name": "Proportional reasoning",
+      "category": "Ratios and proportionality",
+      "grade": "6–7",
+      "definition": "Recognize equivalent ratios and determine missing quantities through consistent multiplicative scaling.",
+      "prerequisites": [
+        "MATH_017",
+        "MATH_006"
+      ]
+    },
+    {
+      "id": "MATH_019",
+      "name": "Percent representations",
+      "category": "Percentages",
+      "grade": "6–7",
+      "definition": "Interpret percent as a rate per hundred and express it using fractions and decimals.",
+      "prerequisites": [
+        "MATH_011",
+        "MATH_016"
+      ]
+    },
+    {
+      "id": "MATH_020",
+      "name": "Percent problem solving",
+      "category": "Percentages",
+      "grade": "6–7",
+      "definition": "Determine a part, whole, percentage, or percent change using proportional relationships.",
+      "prerequisites": [
+        "MATH_018",
+        "MATH_019"
+      ]
+    },
+    {
+      "id": "MATH_021",
+      "name": "Whole-number exponents",
+      "category": "Number structure",
+      "grade": "5–6",
+      "definition": "Interpret and evaluate powers with positive whole-number exponents as repeated multiplication.",
+      "prerequisites": [
+        "MATH_003"
+      ]
+    },
+    {
+      "id": "MATH_022",
+      "name": "Integer exponent laws",
+      "category": "Number structure",
+      "grade": "8–9",
+      "definition": "Apply product, quotient, and power laws, including zero and negative exponents with appropriate nonzero bases.",
+      "prerequisites": [
+        "MATH_021",
+        "MATH_013",
+        "MATH_008"
+      ]
+    },
+    {
+      "id": "MATH_023",
+      "name": "Order of operations",
+      "category": "Arithmetic structure",
+      "grade": "5–6",
+      "definition": "Evaluate numerical expressions using grouping, exponents, and conventional operation precedence.",
+      "prerequisites": [
+        "MATH_021"
+      ]
+    },
+    {
+      "id": "MATH_024",
+      "name": "Commutative and associative properties",
+      "category": "Properties of operations",
+      "grade": "≤5–6",
+      "definition": "Recognize when reordering or regrouping addition or multiplication preserves a value.",
+      "prerequisites": [
+        "MATH_003"
+      ]
+    },
+    {
+      "id": "MATH_025",
+      "name": "Distributive property",
+      "category": "Properties of operations",
+      "grade": "5–7",
+      "definition": "Understand why multiplying a sum or difference equals combining the corresponding products.",
+      "prerequisites": [
+        "MATH_003"
+      ]
+    },
+    {
+      "id": "MATH_026",
+      "name": "Meaning of equality",
+      "category": "Equality foundations",
+      "grade": "≤5",
+      "definition": "Interpret the equals sign as asserting that two quantities or expressions have the same value.",
+      "prerequisites": []
+    },
+    {
+      "id": "MATH_027",
+      "name": "Variables",
+      "category": "Algebraic expressions",
+      "grade": "5–6",
+      "definition": "Interpret a symbol as an unknown, a varying quantity, or an arbitrary number.",
+      "prerequisites": [
+        "MATH_001"
+      ]
+    },
+    {
+      "id": "MATH_028",
+      "name": "Algebraic expression structure",
+      "category": "Algebraic expressions",
+      "grade": "6–7",
+      "definition": "Read and construct expressions, identifying terms, coefficients, factors, powers, and grouping.",
+      "prerequisites": [
+        "MATH_027",
+        "MATH_023"
+      ]
+    },
+    {
+      "id": "MATH_029",
+      "name": "Substitution and expression evaluation",
+      "category": "Algebraic expressions",
+      "grade": "6–7",
+      "definition": "Replace variables with specified rational values and compute the resulting expression.",
+      "prerequisites": [
+        "MATH_028",
+        "MATH_015"
+      ]
+    },
+    {
+      "id": "MATH_030",
+      "name": "Equivalent linear expressions",
+      "category": "Algebraic expressions",
+      "grade": "6–8",
+      "definition": "Rewrite linear expressions with rational coefficients through distribution, factoring, and combining like terms.",
+      "prerequisites": [
+        "MATH_028",
+        "MATH_024",
+        "MATH_025",
+        "MATH_015"
+      ]
+    },
+    {
+      "id": "MATH_031",
+      "name": "Equations and their solutions",
+      "category": "Equations",
+      "grade": "6–7",
+      "definition": "Interpret an equation as a condition and a solution as a value that makes it true.",
+      "prerequisites": [
+        "MATH_026",
+        "MATH_029"
+      ]
+    },
+    {
+      "id": "MATH_032",
+      "name": "Properties of equality",
+      "category": "Equations",
+      "grade": "6–7",
+      "definition": "Preserve equality by applying the same valid operation to both sides, avoiding division by zero.",
+      "prerequisites": [
+        "MATH_026",
+        "MATH_003"
+      ]
+    },
+    {
+      "id": "MATH_033",
+      "name": "Inverse operations",
+      "category": "Properties of operations",
+      "grade": "5–7",
+      "definition": "Recognize how addition and subtraction, and multiplication and division, undo one another.",
+      "prerequisites": [
+        "MATH_003"
+      ]
+    },
+    {
+      "id": "MATH_034",
+      "name": "Solving linear equations in one variable",
+      "category": "Equations",
+      "grade": "7–9",
+      "definition": "Solve rational-coefficient linear equations, including variables on both sides and zero, one, or infinitely many solutions.",
+      "prerequisites": [
+        "MATH_031",
+        "MATH_032",
+        "MATH_033",
+        "MATH_030"
+      ]
+    },
+    {
+      "id": "MATH_035",
+      "name": "Inequalities and their solution sets",
+      "category": "Inequalities",
+      "grade": "6–7",
+      "definition": "Interpret inequalities as ordered comparisons and describe satisfying values, including number-line representations.",
+      "prerequisites": [
+        "MATH_029"
+      ]
+    },
+    {
+      "id": "MATH_036",
+      "name": "Solving linear inequalities in one variable",
+      "category": "Inequalities",
+      "grade": "7–9",
+      "definition": "Isolate a variable while preserving the solution set, reversing order when multiplying or dividing by a negative.",
+      "prerequisites": [
+        "MATH_035",
+        "MATH_034"
+      ]
+    },
+    {
+      "id": "MATH_037",
+      "name": "Coordinate plane",
+      "category": "Coordinate geometry",
+      "grade": "5–6",
+      "definition": "Locate and interpret ordered pairs on scaled perpendicular axes, including negative and fractional coordinates.",
+      "prerequisites": [
+        "MATH_012",
+        "MATH_006"
+      ]
+    },
+    {
+      "id": "MATH_038",
+      "name": "Covarying quantities",
+      "category": "Relationships",
+      "grade": "6–7",
+      "definition": "Represent corresponding values of two varying quantities using ordered pairs and tables.",
+      "prerequisites": [
+        "MATH_027"
+      ]
+    },
+    {
+      "id": "MATH_039",
+      "name": "Representing proportional relationships",
+      "category": "Relationships",
+      "grade": "7–8",
+      "definition": "Connect equivalent-ratio tables, equations of the form y = kx, and straight-line graphs through the origin.",
+      "prerequisites": [
+        "MATH_018",
+        "MATH_037",
+        "MATH_038",
+        "MATH_029"
+      ]
+    },
+    {
+      "id": "MATH_040",
+      "name": "Linear relationships",
+      "category": "Relationships",
+      "grade": "7–8",
+      "definition": "Recognize a constant rate of change between quantities, allowing a nonzero initial value.",
+      "prerequisites": [
+        "MATH_039"
+      ]
+    },
+    {
+      "id": "MATH_041",
+      "name": "Slope",
+      "category": "Linear algebra foundations",
+      "grade": "8–9",
+      "definition": "Interpret and calculate Δy/Δx as a line’s rate of change; recognize undefined slope for vertical lines.",
+      "prerequisites": [
+        "MATH_040"
+      ]
+    },
+    {
+      "id": "MATH_042",
+      "name": "Graphing linear equations",
+      "category": "Linear algebra foundations",
+      "grade": "8–9",
+      "definition": "Graph two-variable linear equations using slope, intercepts, or equivalent forms, including horizontal and vertical lines.",
+      "prerequisites": [
+        "MATH_041",
+        "MATH_034"
+      ]
+    },
+    {
+      "id": "MATH_043",
+      "name": "Functions",
+      "category": "Functions",
+      "grade": "8–9",
+      "definition": "Recognize a correspondence that assigns exactly one output to each allowed input.",
+      "prerequisites": [
+        "MATH_038"
+      ]
+    },
+    {
+      "id": "MATH_044",
+      "name": "Function notation and evaluation",
+      "category": "Functions",
+      "grade": "8–9",
+      "definition": "Interpret f(x) as an output and evaluate a function rule at specified inputs.",
+      "prerequisites": [
+        "MATH_043",
+        "MATH_029"
+      ]
+    },
+    {
+      "id": "MATH_045",
+      "name": "Constructing linear models",
+      "category": "Functions",
+      "grade": "8–9",
+      "definition": "Construct a linear function from a table, graph, two points, or contextual rate and initial value.",
+      "prerequisites": [
+        "MATH_042",
+        "MATH_043"
+      ]
+    },
+    {
+      "id": "MATH_046",
+      "name": "Systems and simultaneous solutions",
+      "category": "Systems of equations",
+      "grade": "8–9",
+      "definition": "Interpret a linear system’s solution as an ordered pair satisfying every equation simultaneously.",
+      "prerequisites": [
+        "MATH_031",
+        "MATH_038"
+      ]
+    },
+    {
+      "id": "MATH_047",
+      "name": "Solving linear systems algebraically",
+      "category": "Systems of equations",
+      "grade": "8–9",
+      "definition": "Solve two-variable linear systems through substitution or elimination and identify the number of solutions.",
+      "prerequisites": [
+        "MATH_046",
+        "MATH_034"
+      ]
+    },
+    {
+      "id": "MATH_048",
+      "name": "Solving linear systems graphically",
+      "category": "Systems of equations",
+      "grade": "8–9",
+      "definition": "Determine or estimate shared solutions from intersecting, parallel, or coincident lines.",
+      "prerequisites": [
+        "MATH_046",
+        "MATH_042"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "MATH_001",
+      "target": "MATH_002",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Place-value units explain regrouping in addition and subtraction."
+    },
+    {
+      "source": "MATH_002",
+      "target": "MATH_003",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Combining equal groups and repeated subtraction ground multiplication and division."
+    },
+    {
+      "source": "MATH_003",
+      "target": "MATH_004",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Factors and multiples describe exact multiplication and division relationships."
+    },
+    {
+      "source": "MATH_003",
+      "target": "MATH_005",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Equal sharing and division ground the interpretation of fractions as quotients."
+    },
+    {
+      "source": "MATH_004",
+      "target": "MATH_006",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Common factors explain simplifying fractions without changing their value."
+    },
+    {
+      "source": "MATH_005",
+      "target": "MATH_006",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Fraction units explain why different numerator–denominator pairs can represent one quantity."
+    },
+    {
+      "source": "MATH_006",
+      "target": "MATH_007",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Equivalent fractions provide common units for addition and subtraction."
+    },
+    {
+      "source": "MATH_005",
+      "target": "MATH_008",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Fraction quantities ground fractional scaling and division by fractional amounts."
+    },
+    {
+      "source": "MATH_005",
+      "target": "MATH_009",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Decimal places represent fractional units with powers-of-ten denominators."
+    },
+    {
+      "source": "MATH_009",
+      "target": "MATH_010",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Decimal computation depends on tracking the value of each place."
+    },
+    {
+      "source": "MATH_006",
+      "target": "MATH_011",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Equivalent fractions connect terminating decimals to simplified fractional representations."
+    },
+    {
+      "source": "MATH_010",
+      "target": "MATH_011",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Decimal division produces decimal representations of fractions."
+    },
+    {
+      "source": "MATH_001",
+      "target": "MATH_012",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Number-line magnitude and order extend to positions below zero."
+    },
+    {
+      "source": "MATH_002",
+      "target": "MATH_013",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Integer addition and subtraction extend whole-number combining and difference operations."
+    },
+    {
+      "source": "MATH_012",
+      "target": "MATH_013",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Signed positions and opposites explain integer sums and differences."
+    },
+    {
+      "source": "MATH_003",
+      "target": "MATH_014",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Integer products and quotients extend whole-number multiplication and division."
+    },
+    {
+      "source": "MATH_013",
+      "target": "MATH_014",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Signed addition patterns and additive inverses help explain multiplication sign rules."
+    },
+    {
+      "source": "MATH_007",
+      "target": "MATH_015",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Signed fractional sums retain the need for common fractional units."
+    },
+    {
+      "source": "MATH_008",
+      "target": "MATH_015",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Signed fractional products and quotients extend fraction multiplication and division."
+    },
+    {
+      "source": "MATH_011",
+      "target": "MATH_015",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Mixed fraction–decimal calculations require compatible numerical representations."
+    },
+    {
+      "source": "MATH_014",
+      "target": "MATH_015",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Integer sign rules extend to multiplication and division of rational numbers."
+    },
+    {
+      "source": "MATH_003",
+      "target": "MATH_016",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Ratios express multiplicative comparisons rather than additive differences."
+    },
+    {
+      "source": "MATH_016",
+      "target": "MATH_017",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "A unit rate expresses a ratio with one unit of the reference quantity."
+    },
+    {
+      "source": "MATH_008",
+      "target": "MATH_017",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Rates involving fractional quantities require division of fractions."
+    },
+    {
+      "source": "MATH_017",
+      "target": "MATH_018",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "A common unit rate identifies and generates proportional pairs."
+    },
+    {
+      "source": "MATH_006",
+      "target": "MATH_018",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Equivalent fractions support recognizing and scaling equivalent ratios."
+    },
+    {
+      "source": "MATH_011",
+      "target": "MATH_019",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Fraction–decimal equivalence connects the numerical representations of percentages."
+    },
+    {
+      "source": "MATH_016",
+      "target": "MATH_019",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Percent expresses a multiplicative comparison per hundred."
+    },
+    {
+      "source": "MATH_018",
+      "target": "MATH_020",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Proportional scaling connects a percentage, its reference whole, and its corresponding amount."
+    },
+    {
+      "source": "MATH_019",
+      "target": "MATH_020",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Percent calculations require interpreting the percentage as a numerical rate."
+    },
+    {
+      "source": "MATH_003",
+      "target": "MATH_021",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Positive whole-number powers abbreviate repeated multiplication."
+    },
+    {
+      "source": "MATH_021",
+      "target": "MATH_022",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Repeated multiplication explains the initial exponent laws."
+    },
+    {
+      "source": "MATH_013",
+      "target": "MATH_022",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Combining integer exponents requires signed addition and subtraction."
+    },
+    {
+      "source": "MATH_008",
+      "target": "MATH_022",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Reciprocals explain negative exponents and quotients of powers."
+    },
+    {
+      "source": "MATH_021",
+      "target": "MATH_023",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Evaluating expressions containing powers requires understanding exponent notation."
+    },
+    {
+      "source": "MATH_003",
+      "target": "MATH_024",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Arithmetic operations provide meaning for reordering and regrouping sums and products."
+    },
+    {
+      "source": "MATH_003",
+      "target": "MATH_025",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Equal-group multiplication explains distributing a factor across a sum."
+    },
+    {
+      "source": "MATH_001",
+      "target": "MATH_027",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Variables stand for numbers or numerical quantities."
+    },
+    {
+      "source": "MATH_027",
+      "target": "MATH_028",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Reading algebraic expressions requires interpreting their variable symbols."
+    },
+    {
+      "source": "MATH_023",
+      "target": "MATH_028",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Operation precedence determines an expression’s grouping and structure."
+    },
+    {
+      "source": "MATH_028",
+      "target": "MATH_029",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Substitution requires identifying variable occurrences and preserving expression structure."
+    },
+    {
+      "source": "MATH_015",
+      "target": "MATH_029",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Evaluation at signed rational inputs requires rational-number arithmetic."
+    },
+    {
+      "source": "MATH_028",
+      "target": "MATH_030",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Identifying terms and coefficients makes valid expression rewriting possible."
+    },
+    {
+      "source": "MATH_024",
+      "target": "MATH_030",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Reordering and regrouping allow like terms to be collected."
+    },
+    {
+      "source": "MATH_025",
+      "target": "MATH_030",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Distribution and its reverse justify expansion, factoring, and combining like terms."
+    },
+    {
+      "source": "MATH_015",
+      "target": "MATH_030",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Rewriting expressions with rational coefficients requires signed rational arithmetic."
+    },
+    {
+      "source": "MATH_026",
+      "target": "MATH_031",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "An equation asserts equality, which its solutions must make true."
+    },
+    {
+      "source": "MATH_029",
+      "target": "MATH_031",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Substitution and evaluation establish whether a proposed value satisfies an equation."
+    },
+    {
+      "source": "MATH_026",
+      "target": "MATH_032",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Equality-preserving transformations depend on understanding equality as a relation."
+    },
+    {
+      "source": "MATH_003",
+      "target": "MATH_032",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Arithmetic operations give meaning to performing the same operation on both sides."
+    },
+    {
+      "source": "MATH_003",
+      "target": "MATH_033",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Familiar arithmetic operations provide the pairs whose actions can be undone."
+    },
+    {
+      "source": "MATH_031",
+      "target": "MATH_034",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Solving requires understanding what counts as a solution."
+    },
+    {
+      "source": "MATH_032",
+      "target": "MATH_034",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Valid transformations preserve the equation’s solution set."
+    },
+    {
+      "source": "MATH_033",
+      "target": "MATH_034",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Inverse operations undo operations surrounding the unknown."
+    },
+    {
+      "source": "MATH_030",
+      "target": "MATH_034",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "General linear equations require expanding expressions and collecting like terms."
+    },
+    {
+      "source": "MATH_029",
+      "target": "MATH_035",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Testing candidate values requires evaluating the expressions being compared."
+    },
+    {
+      "source": "MATH_035",
+      "target": "MATH_036",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Solving an inequality requires understanding its ordered comparison and solution set."
+    },
+    {
+      "source": "MATH_034",
+      "target": "MATH_036",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Linear equation solving supplies variable-isolation procedures that inequalities adapt."
+    },
+    {
+      "source": "MATH_012",
+      "target": "MATH_037",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Signed number-line positions determine coordinates in all four quadrants."
+    },
+    {
+      "source": "MATH_006",
+      "target": "MATH_037",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Equivalent fractional units support locating rational coordinates on differently scaled axes."
+    },
+    {
+      "source": "MATH_027",
+      "target": "MATH_038",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Variables identify the quantities whose corresponding values are tracked."
+    },
+    {
+      "source": "MATH_018",
+      "target": "MATH_039",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Proportional reasoning establishes the constant multiplier represented across tables, equations, and graphs."
+    },
+    {
+      "source": "MATH_037",
+      "target": "MATH_039",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Coordinate plotting turns proportional value pairs into a graph."
+    },
+    {
+      "source": "MATH_038",
+      "target": "MATH_039",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Tables of corresponding values represent how proportional quantities vary together."
+    },
+    {
+      "source": "MATH_029",
+      "target": "MATH_039",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Evaluating y = kx connects its equation to table entries and plotted points."
+    },
+    {
+      "source": "MATH_039",
+      "target": "MATH_040",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Proportional representations provide the constant-rate case extended by adding an initial value."
+    },
+    {
+      "source": "MATH_040",
+      "target": "MATH_041",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Constant rate of change gives conceptual meaning to the slope calculation."
+    },
+    {
+      "source": "MATH_041",
+      "target": "MATH_042",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Slope determines a line’s direction and the changes between its points."
+    },
+    {
+      "source": "MATH_034",
+      "target": "MATH_042",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Rearranging linear equations and solving for intercepts support graphing different equation forms."
+    },
+    {
+      "source": "MATH_038",
+      "target": "MATH_043",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Input–output correspondence makes the unique-output condition meaningful."
+    },
+    {
+      "source": "MATH_043",
+      "target": "MATH_044",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Function notation names the output assigned to a specified input."
+    },
+    {
+      "source": "MATH_029",
+      "target": "MATH_044",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Evaluating a function rule requires substituting inputs into an expression."
+    },
+    {
+      "source": "MATH_042",
+      "target": "MATH_045",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Connections among line equations, slopes, and intercepts support constructing linear models."
+    },
+    {
+      "source": "MATH_043",
+      "target": "MATH_045",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "A linear function model assigns one predicted output to each allowed input."
+    },
+    {
+      "source": "MATH_031",
+      "target": "MATH_046",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "A simultaneous solution must satisfy each individual equation."
+    },
+    {
+      "source": "MATH_038",
+      "target": "MATH_046",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Two-variable system solutions specify corresponding values as ordered pairs."
+    },
+    {
+      "source": "MATH_046",
+      "target": "MATH_047",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Algebraic system solving seeks values that satisfy every equation together."
+    },
+    {
+      "source": "MATH_034",
+      "target": "MATH_047",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Substitution and elimination reduce systems to linear equations in one variable."
+    },
+    {
+      "source": "MATH_046",
+      "target": "MATH_048",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Shared graph points represent simultaneous satisfaction of the equations."
+    },
+    {
+      "source": "MATH_042",
+      "target": "MATH_048",
+      "relationship": "PREREQUISITE_OF",
+      "rationale": "Graphical system solving requires constructing and interpreting both lines."
+    }
+  ]
+}

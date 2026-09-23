@@ -1,0 +1,29 @@
+{
+  "status": "passed",
+  "totals": {
+    "concepts": 48,
+    "prerequisite_edges": 80,
+    "students": 20,
+    "problems": 96,
+    "completions": 600,
+    "datasets": 2
+  },
+  "relationships": {
+    "ASSESSES": 96,
+    "COMPLETED": 600,
+    "IN_DATASET": 600,
+    "OF_PROBLEM": 600,
+    "PREREQUISITE_OF": 80
+  },
+  "nodes": 766,
+  "relationship_count": 1976,
+  "original_records_preserved": true,
+  "acyclic_prerequisites": true,
+  "completion_links": "passed",
+  "affect_and_timing": "passed",
+  "reimport_idempotence": "passed",
+  "invalid_batch_rollback": "passed",
+  "upstream_query": "27 distinct concepts",
+  "student_query": "30 records across 15 concepts",
+  "shared_foundations_query": "passed"
+}

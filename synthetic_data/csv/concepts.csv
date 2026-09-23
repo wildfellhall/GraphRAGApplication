@@ -1,0 +1,49 @@
+concept_id,concept_name,category,short_definition,grade_band
+MATH_001,Whole-number place value and magnitude,Arithmetic foundations,"Interpret whole numbers using base-ten units, relative size, and positions on a number line.",≤5
+MATH_002,Whole-number addition and subtraction,Arithmetic foundations,"Combine, separate, and compare whole-number quantities, including regrouping across place values.",≤5
+MATH_003,Whole-number multiplication and division,Arithmetic foundations,"Reason about equal groups, multiplicative comparisons, products, and quotients.",≤5–6
+MATH_004,Factors and multiples,Number structure,"Identify divisibility relationships, including common factors and common multiples.",5–6
+MATH_005,Fraction meaning,Fractions,"Interpret a fraction as a number, a quantity of equal-sized parts, and a quotient.",≤5
+MATH_006,Equivalent fractions,Fractions,"Generate, recognize, and simplify fractions that represent the same number.",≤5–6
+MATH_007,Fraction addition and subtraction,Fractions,Add and subtract nonnegative fractions by expressing quantities in common fractional units.,5–6
+MATH_008,Fraction multiplication and division,Fractions,"Multiply and divide nonnegative fractions using scaling, grouping, and reciprocal relationships.",5–6
+MATH_009,Decimal place value,Decimals,"Interpret decimal digits as tenths, hundredths, and successive powers-of-ten fractional units.",≤5–6
+MATH_010,Decimal operations,Decimals,"Add, subtract, multiply, and divide nonnegative decimals while accounting for place value.",5–6
+MATH_011,Fraction–decimal conversion,Rational numbers,Express fractions as terminating or repeating decimals and terminating decimals as fractions.,5–7
+MATH_012,Signed numbers and order,Signed numbers,"Interpret positive and negative integers, opposites, zero, and order on a number line.",6
+MATH_013,Integer addition and subtraction,Signed numbers,"Add and subtract integers using signed changes, opposites, and additive inverses.",6–7
+MATH_014,Integer multiplication and division,Signed numbers,Multiply and divide integers with consistent reasoning about signs.,6–7
+MATH_015,Signed rational-number operations,Rational numbers,"Compute with positive and negative fractions and decimals, including mixed representations.",7
+MATH_016,Ratios,Ratios and proportionality,Interpret an ordered comparison of quantities in multiplicative terms.,6
+MATH_017,Unit rates,Ratios and proportionality,"Determine and interpret an amount per one unit, including rates involving fractions.",6–7
+MATH_018,Proportional reasoning,Ratios and proportionality,Recognize equivalent ratios and determine missing quantities through consistent multiplicative scaling.,6–7
+MATH_019,Percent representations,Percentages,Interpret percent as a rate per hundred and express it using fractions and decimals.,6–7
+MATH_020,Percent problem solving,Percentages,"Determine a part, whole, percentage, or percent change using proportional relationships.",6–7
+MATH_021,Whole-number exponents,Number structure,Interpret and evaluate powers with positive whole-number exponents as repeated multiplication.,5–6
+MATH_022,Integer exponent laws,Number structure,"Apply product, quotient, and power laws, including zero and negative exponents with appropriate nonzero bases.",8–9
+MATH_023,Order of operations,Arithmetic structure,"Evaluate numerical expressions using grouping, exponents, and conventional operation precedence.",5–6
+MATH_024,Commutative and associative properties,Properties of operations,Recognize when reordering or regrouping addition or multiplication preserves a value.,≤5–6
+MATH_025,Distributive property,Properties of operations,Understand why multiplying a sum or difference equals combining the corresponding products.,5–7
+MATH_026,Meaning of equality,Equality foundations,Interpret the equals sign as asserting that two quantities or expressions have the same value.,≤5
+MATH_027,Variables,Algebraic expressions,"Interpret a symbol as an unknown, a varying quantity, or an arbitrary number.",5–6
+MATH_028,Algebraic expression structure,Algebraic expressions,"Read and construct expressions, identifying terms, coefficients, factors, powers, and grouping.",6–7
+MATH_029,Substitution and expression evaluation,Algebraic expressions,Replace variables with specified rational values and compute the resulting expression.,6–7
+MATH_030,Equivalent linear expressions,Algebraic expressions,"Rewrite linear expressions with rational coefficients through distribution, factoring, and combining like terms.",6–8
+MATH_031,Equations and their solutions,Equations,Interpret an equation as a condition and a solution as a value that makes it true.,6–7
+MATH_032,Properties of equality,Equations,"Preserve equality by applying the same valid operation to both sides, avoiding division by zero.",6–7
+MATH_033,Inverse operations,Properties of operations,"Recognize how addition and subtraction, and multiplication and division, undo one another.",5–7
+MATH_034,Solving linear equations in one variable,Equations,"Solve rational-coefficient linear equations, including variables on both sides and zero, one, or infinitely many solutions.",7–9
+MATH_035,Inequalities and their solution sets,Inequalities,"Interpret inequalities as ordered comparisons and describe satisfying values, including number-line representations.",6–7
+MATH_036,Solving linear inequalities in one variable,Inequalities,"Isolate a variable while preserving the solution set, reversing order when multiplying or dividing by a negative.",7–9
+MATH_037,Coordinate plane,Coordinate geometry,"Locate and interpret ordered pairs on scaled perpendicular axes, including negative and fractional coordinates.",5–6
+MATH_038,Covarying quantities,Relationships,Represent corresponding values of two varying quantities using ordered pairs and tables.,6–7
+MATH_039,Representing proportional relationships,Relationships,"Connect equivalent-ratio tables, equations of the form y = kx, and straight-line graphs through the origin.",7–8
+MATH_040,Linear relationships,Relationships,"Recognize a constant rate of change between quantities, allowing a nonzero initial value.",7–8
+MATH_041,Slope,Linear algebra foundations,Interpret and calculate Δy/Δx as a line’s rate of change; recognize undefined slope for vertical lines.,8–9
+MATH_042,Graphing linear equations,Linear algebra foundations,"Graph two-variable linear equations using slope, intercepts, or equivalent forms, including horizontal and vertical lines.",8–9
+MATH_043,Functions,Functions,Recognize a correspondence that assigns exactly one output to each allowed input.,8–9
+MATH_044,Function notation and evaluation,Functions,Interpret f(x) as an output and evaluate a function rule at specified inputs.,8–9
+MATH_045,Constructing linear models,Functions,"Construct a linear function from a table, graph, two points, or contextual rate and initial value.",8–9
+MATH_046,Systems and simultaneous solutions,Systems of equations,Interpret a linear system’s solution as an ordered pair satisfying every equation simultaneously.,8–9
+MATH_047,Solving linear systems algebraically,Systems of equations,Solve two-variable linear systems through substitution or elimination and identify the number of solutions.,8–9
+MATH_048,Solving linear systems graphically,Systems of equations,"Determine or estimate shared solutions from intersecting, parallel, or coincident lines.",8–9

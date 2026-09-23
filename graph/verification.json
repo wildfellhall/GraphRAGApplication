@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "totals": {
+    "concepts": 48,
+    "prerequisite_edges": 80,
+    "students": 20,
+    "problems": 96,
+    "completions": 600,
+    "datasets": 2,
+    "classes": 3
+  },
+  "relationships": {
+    "ASSESSES": 96,
+    "COMPLETED": 600,
+    "ENROLLED_IN": 20,
+    "IN_DATASET": 600,
+    "OF_PROBLEM": 600,
+    "PREREQUISITE_OF": 80
+  },
+  "nodes": 769,
+  "relationship_count": 1996,
+  "original_records_preserved": true,
+  "acyclic_prerequisites": true,
+  "completion_links": "passed",
+  "affect_and_timing": "passed"
+}

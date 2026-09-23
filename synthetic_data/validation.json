@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "random_seed": 20260920,
+  "counts": {
+    "students": 15,
+    "concepts": 48,
+    "prerequisite_edges": 80,
+    "problems": 96,
+    "problem_completions": 450
+  },
+  "observed_concepts": 48,
+  "observed_problems": 96,
+  "completions_per_student": 30,
+  "concepts_per_student": 15,
+  "ontology_acyclic": true,
+  "foreign_keys": "passed",
+  "chronology_and_duration": "passed",
+  "canonical_answer_consistency": "passed",
+  "sql_dump_restore": "passed",
+  "mixed_affect_examples": {
+    "confident_but_incorrect": 15,
+    "low_confidence_but_correct": 81,
+    "determined_and_frustrated": 10,
+    "correct_after_multiple_attempts": 101
+  },
+  "final_correct_records": 411,
+  "time_seconds_range": [
+    32,
+    356
+  ]
+}

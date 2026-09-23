@@ -1,0 +1,41 @@
+import {chromium} from '@playwright/test';
+import assert from 'node:assert/strict';
+import {newConversation,addMessage,closeStore} from './store.mjs';
+const base=process.env.UI_URL||'http://127.0.0.1:4310';
+const selected=newConversation('UI deletion test — open conversation',{}),other=newConversation('UI deletion test — saved conversation',{});
+for(const id of [selected,other])addMessage(id,'user','A disposable UI test message.');
+const browser=await chromium.connectOverCDP('http://127.0.0.1:9242');const page=await browser.contexts()[0].newPage();const errors=[];
+page.on('pageerror',error=>errors.push(error.message));
+try{
+  await page.setViewportSize({width:1500,height:1000});await page.goto(base);
+  await page.locator(`[data-conversation-id="${selected}"]`).click();
+  await page.getByRole('button',{name:'Delete conversation: UI deletion test — saved conversation',exact:true}).click();
+  await page.getByRole('button',{name:'Cancel',exact:true}).click();
+  assert.equal((await fetch(base+'/api/conversations/'+other)).status,200);
+  await page.getByRole('button',{name:'Delete conversation: UI deletion test — saved conversation',exact:true}).click();
+  await page.getByRole('button',{name:'Delete',exact:true}).click();
+  await page.locator(`[data-conversation-id="${other}"]`).waitFor({state:'detached'});
+  assert.equal((await fetch(base+'/api/conversations/'+other)).status,404);
+  assert.equal(await page.locator('.message.user').count(),1);
+  await page.getByRole('button',{name:'Delete conversation: UI deletion test — open conversation',exact:true}).click();
+  await page.screenshot({path:'test-results/conversation-delete.png',fullPage:true});
+  await page.getByRole('button',{name:'Delete',exact:true}).click();
+  await page.getByRole('heading',{name:'A clearer view of every learner.'}).waitFor();
+  assert.equal((await fetch(base+'/api/conversations/'+selected)).status,404);
+  await page.reload();await page.getByRole('heading',{name:'A clearer view of every learner.'}).waitFor();
+  assert.equal(await page.locator(`[data-conversation-id="${selected}"]`).count(),0);
+  const question='Active deletion regression: show Grade 8 status.';
+  await page.getByRole('textbox',{name:'Ask about your students'}).fill(question);
+  await page.getByRole('button',{name:'Send question'}).click();
+  await page.getByRole('button',{name:'Delete conversation: '+question,exact:true}).waitFor();
+  const running=(await fetch(base+'/api/conversations').then(r=>r.json())).find(c=>c.title===question);assert.ok(running);
+  await page.getByRole('button',{name:'Delete conversation: '+question,exact:true}).click();
+  await page.getByRole('button',{name:'Delete',exact:true}).click();
+  await page.getByRole('heading',{name:'A clearer view of every learner.'}).waitFor();
+  assert.equal((await fetch(base+'/api/conversations/'+running.id)).status,404);
+  assert.deepEqual(errors,[]);
+  console.log('Passed cancel deletion, saved, open and generating conversation deletion, persistence after reload, and browser error checks.');
+}finally{
+  for(const id of [selected,other])await fetch(base+'/api/conversations/'+id,{method:'DELETE'});
+  await page.close();await browser.close();closeStore();
+}

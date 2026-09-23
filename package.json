@@ -1,0 +1,45 @@
+{
+  "name": "mathematics-prerequisite-graph",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "dev": "node app/dev.mjs",
+    "app:start": "node app/server.mjs",
+    "app:build": "vite build --config web/vite.config.mjs",
+    "web:dev": "vite --config web/vite.config.mjs",
+    "app:test": "node --test app/*.test.mjs",
+    "graph:setup": "python3 graph/local_neo4j.py setup",
+    "graph:start": "python3 graph/local_neo4j.py start",
+    "graph:console": "python3 graph/local_neo4j.py console",
+    "graph:stop": "python3 graph/local_neo4j.py stop",
+    "graph:status": "python3 graph/local_neo4j.py status",
+    "graph:prepare": "python3 graph/prepare.py base",
+    "graph:expand": "python3 graph/prepare.py expand",
+    "graph:import": "node graph/cli.mjs import",
+    "graph:verify": "node graph/cli.mjs verify",
+    "graph:query": "node graph/cli.mjs query",
+    "graph:export": "node graph/cli.mjs export",
+    "graph:test": "node --test graph/validation.test.mjs",
+    "graph:check": "node graph/check.mjs",
+    "app:smoke": "node app/smoke.mjs",
+    "app:ui-check": "node app/ui-check.mjs",
+    "app:integration": "node app/integration.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.63.0",
+    "@vitejs/plugin-react": "6.1.1",
+    "@viz-js/viz": "3.30.0",
+    "vite": "8.3.0"
+  },
+  "dependencies": {
+    "express": "5.2.1",
+    "lucide-react": "1.47.0",
+    "neo4j-driver": "6.2.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "react-markdown": "10.1.0",
+    "remark-gfm": "^4.0.1"
+  }
+}

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mathematics, connected — Prerequisite graph</title>
+<style>
+:root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#243d36;background:#f5f6f2;font-synthesis:none}*{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}button,select{cursor:pointer}button{border:1px solid #d5ded7;background:#fff;color:#294b40;border-radius:7px;padding:9px 12px}button:hover{background:#edf3ed}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #349279;outline-offset:2px}header{padding:24px 30px 19px;background:#fcfdf9;border-bottom:1px solid #dbe1d9;display:flex;align-items:center;justify-content:space-between;gap:20px}.eyebrow{font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:750;color:#6e8174}h1{font-family:Georgia,serif;font-size:34px;letter-spacing:-1.2px;margin:5px 0 4px;font-weight:500}header p{font-size:12px;color:#6d7b73;margin:0}.metrics{display:flex;gap:22px;align-items:center}.metric strong{display:block;font-size:24px;font-weight:550}.metric span{font-size:11px;color:#718074}.download{background:#244f42;color:#fff;border-color:#244f42}.download:hover{background:#376755}.layout{display:grid;grid-template-columns:minmax(0,1fr) 325px;height:calc(100dvh - 123px);min-height:610px}.canvas-panel{min-width:0;display:flex;flex-direction:column;position:relative}.toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:14px 20px;border-bottom:1px solid #e1e5dd;background:#f9faf5}.toolbar button{font-size:12px}.hint{margin-left:auto;font-size:11px;color:#728075}#viewport{flex:1;min-height:350px;overflow:hidden;position:relative;background-image:radial-gradient(#d8e0d5 .8px,transparent .8px);background-size:18px 18px;touch-action:none;cursor:grab}#viewport.dragging{cursor:grabbing}#viewport>svg{display:block;width:100%;height:100%;position:absolute;inset:0}.node{cursor:pointer;transition:opacity .15s}.node:focus-visible{outline:none}.node:focus-visible path{stroke:#162f27;stroke-width:3}.node.selected path,.node.selected polygon{stroke:#183d30;stroke-width:3}.node.direct path,.node.direct polygon{stroke-width:2.5}.node.dim,.edge.dim{opacity:.12}.node.hidden,.edge.hidden{display:none}.edge.active path{stroke:#48826e;stroke-width:1.8}.edge.active polygon{stroke:#48826e;fill:#48826e}.edge path{pointer-events:stroke}.edge{cursor:help}.legend{display:flex;flex-wrap:wrap;gap:9px 17px;padding:13px 20px;font-size:10px;line-height:1.5;border-top:1px solid #dbe1d9;background:#fafbf7}.legend span{display:flex;gap:6px;align-items:center}.legend i{width:7px;height:7px;border-radius:50%;display:inline-block}.sidebar{background:#fcfdf9;border-left:1px solid #dbe1d9;padding:23px 21px;overflow:auto}.search-wrap{position:relative}label{font-size:11px;font-weight:650;display:block;margin-bottom:7px}input[type=search]{width:100%;border:1px solid #d3dcd2;border-radius:7px;padding:11px 12px;background:white;font-size:12px}#results{position:absolute;left:0;right:0;top:70px;z-index:10;background:#fff;box-shadow:0 8px 24px #223e3426;max-height:330px;overflow:auto;border-radius:6px}#results:empty{display:none}#results button{display:block;text-align:left;width:100%;border-radius:0;border:0;border-bottom:1px solid #edf0e9;font-size:12px;line-height:1.5}#results small{display:block;color:#708175}#results p{font-size:12px;padding:12px}.view-controls{display:flex;gap:7px;align-items:center;margin:14px 0 20px}.view-controls label{margin:0;white-space:nowrap;font-size:11px}select{width:100%;font-size:11px;padding:7px;border:1px solid #d5ded7;border-radius:5px;background:white}.rule{border:0;border-top:1px solid #e0e6dc;margin:22px 0}.intro h2{font-family:Georgia,serif;font-size:26px;line-height:1.15;margin:8px 0 13px;font-weight:500}.intro p,.definition{font-size:12px;line-height:1.75;color:#63756a}.intro button{width:100%;text-align:left;margin-top:7px;font-size:11px;padding:12px}.node-id{font-size:10px;font-weight:650;letter-spacing:1px;color:#7b8a7b}#details h2{font-family:Georgia,serif;font-size:24px;font-weight:500;line-height:1.2;margin:10px 0}.badge{display:inline-block;font-size:10px;background:#eaf1e8;color:#52705e;padding:5px 8px;border-radius:4px;margin:4px 3px 4px 0}.counts{display:flex;gap:28px;margin:20px 0}.counts strong{display:block;font-size:22px;font-weight:550}.counts small{color:#708071;font-size:10px}.section-label{font-size:10px;letter-spacing:1px;text-transform:uppercase;font-weight:700;margin:22px 0 10px}.prereq{display:block;width:100%;text-align:left;margin-top:7px;padding:10px;font-size:12px;line-height:1.45}.prereq small{display:block;color:#778676;font-size:10px;margin-bottom:3px}.prereq em{font-style:normal;font-size:10px;line-height:1.6;display:block;color:#6f7b71;margin-top:5px}.note{font-size:10px;line-height:1.7;color:#7a877b}.direction{position:absolute;top:14px;left:18px;background:#fcfdf9e8;border:1px solid #dce5d9;border-radius:5px;padding:7px 10px;font-size:10px;color:#617565;pointer-events:none}#status{font-size:10px;color:#718072;margin-left:3px}#reset{margin-top:16px;font-size:11px;width:100%}[hidden]{display:none!important}@media(max-width:800px){header{padding:18px}.metrics{gap:12px}.metric{display:none}h1{font-size:28px}.layout{grid-template-columns:1fr;height:auto;min-height:0}.canvas-panel{height:70dvh;min-height:510px}.sidebar{border-left:0;border-top:1px solid #dbe1d9}.hint{display:none}.legend{gap:7px 12px}.direction{top:10px}}@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header><div><div class="eyebrow">Mathematics knowledge map</div><h1>Mathematics, connected.</h1><p>From arithmetic foundations to introductory algebra.</p></div><div class="metrics"><div class="metric"><strong>48</strong><span>concepts</span></div><div class="metric"><strong>80</strong><span>relationships</span></div><button class="download" id="export">Export SVG ↗</button></div></header>
+<main class="layout">
+<section class="canvas-panel" aria-label="Mathematics prerequisite graph">
+<div class="toolbar"><button id="zoom-in" aria-label="Zoom in">＋</button><button id="zoom-out" aria-label="Zoom out">−</button><button id="fit">Fit graph</button><button id="focus" disabled>Focus branch</button><span id="status" aria-live="polite">48 concepts shown</span><span class="hint">Scroll to zoom · Drag to pan</span></div>
+<div id="viewport"><!-- GRAPH --><div class="direction">Prerequisite ↓ Dependent concept</div></div>
+<div id="legend" class="legend" aria-label="Concept domain colors"></div>
+</section>
+<aside class="sidebar">
+<div class="search-wrap"><label for="search">FIND A CONCEPT</label><input id="search" type="search" placeholder="Try “slope” or “MATH_034”" autocomplete="off" aria-controls="results"><div id="results" aria-label="Search results"></div></div>
+<div class="view-controls"><label for="mode">Trace</label><select id="mode"><option value="upstream">All prerequisites</option><option value="direct">Direct prerequisites</option><option value="downstream">Downstream concepts</option></select></div>
+<hr class="rule">
+<div id="intro" class="intro"><div class="eyebrow">One concept leads to another</div><h2>Follow the foundations.</h2><p>Select a concept to reveal the mathematical knowledge it builds on. Arrows point from each prerequisite toward the concept it supports.</p><button data-example="MATH_034">Explore linear equations →</button><button data-example="MATH_041">Explore slope →</button><button data-example="MATH_048">Explore systems of equations →</button><hr class="rule"><p><strong>How to read the map</strong><br>Each box is one concept. Colors group mathematical domains. Every arrow represents <strong>PREREQUISITE_OF</strong>; hover over an arrow for its rationale.</p><p class="note">Grades are approximate U.S. placements. “≤5” includes earlier foundations. Vertical position indicates prerequisite depth, not grade level.</p></div>
+<div id="details" hidden aria-live="polite"></div>
+<button id="reset" hidden>Clear selection · Show whole graph</button>
+</aside>
+</main>
+<script>
+/* ONTOLOGY */
+const $=s=>document.querySelector(s), byId=new Map(data.nodes.map(n=>[n.id,n]));
+const svg=$('#viewport svg'), original=svg.getAttribute('viewBox').split(/\s+/).map(Number), viewport=$('#viewport');
+svg.removeAttribute('width');svg.removeAttribute('height');svg.setAttribute('role','group');svg.setAttribute('aria-label','Interactive mathematics prerequisite graph, 48 concepts and 80 relationships');
+const nodeEls=new Map(data.nodes.map(n=>[n.id,document.getElementById(n.id)]));
+let selected=null,focused=false,view=[...original],drag=null,moved=false;
+function setView(v){view=v;svg.setAttribute('viewBox',v.join(' '));}
+function relatives(id,direction='upstream'){
+  const seen=new Set();const stack=[id];
+  while(stack.length){const cur=stack.pop();const next=direction==='downstream'?data.edges.filter(e=>e.source===cur).map(e=>e.target):byId.get(cur).prerequisites;
+    for(const n of next)if(!seen.has(n)){seen.add(n);stack.push(n);}}
+  return seen;
+}
+function activeIds(){if(!selected)return new Set(byId.keys());const mode=$('#mode').value;return new Set([selected,...(mode==='direct'?byId.get(selected).prerequisites:relatives(selected,mode))]);}
+function fit(activeOnly=false){
+  if(!activeOnly){setView([...original]);return;}
+  const active=activeIds(),boxes=[...active].map(id=>{const el=nodeEls.get(id),b=el.getBBox(),matrix=el.getCTM(),inv=svg.getCTM().inverse();return {b,m:inv.multiply(matrix)};});
+  const points=boxes.flatMap(({b,m})=>[{x:b.x,y:b.y},{x:b.x+b.width,y:b.y+b.height}].map(p=>new DOMPoint(p.x,p.y).matrixTransform(m)));
+  const x=Math.min(...points.map(p=>p.x))-35,y=Math.min(...points.map(p=>p.y))-35,w=Math.max(...points.map(p=>p.x))-x+35,h=Math.max(...points.map(p=>p.y))-y+35;
+  setView([x,y,w,h]);
+}
+function paint(){
+  const active=activeIds();
+  for(const [id,el]of nodeEls){el.classList.toggle('selected',id===selected);el.classList.toggle('direct',!!selected&&byId.get(selected).prerequisites.includes(id));el.classList.toggle('dim',!active.has(id));el.classList.toggle('hidden',focused&&!active.has(id));el.setAttribute('aria-pressed',String(id===selected));el.setAttribute('tabindex',focused&&!active.has(id)?'-1':'0');}
+  for(const e of data.edges){const el=document.getElementById(`edge_${e.source}_${e.target}`);const isActive=active.has(e.source)&&active.has(e.target)&&($('#mode').value!=='direct'||!selected||e.target===selected);el.classList.toggle('active',!!selected&&isActive);el.classList.toggle('dim',!isActive);el.classList.toggle('hidden',focused&&!isActive);}
+  $('#focus').disabled=!selected;$('#focus').textContent=focused?'Show whole graph':'Focus branch';$('#status').textContent=selected?`${active.size} concepts ${focused?'shown':'highlighted'}`:'48 concepts shown';
+}
+function el(tag,text,className){const e=document.createElement(tag);if(text)e.textContent=text;if(className)e.className=className;return e;}
+function select(id){
+  selected=id;const n=byId.get(id),details=$('#details');details.replaceChildren();$('#intro').hidden=true;details.hidden=false;$('#reset').hidden=false;$('#results').replaceChildren();$('#search').value='';
+  details.append(el('div',n.id,'node-id'),el('h2',n.name),el('span',n.category,'badge'),el('span','Grades '+n.grade,'badge'),el('p',n.definition,'definition'));
+  const counts=el('div',null,'counts');for(const [count,label]of [[n.prerequisites.length,'direct prerequisites'],[relatives(id).size,'total upstream']]){const c=el('div');c.append(el('strong',String(count)),el('small',label));counts.append(c);}details.append(counts,el('div','Direct prerequisites','section-label'));
+  if(!n.prerequisites.length)details.append(el('p','Foundational entry point. No prerequisites are represented within this ontology.','note'));
+  for(const p of n.prerequisites){const b=el('button',null,'prereq');b.append(el('small',p),el('span',byId.get(p).name),el('em',data.edges.find(e=>e.source===p&&e.target===id).rationale));b.onclick=()=>select(p);details.append(b);}
+  const downstream=data.edges.filter(e=>e.source===id);if(downstream.length){details.append(el('div','Directly supports','section-label'));for(const e of downstream){const b=el('button',null,'prereq');b.append(el('small',e.target),el('span',byId.get(e.target).name));b.onclick=()=>select(e.target);details.append(b);}}
+  paint();if(focused)fit(true);
+}
+for(const n of data.nodes){const e=nodeEls.get(n.id);e.setAttribute('role','button');e.setAttribute('aria-label',`${n.name}, ${n.id}, grades ${n.grade}`);e.setAttribute('tabindex','0');e.onclick=()=>{if(!moved)select(n.id);};e.onkeydown=ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();select(n.id);}};}
+groups.forEach(g=>{const item=el('span'),dot=el('i');dot.style.background=g.color;item.append(dot,document.createTextNode(g.name));$('#legend').append(item);});
+document.querySelectorAll('[data-example]').forEach(b=>b.onclick=()=>select(b.dataset.example));
+$('#reset').onclick=()=>{selected=null;focused=false;$('#details').hidden=true;$('#intro').hidden=false;$('#reset').hidden=true;$('#search').value='';$('#results').replaceChildren();paint();fit();};
+$('#mode').onchange=()=>{paint();if(focused)fit(true);};
+$('#focus').onclick=()=>{focused=!focused;paint();fit(focused);};
+$('#fit').onclick=()=>fit(focused);
+function zoom(factor,point){const min=original[2]/12,max=original[2]*2,nextW=Math.max(min,Math.min(max,view[2]*factor)),actual=nextW/view[2];const p=point||{x:view[0]+view[2]/2,y:view[1]+view[3]/2};setView([p.x-(p.x-view[0])*actual,p.y-(p.y-view[1])*actual,nextW,view[3]*actual]);}
+$('#zoom-in').onclick=()=>zoom(.75);$('#zoom-out').onclick=()=>zoom(1.33);
+viewport.addEventListener('wheel',e=>{e.preventDefault();const p=new DOMPoint(e.clientX,e.clientY).matrixTransform(svg.getScreenCTM().inverse());zoom(Math.exp(e.deltaY*.0015),p);},{passive:false});
+viewport.addEventListener('pointerdown',e=>{if(e.button!==0)return;drag={x:e.clientX,y:e.clientY,view:[...view],matrix:svg.getScreenCTM().inverse()};moved=false;});
+viewport.addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-drag.x,dy=e.clientY-drag.y;if(Math.abs(dx)+Math.abs(dy)>4){moved=true;viewport.classList.add('dragging');viewport.setPointerCapture(e.pointerId);}setView([drag.view[0]-dx*drag.matrix.a,drag.view[1]-dy*drag.matrix.d,drag.view[2],drag.view[3]]);});
+function endDrag(){drag=null;viewport.classList.remove('dragging');}viewport.addEventListener('pointerup',endDrag);viewport.addEventListener('pointercancel',endDrag);
+$('#search').oninput=()=>{const q=$('#search').value.trim().toLowerCase(),results=$('#results');results.replaceChildren();if(!q)return;const matches=data.nodes.filter(n=>(n.name+' '+n.id+' '+n.category).toLowerCase().includes(q));if(!matches.length)results.append(el('p','No matching concepts.'));for(const n of matches){const b=el('button');b.append(el('small',n.id),el('span',n.name));b.onclick=()=>select(n.id);results.append(b);}};
+$('#search').onkeydown=e=>{if(e.key==='Enter')$('#results button')?.click();if(e.key==='Escape'){$('#search').value='';$('#results').replaceChildren();}};
+$('#export').onclick=()=>{const clone=svg.cloneNode(true);clone.setAttribute('viewBox',original.join(' '));clone.setAttribute('width',original[2]);clone.setAttribute('height',original[3]);clone.setAttribute('xmlns','http://www.w3.org/2000/svg');clone.removeAttribute('style');clone.querySelectorAll('.node,.edge').forEach(e=>{e.removeAttribute('class');e.removeAttribute('tabindex');e.removeAttribute('role');e.removeAttribute('aria-pressed');});const title=document.createElementNS('http://www.w3.org/2000/svg','title');title.textContent='Mathematics prerequisite graph — 48 concepts, 80 relationships; arrows point from prerequisite to dependent concept';clone.prepend(title);const url=URL.createObjectURL(new Blob([new XMLSerializer().serializeToString(clone)],{type:'image/svg+xml'}));const a=el('a');a.href=url;a.download='mathematics-ontology.svg';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
+paint();
+</script>
+</body>
+</html>

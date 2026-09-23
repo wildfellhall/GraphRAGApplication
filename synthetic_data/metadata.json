@@ -1,0 +1,15 @@
+{
+  "dataset_name": "Synthetic mathematics learning records",
+  "dataset_version": "1.0",
+  "is_synthetic": "true",
+  "random_seed": "20260920",
+  "source_ontology": "ontology.json",
+  "source_ontology_sha256": "cddb6d83f9862a1f6aaec0834467146a0e0a604eeea4b6a237b65f1241e2dfe2",
+  "record_period_utc": "2026-09-01 through 2026-09-18",
+  "affect_source": "simulated post-problem self-report; not observed or sensor-inferred",
+  "affect_scale": "independent integers 1=very low, 2=low, 3=moderate, 4=high, 5=very high",
+  "time_definition": "elapsed seconds from problem start to completion, including attempts and hints",
+  "attempt_definition": "submitted answers including the initial answer; earlier submissions are incorrect",
+  "completion_definition": "finished activity; final answer may be correct or incorrect",
+  "hint_definition": "total hint requests during the problem; independent of submission count"
+}

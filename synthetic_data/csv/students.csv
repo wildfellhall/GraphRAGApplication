@@ -1,0 +1,16 @@
+student_id,display_name,grade_level,is_synthetic
+STU_001,Synthetic Student 01,7,1
+STU_002,Synthetic Student 02,7,1
+STU_003,Synthetic Student 03,7,1
+STU_004,Synthetic Student 04,7,1
+STU_005,Synthetic Student 05,7,1
+STU_006,Synthetic Student 06,8,1
+STU_007,Synthetic Student 07,8,1
+STU_008,Synthetic Student 08,8,1
+STU_009,Synthetic Student 09,8,1
+STU_010,Synthetic Student 10,8,1
+STU_011,Synthetic Student 11,9,1
+STU_012,Synthetic Student 12,9,1
+STU_013,Synthetic Student 13,9,1
+STU_014,Synthetic Student 14,9,1
+STU_015,Synthetic Student 15,9,1

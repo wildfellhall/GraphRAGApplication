@@ -1,0 +1,81 @@
+source_concept_id,relationship,target_concept_id,rationale
+MATH_001,PREREQUISITE_OF,MATH_002,Place-value units explain regrouping in addition and subtraction.
+MATH_001,PREREQUISITE_OF,MATH_012,Number-line magnitude and order extend to positions below zero.
+MATH_001,PREREQUISITE_OF,MATH_027,Variables stand for numbers or numerical quantities.
+MATH_002,PREREQUISITE_OF,MATH_003,Combining equal groups and repeated subtraction ground multiplication and division.
+MATH_002,PREREQUISITE_OF,MATH_013,Integer addition and subtraction extend whole-number combining and difference operations.
+MATH_003,PREREQUISITE_OF,MATH_004,Factors and multiples describe exact multiplication and division relationships.
+MATH_003,PREREQUISITE_OF,MATH_005,Equal sharing and division ground the interpretation of fractions as quotients.
+MATH_003,PREREQUISITE_OF,MATH_014,Integer products and quotients extend whole-number multiplication and division.
+MATH_003,PREREQUISITE_OF,MATH_016,Ratios express multiplicative comparisons rather than additive differences.
+MATH_003,PREREQUISITE_OF,MATH_021,Positive whole-number powers abbreviate repeated multiplication.
+MATH_003,PREREQUISITE_OF,MATH_024,Arithmetic operations provide meaning for reordering and regrouping sums and products.
+MATH_003,PREREQUISITE_OF,MATH_025,Equal-group multiplication explains distributing a factor across a sum.
+MATH_003,PREREQUISITE_OF,MATH_032,Arithmetic operations give meaning to performing the same operation on both sides.
+MATH_003,PREREQUISITE_OF,MATH_033,Familiar arithmetic operations provide the pairs whose actions can be undone.
+MATH_004,PREREQUISITE_OF,MATH_006,Common factors explain simplifying fractions without changing their value.
+MATH_005,PREREQUISITE_OF,MATH_006,Fraction units explain why different numerator–denominator pairs can represent one quantity.
+MATH_005,PREREQUISITE_OF,MATH_008,Fraction quantities ground fractional scaling and division by fractional amounts.
+MATH_005,PREREQUISITE_OF,MATH_009,Decimal places represent fractional units with powers-of-ten denominators.
+MATH_006,PREREQUISITE_OF,MATH_007,Equivalent fractions provide common units for addition and subtraction.
+MATH_006,PREREQUISITE_OF,MATH_011,Equivalent fractions connect terminating decimals to simplified fractional representations.
+MATH_006,PREREQUISITE_OF,MATH_018,Equivalent fractions support recognizing and scaling equivalent ratios.
+MATH_006,PREREQUISITE_OF,MATH_037,Equivalent fractional units support locating rational coordinates on differently scaled axes.
+MATH_007,PREREQUISITE_OF,MATH_015,Signed fractional sums retain the need for common fractional units.
+MATH_008,PREREQUISITE_OF,MATH_015,Signed fractional products and quotients extend fraction multiplication and division.
+MATH_008,PREREQUISITE_OF,MATH_017,Rates involving fractional quantities require division of fractions.
+MATH_008,PREREQUISITE_OF,MATH_022,Reciprocals explain negative exponents and quotients of powers.
+MATH_009,PREREQUISITE_OF,MATH_010,Decimal computation depends on tracking the value of each place.
+MATH_010,PREREQUISITE_OF,MATH_011,Decimal division produces decimal representations of fractions.
+MATH_011,PREREQUISITE_OF,MATH_015,Mixed fraction–decimal calculations require compatible numerical representations.
+MATH_011,PREREQUISITE_OF,MATH_019,Fraction–decimal equivalence connects the numerical representations of percentages.
+MATH_012,PREREQUISITE_OF,MATH_013,Signed positions and opposites explain integer sums and differences.
+MATH_012,PREREQUISITE_OF,MATH_037,Signed number-line positions determine coordinates in all four quadrants.
+MATH_013,PREREQUISITE_OF,MATH_014,Signed addition patterns and additive inverses help explain multiplication sign rules.
+MATH_013,PREREQUISITE_OF,MATH_022,Combining integer exponents requires signed addition and subtraction.
+MATH_014,PREREQUISITE_OF,MATH_015,Integer sign rules extend to multiplication and division of rational numbers.
+MATH_015,PREREQUISITE_OF,MATH_029,Evaluation at signed rational inputs requires rational-number arithmetic.
+MATH_015,PREREQUISITE_OF,MATH_030,Rewriting expressions with rational coefficients requires signed rational arithmetic.
+MATH_016,PREREQUISITE_OF,MATH_017,A unit rate expresses a ratio with one unit of the reference quantity.
+MATH_016,PREREQUISITE_OF,MATH_019,Percent expresses a multiplicative comparison per hundred.
+MATH_017,PREREQUISITE_OF,MATH_018,A common unit rate identifies and generates proportional pairs.
+MATH_018,PREREQUISITE_OF,MATH_020,"Proportional scaling connects a percentage, its reference whole, and its corresponding amount."
+MATH_018,PREREQUISITE_OF,MATH_039,"Proportional reasoning establishes the constant multiplier represented across tables, equations, and graphs."
+MATH_019,PREREQUISITE_OF,MATH_020,Percent calculations require interpreting the percentage as a numerical rate.
+MATH_021,PREREQUISITE_OF,MATH_022,Repeated multiplication explains the initial exponent laws.
+MATH_021,PREREQUISITE_OF,MATH_023,Evaluating expressions containing powers requires understanding exponent notation.
+MATH_023,PREREQUISITE_OF,MATH_028,Operation precedence determines an expression’s grouping and structure.
+MATH_024,PREREQUISITE_OF,MATH_030,Reordering and regrouping allow like terms to be collected.
+MATH_025,PREREQUISITE_OF,MATH_030,"Distribution and its reverse justify expansion, factoring, and combining like terms."
+MATH_026,PREREQUISITE_OF,MATH_031,"An equation asserts equality, which its solutions must make true."
+MATH_026,PREREQUISITE_OF,MATH_032,Equality-preserving transformations depend on understanding equality as a relation.
+MATH_027,PREREQUISITE_OF,MATH_028,Reading algebraic expressions requires interpreting their variable symbols.
+MATH_027,PREREQUISITE_OF,MATH_038,Variables identify the quantities whose corresponding values are tracked.
+MATH_028,PREREQUISITE_OF,MATH_029,Substitution requires identifying variable occurrences and preserving expression structure.
+MATH_028,PREREQUISITE_OF,MATH_030,Identifying terms and coefficients makes valid expression rewriting possible.
+MATH_029,PREREQUISITE_OF,MATH_031,Substitution and evaluation establish whether a proposed value satisfies an equation.
+MATH_029,PREREQUISITE_OF,MATH_035,Testing candidate values requires evaluating the expressions being compared.
+MATH_029,PREREQUISITE_OF,MATH_039,Evaluating y = kx connects its equation to table entries and plotted points.
+MATH_029,PREREQUISITE_OF,MATH_044,Evaluating a function rule requires substituting inputs into an expression.
+MATH_030,PREREQUISITE_OF,MATH_034,General linear equations require expanding expressions and collecting like terms.
+MATH_031,PREREQUISITE_OF,MATH_034,Solving requires understanding what counts as a solution.
+MATH_031,PREREQUISITE_OF,MATH_046,A simultaneous solution must satisfy each individual equation.
+MATH_032,PREREQUISITE_OF,MATH_034,Valid transformations preserve the equation’s solution set.
+MATH_033,PREREQUISITE_OF,MATH_034,Inverse operations undo operations surrounding the unknown.
+MATH_034,PREREQUISITE_OF,MATH_036,Linear equation solving supplies variable-isolation procedures that inequalities adapt.
+MATH_034,PREREQUISITE_OF,MATH_042,Rearranging linear equations and solving for intercepts support graphing different equation forms.
+MATH_034,PREREQUISITE_OF,MATH_047,Substitution and elimination reduce systems to linear equations in one variable.
+MATH_035,PREREQUISITE_OF,MATH_036,Solving an inequality requires understanding its ordered comparison and solution set.
+MATH_037,PREREQUISITE_OF,MATH_039,Coordinate plotting turns proportional value pairs into a graph.
+MATH_038,PREREQUISITE_OF,MATH_039,Tables of corresponding values represent how proportional quantities vary together.
+MATH_038,PREREQUISITE_OF,MATH_043,Input–output correspondence makes the unique-output condition meaningful.
+MATH_038,PREREQUISITE_OF,MATH_046,Two-variable system solutions specify corresponding values as ordered pairs.
+MATH_039,PREREQUISITE_OF,MATH_040,Proportional representations provide the constant-rate case extended by adding an initial value.
+MATH_040,PREREQUISITE_OF,MATH_041,Constant rate of change gives conceptual meaning to the slope calculation.
+MATH_041,PREREQUISITE_OF,MATH_042,Slope determines a line’s direction and the changes between its points.
+MATH_042,PREREQUISITE_OF,MATH_045,"Connections among line equations, slopes, and intercepts support constructing linear models."
+MATH_042,PREREQUISITE_OF,MATH_048,Graphical system solving requires constructing and interpreting both lines.
+MATH_043,PREREQUISITE_OF,MATH_044,Function notation names the output assigned to a specified input.
+MATH_043,PREREQUISITE_OF,MATH_045,A linear function model assigns one predicted output to each allowed input.
+MATH_046,PREREQUISITE_OF,MATH_047,Algebraic system solving seeks values that satisfy every equation together.
+MATH_046,PREREQUISITE_OF,MATH_048,Shared graph points represent simultaneous satisfaction of the equations.

@@ -1,0 +1,1362 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mathematics, connected — Prerequisite graph</title>
+<style>
+:root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#243d36;background:#f5f6f2;font-synthesis:none}*{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}button,select{cursor:pointer}button{border:1px solid #d5ded7;background:#fff;color:#294b40;border-radius:7px;padding:9px 12px}button:hover{background:#edf3ed}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #349279;outline-offset:2px}header{padding:24px 30px 19px;background:#fcfdf9;border-bottom:1px solid #dbe1d9;display:flex;align-items:center;justify-content:space-between;gap:20px}.eyebrow{font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:750;color:#6e8174}h1{font-family:Georgia,serif;font-size:34px;letter-spacing:-1.2px;margin:5px 0 4px;font-weight:500}header p{font-size:12px;color:#6d7b73;margin:0}.metrics{display:flex;gap:22px;align-items:center}.metric strong{display:block;font-size:24px;font-weight:550}.metric span{font-size:11px;color:#718074}.download{background:#244f42;color:#fff;border-color:#244f42}.download:hover{background:#376755}.layout{display:grid;grid-template-columns:minmax(0,1fr) 325px;height:calc(100dvh - 123px);min-height:610px}.canvas-panel{min-width:0;display:flex;flex-direction:column;position:relative}.toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:14px 20px;border-bottom:1px solid #e1e5dd;background:#f9faf5}.toolbar button{font-size:12px}.hint{margin-left:auto;font-size:11px;color:#728075}#viewport{flex:1;min-height:350px;overflow:hidden;position:relative;background-image:radial-gradient(#d8e0d5 .8px,transparent .8px);background-size:18px 18px;touch-action:none;cursor:grab}#viewport.dragging{cursor:grabbing}#viewport>svg{display:block;width:100%;height:100%;position:absolute;inset:0}.node{cursor:pointer;transition:opacity .15s}.node:focus-visible{outline:none}.node:focus-visible path{stroke:#162f27;stroke-width:3}.node.selected path,.node.selected polygon{stroke:#183d30;stroke-width:3}.node.direct path,.node.direct polygon{stroke-width:2.5}.node.dim,.edge.dim{opacity:.12}.node.hidden,.edge.hidden{display:none}.edge.active path{stroke:#48826e;stroke-width:1.8}.edge.active polygon{stroke:#48826e;fill:#48826e}.edge path{pointer-events:stroke}.edge{cursor:help}.legend{display:flex;flex-wrap:wrap;gap:9px 17px;padding:13px 20px;font-size:10px;line-height:1.5;border-top:1px solid #dbe1d9;background:#fafbf7}.legend span{display:flex;gap:6px;align-items:center}.legend i{width:7px;height:7px;border-radius:50%;display:inline-block}.sidebar{background:#fcfdf9;border-left:1px solid #dbe1d9;padding:23px 21px;overflow:auto}.search-wrap{position:relative}label{font-size:11px;font-weight:650;display:block;margin-bottom:7px}input[type=search]{width:100%;border:1px solid #d3dcd2;border-radius:7px;padding:11px 12px;background:white;font-size:12px}#results{position:absolute;left:0;right:0;top:70px;z-index:10;background:#fff;box-shadow:0 8px 24px #223e3426;max-height:330px;overflow:auto;border-radius:6px}#results:empty{display:none}#results button{display:block;text-align:left;width:100%;border-radius:0;border:0;border-bottom:1px solid #edf0e9;font-size:12px;line-height:1.5}#results small{display:block;color:#708175}#results p{font-size:12px;padding:12px}.view-controls{display:flex;gap:7px;align-items:center;margin:14px 0 20px}.view-controls label{margin:0;white-space:nowrap;font-size:11px}select{width:100%;font-size:11px;padding:7px;border:1px solid #d5ded7;border-radius:5px;background:white}.rule{border:0;border-top:1px solid #e0e6dc;margin:22px 0}.intro h2{font-family:Georgia,serif;font-size:26px;line-height:1.15;margin:8px 0 13px;font-weight:500}.intro p,.definition{font-size:12px;line-height:1.75;color:#63756a}.intro button{width:100%;text-align:left;margin-top:7px;font-size:11px;padding:12px}.node-id{font-size:10px;font-weight:650;letter-spacing:1px;color:#7b8a7b}#details h2{font-family:Georgia,serif;font-size:24px;font-weight:500;line-height:1.2;margin:10px 0}.badge{display:inline-block;font-size:10px;background:#eaf1e8;color:#52705e;padding:5px 8px;border-radius:4px;margin:4px 3px 4px 0}.counts{display:flex;gap:28px;margin:20px 0}.counts strong{display:block;font-size:22px;font-weight:550}.counts small{color:#708071;font-size:10px}.section-label{font-size:10px;letter-spacing:1px;text-transform:uppercase;font-weight:700;margin:22px 0 10px}.prereq{display:block;width:100%;text-align:left;margin-top:7px;padding:10px;font-size:12px;line-height:1.45}.prereq small{display:block;color:#778676;font-size:10px;margin-bottom:3px}.prereq em{font-style:normal;font-size:10px;line-height:1.6;display:block;color:#6f7b71;margin-top:5px}.note{font-size:10px;line-height:1.7;color:#7a877b}.direction{position:absolute;top:14px;left:18px;background:#fcfdf9e8;border:1px solid #dce5d9;border-radius:5px;padding:7px 10px;font-size:10px;color:#617565;pointer-events:none}#status{font-size:10px;color:#718072;margin-left:3px}#reset{margin-top:16px;font-size:11px;width:100%}[hidden]{display:none!important}@media(max-width:800px){header{padding:18px}.metrics{gap:12px}.metric{display:none}h1{font-size:28px}.layout{grid-template-columns:1fr;height:auto;min-height:0}.canvas-panel{height:70dvh;min-height:510px}.sidebar{border-left:0;border-top:1px solid #dbe1d9}.hint{display:none}.legend{gap:7px 12px}.direction{top:10px}}@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header><div><div class="eyebrow">Mathematics knowledge map</div><h1>Mathematics, connected.</h1><p>From arithmetic foundations to introductory algebra.</p></div><div class="metrics"><div class="metric"><strong>48</strong><span>concepts</span></div><div class="metric"><strong>80</strong><span>relationships</span></div><button class="download" id="export">Export SVG ↗</button></div></header>
+<main class="layout">
+<section class="canvas-panel" aria-label="Mathematics prerequisite graph">
+<div class="toolbar"><button id="zoom-in" aria-label="Zoom in">＋</button><button id="zoom-out" aria-label="Zoom out">−</button><button id="fit">Fit graph</button><button id="focus" disabled>Focus branch</button><span id="status" aria-live="polite">48 concepts shown</span><span class="hint">Scroll to zoom · Drag to pan</span></div>
+<div id="viewport"><!-- Generated by graphviz version 16.0.0 (20260814.1018)
+ -->
+<!-- Title: Math Pages: 1 -->
+<svg width="1362pt" height="1398pt"
+ viewBox="0.00 0.00 1362.00 1398.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(18 1380)">
+<title>Math</title>
+<!-- MATH_001&#45;&gt;MATH_002 -->
+<g id="edge_MATH_001_MATH_002" class="edge">
+<title>MATH_001&#45;&gt;MATH_002</title>
+<g id="a_edge_MATH_001_MATH_002"><a xlink:title="Place&#45;value units explain regrouping in addition and subtraction.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M1065.46,-1290.63C1049.01,-1282.42 1031.39,-1273.63 1014.65,-1265.28"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="1015.86,-1263.34 1009.03,-1262.47 1013.83,-1267.41 1015.86,-1263.34"/>
+</a>
+</g>
+</g>
+<!-- MATH_001&#45;&gt;MATH_012 -->
+<g id="edge_MATH_001_MATH_012" class="edge">
+<title>MATH_001&#45;&gt;MATH_012</title>
+<g id="a_edge_MATH_001_MATH_012"><a xlink:title="Number&#45;line magnitude and order extend to positions below zero.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M1135.55,-1290.77C1135.55,-1282.35 1135.55,-1273.31 1135.55,-1264.75"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="1137.82,-1264.9 1135.55,-1258.4 1133.27,-1264.9 1137.82,-1264.9"/>
+</a>
+</g>
+</g>
+<!-- MATH_001&#45;&gt;MATH_027 -->
+<g id="edge_MATH_001_MATH_027" class="edge">
+<title>MATH_001&#45;&gt;MATH_027</title>
+<g id="a_edge_MATH_001_MATH_027"><a xlink:title="Variables stand for numbers or numerical quantities.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M1204.72,-1290.79C1215.81,-1282.47 1226.08,-1272.62 1233.55,-1261.2 1266.9,-1210.18 1256.55,-1186.95 1256.55,-1126 1256.55,-1126 1256.55,-1126 1256.55,-922.4 1256.55,-869.59 1256.55,-808.51 1256.55,-770.17"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="1258.82,-770.51 1256.55,-764.01 1254.27,-770.51 1258.82,-770.51"/>
+</a>
+</g>
+</g>
+<!-- MATH_002&#45;&gt;MATH_003 -->
+<g id="edge_MATH_002_MATH_003" class="edge">
+<title>MATH_002&#45;&gt;MATH_003</title>
+<g id="a_edge_MATH_002_MATH_003"><a xlink:title="Combining equal groups and repeated subtraction ground multiplication and division.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M847.51,-1198.32C802.76,-1185.17 748.53,-1169.22 702.4,-1155.65"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="703.24,-1153.53 696.37,-1153.88 701.96,-1157.9 703.24,-1153.53"/>
+</a>
+</g>
+</g>
+<!-- MATH_002&#45;&gt;MATH_013 -->
+<g id="edge_MATH_002_MATH_013" class="edge">
+<title>MATH_002&#45;&gt;MATH_013</title>
+<g id="a_edge_MATH_002_MATH_013"><a xlink:title="Integer addition and subtraction extend whole&#45;number combining and difference operations.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M952.71,-1189.97C955.79,-1182.88 959.06,-1175.36 962.24,-1168.06"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="964.21,-1169.25 964.72,-1162.38 960.04,-1167.43 964.21,-1169.25"/>
+</a>
+</g>
+</g>
+<!-- MATH_003&#45;&gt;MATH_004 -->
+<g id="edge_MATH_003_MATH_004" class="edge">
+<title>MATH_003&#45;&gt;MATH_004</title>
+<g id="a_edge_MATH_003_MATH_004"><a xlink:title="Factors and multiples describe exact multiplication and division relationships.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M582.86,-1089.17C578.16,-1080.4 573.09,-1070.96 568.34,-1062.09"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="570.47,-1061.25 565.39,-1056.6 566.46,-1063.4 570.47,-1061.25"/>
+</a>
+</g>
+</g>
+<!-- MATH_003&#45;&gt;MATH_005 -->
+<g id="edge_MATH_003_MATH_005" class="edge">
+<title>MATH_003&#45;&gt;MATH_005</title>
+<g id="a_edge_MATH_003_MATH_005"><a xlink:title="Equal sharing and division ground the interpretation of fractions as quotients.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M527.38,-1089.03C507.3,-1079.52 485.57,-1069.19 465.55,-1059.6 464.51,-1059.1 463.45,-1058.6 462.4,-1058.09"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="463.68,-1056.18 456.84,-1055.42 461.71,-1060.28 463.68,-1056.18"/>
+</a>
+</g>
+</g>
+<!-- MATH_003&#45;&gt;MATH_014 -->
+<g id="edge_MATH_003_MATH_014" class="edge">
+<title>MATH_003&#45;&gt;MATH_014</title>
+<g id="a_edge_MATH_003_MATH_014"><a xlink:title="Integer products and quotients extend whole&#45;number multiplication and division.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M694.82,-1102.29C748.31,-1089.83 816.71,-1073.87 877.55,-1059.6 895.18,-1055.46 914.02,-1051.04 932.09,-1046.78"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="932.36,-1049.05 938.17,-1045.35 931.32,-1044.63 932.36,-1049.05"/>
+</a>
+</g>
+</g>
+<!-- MATH_003&#45;&gt;MATH_016 -->
+<g id="edge_MATH_003_MATH_016" class="edge">
+<title>MATH_003&#45;&gt;MATH_016</title>
+<g id="a_edge_MATH_003_MATH_016"><a xlink:title="Ratios express multiplicative comparisons rather than additive differences.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M508.21,-1111.62C452.83,-1102.04 382.22,-1085.86 323.55,-1059.6 292.64,-1045.77 221.01,-991.25 175.92,-955.81"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="177.56,-954.21 171.04,-951.97 174.74,-957.78 177.56,-954.21"/>
+</a>
+</g>
+</g>
+<!-- MATH_003&#45;&gt;MATH_021 -->
+<g id="edge_MATH_003_MATH_021" class="edge">
+<title>MATH_003&#45;&gt;MATH_021</title>
+<g id="a_edge_MATH_003_MATH_021"><a xlink:title="Positive whole&#45;number powers abbreviate repeated multiplication.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M620.3,-1089.19C635.31,-1061.66 657.17,-1022.42 677.55,-988.8 683.06,-979.7 689.21,-970.03 695.07,-961.02"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="696.91,-962.36 698.56,-955.67 693.1,-959.87 696.91,-962.36"/>
+</a>
+</g>
+</g>
+<!-- MATH_003&#45;&gt;MATH_024 -->
+<g id="edge_MATH_003_MATH_024" class="edge">
+<title>MATH_003&#45;&gt;MATH_024</title>
+<g id="a_edge_MATH_003_MATH_024"><a xlink:title="Arithmetic operations provide meaning for reordering and regrouping sums and products.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M694.8,-1110.32C740.12,-1100.81 794.04,-1085.11 837.55,-1059.6 891.71,-1027.83 898.03,-1008.4 936.55,-958.8 968.67,-917.44 978.39,-906.74 997.55,-858 1021.65,-796.67 1034.17,-720.91 1040.05,-674.44"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="1042.3,-674.78 1040.83,-668.05 1037.78,-674.22 1042.3,-674.78"/>
+</a>
+</g>
+</g>
+<!-- MATH_003&#45;&gt;MATH_025 -->
+<g id="edge_MATH_003_MATH_025" class="edge">
+<title>MATH_003&#45;&gt;MATH_025</title>
+<g id="a_edge_MATH_003_MATH_025"><a xlink:title="Equal&#45;group multiplication explains distributing a factor across a sum.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M656.55,-1089.17C671.69,-1079.58 688.09,-1069.19 703.19,-1059.62"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="704.35,-1061.58 708.63,-1056.18 701.92,-1057.74 704.35,-1061.58"/>
+</a>
+</g>
+</g>
+<!-- MATH_003&#45;&gt;MATH_032 -->
+<g id="edge_MATH_003_MATH_032" class="edge">
+<title>MATH_003&#45;&gt;MATH_032</title>
+<g id="a_edge_MATH_003_MATH_032"><a xlink:title="Arithmetic operations give meaning to performing the same operation on both sides.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M508.23,-1124.81C372.28,-1124.04 128.82,-1114.71 63.55,-1059.6 15.67,-1019.18 23.55,-987.06 23.55,-924.4 23.55,-924.4 23.55,-924.4 23.55,-629.6 23.55,-568.65 30.33,-553.15 46.55,-494.4 48.99,-485.55 52.21,-476.23 55.52,-467.52"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="57.59,-468.47 57.83,-461.59 53.35,-466.82 57.59,-468.47"/>
+</a>
+</g>
+</g>
+<!-- MATH_003&#45;&gt;MATH_033 -->
+<g id="edge_MATH_003_MATH_033" class="edge">
+<title>MATH_003&#45;&gt;MATH_033</title>
+<g id="a_edge_MATH_003_MATH_033"><a xlink:title="Familiar arithmetic operations provide the pairs whose actions can be undone.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M508.31,-1108.43C439.96,-1096.5 345.1,-1078.86 262.55,-1059.6 245.57,-1055.64 227.42,-1050.9 210.38,-1046.22"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="211.12,-1044.06 204.25,-1044.52 209.91,-1048.44 211.12,-1044.06"/>
+</a>
+</g>
+</g>
+<!-- MATH_004&#45;&gt;MATH_006 -->
+<g id="edge_MATH_004_MATH_006" class="edge">
+<title>MATH_004&#45;&gt;MATH_006</title>
+<g id="a_edge_MATH_004_MATH_006"><a xlink:title="Common factors explain simplifying fractions without changing their value.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M562.2,-993.06C572.86,-965.26 584.1,-923.1 572.55,-888 569.9,-879.96 565.7,-872.11 560.93,-864.89"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="562.96,-863.82 557.37,-859.8 559.24,-866.43 562.96,-863.82"/>
+</a>
+</g>
+</g>
+<!-- MATH_005&#45;&gt;MATH_006 -->
+<g id="edge_MATH_005_MATH_006" class="edge">
+<title>MATH_005&#45;&gt;MATH_006</title>
+<g id="a_edge_MATH_005_MATH_006"><a xlink:title="Fraction units explain why different numerator–denominator pairs can represent one quantity.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M455.3,-993.62C458.76,-991.98 462.2,-990.36 465.55,-988.8 495.12,-975.02 514.81,-986.18 532.55,-958.8 550.22,-931.52 546.82,-893.85 540.42,-866.01"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="542.72,-865.81 538.95,-860.05 538.3,-866.9 542.72,-865.81"/>
+</a>
+</g>
+</g>
+<!-- MATH_005&#45;&gt;MATH_008 -->
+<g id="edge_MATH_005_MATH_008" class="edge">
+<title>MATH_005&#45;&gt;MATH_008</title>
+<g id="a_edge_MATH_005_MATH_008"><a xlink:title="Fraction quantities ground fractional scaling and division by fractional amounts.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M359.11,-993.02C348.54,-984.02 336.79,-974.01 325.6,-964.48"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="327.15,-962.8 320.72,-960.32 324.2,-966.27 327.15,-962.8"/>
+</a>
+</g>
+</g>
+<!-- MATH_005&#45;&gt;MATH_009 -->
+<g id="edge_MATH_005_MATH_009" class="edge">
+<title>MATH_005&#45;&gt;MATH_009</title>
+<g id="a_edge_MATH_005_MATH_009"><a xlink:title="Decimal places represent fractional units with powers&#45;of&#45;ten denominators.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M412.88,-993.02C418.98,-982.96 425.85,-971.65 432.23,-961.15"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="434.04,-962.55 435.47,-955.82 430.15,-960.19 434.04,-962.55"/>
+</a>
+</g>
+</g>
+<!-- MATH_006&#45;&gt;MATH_007 -->
+<g id="edge_MATH_006_MATH_007" class="edge">
+<title>MATH_006&#45;&gt;MATH_007</title>
+<g id="a_edge_MATH_006_MATH_007"><a xlink:title="Equivalent fractions provide common units for addition and subtraction.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M563.34,-796.4C572.13,-788.82 581.71,-780.56 590.98,-772.56"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="592.31,-774.41 595.75,-768.45 589.34,-770.97 592.31,-774.41"/>
+</a>
+</g>
+</g>
+<!-- MATH_006&#45;&gt;MATH_011 -->
+<g id="edge_MATH_006_MATH_011" class="edge">
+<title>MATH_006&#45;&gt;MATH_011</title>
+<g id="a_edge_MATH_006_MATH_011"><a xlink:title="Equivalent fractions connect terminating decimals to simplified fractional representations.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M488.33,-796.4C475.83,-787.07 461.95,-776.71 449.05,-767.09"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="450.72,-765.5 444.15,-763.43 448,-769.14 450.72,-765.5"/>
+</a>
+</g>
+</g>
+<!-- MATH_006&#45;&gt;MATH_018 -->
+<g id="edge_MATH_006_MATH_018" class="edge">
+<title>MATH_006&#45;&gt;MATH_018</title>
+<g id="a_edge_MATH_006_MATH_018"><a xlink:title="Equivalent fractions support recognizing and scaling equivalent ratios.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M527.88,-796.35C526.37,-769.23 521.83,-728.67 508.55,-696 504.63,-686.36 499.01,-676.8 493.03,-668.1"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="495.01,-666.95 489.38,-662.98 491.3,-669.6 495.01,-666.95"/>
+</a>
+</g>
+</g>
+<!-- MATH_006&#45;&gt;MATH_037 -->
+<g id="edge_MATH_006_MATH_037" class="edge">
+<title>MATH_006&#45;&gt;MATH_037</title>
+<g id="a_edge_MATH_006_MATH_037"><a xlink:title="Equivalent fractional units support locating rational coordinates on differently scaled axes.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M596.31,-799.84C600.09,-798.73 603.85,-797.7 607.55,-796.8 770.91,-756.89 968.87,-741.22 1070.73,-735.46"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="1070.76,-737.74 1077.13,-735.11 1070.51,-733.2 1070.76,-737.74"/>
+</a>
+</g>
+</g>
+<!-- MATH_007&#45;&gt;MATH_015 -->
+<g id="edge_MATH_007_MATH_015" class="edge">
+<title>MATH_007&#45;&gt;MATH_015</title>
+<g id="a_edge_MATH_007_MATH_015"><a xlink:title="Signed fractional sums retain the need for common fractional units.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M637.9,-695.57C637.97,-688.78 638.04,-681.59 638.11,-674.57"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="640.39,-674.64 638.18,-668.12 635.84,-674.59 640.39,-674.64"/>
+</a>
+</g>
+</g>
+<!-- MATH_008&#45;&gt;MATH_015 -->
+<g id="edge_MATH_008_MATH_015" class="edge">
+<title>MATH_008&#45;&gt;MATH_015</title>
+<g id="a_edge_MATH_008_MATH_015"><a xlink:title="Signed fractional products and quotients extend fraction multiplication and division.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M269.26,-887.5C258.37,-837.79 247.48,-747 296.55,-696 335.8,-655.2 494.6,-679.65 549.55,-666 550.7,-665.71 551.86,-665.42 553.03,-665.11"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="553.52,-667.33 559.16,-663.38 552.29,-662.95 553.52,-667.33"/>
+</a>
+</g>
+</g>
+<!-- MATH_008&#45;&gt;MATH_017 -->
+<g id="edge_MATH_008_MATH_017" class="edge">
+<title>MATH_008&#45;&gt;MATH_017</title>
+<g id="a_edge_MATH_008_MATH_017"><a xlink:title="Rates involving fractional quantities require division of fractions.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M250.09,-887.66C243.94,-880.15 237.41,-872.18 231.21,-864.61"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="233.02,-863.23 227.14,-859.64 229.5,-866.11 233.02,-863.23"/>
+</a>
+</g>
+</g>
+<!-- MATH_008&#45;&gt;MATH_022 -->
+<g id="edge_MATH_008_MATH_022" class="edge">
+<title>MATH_008&#45;&gt;MATH_022</title>
+<g id="a_edge_MATH_008_MATH_022"><a xlink:title="Reciprocals explain negative exponents and quotients of powers.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M365.9,-890.72C369.48,-889.75 373.04,-888.83 376.55,-888 477.27,-864.06 506.84,-882 607.55,-858 608.52,-857.77 609.5,-857.53 610.48,-857.28"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="610.75,-859.57 616.45,-855.7 609.58,-855.17 610.75,-859.57"/>
+</a>
+</g>
+</g>
+<!-- MATH_009&#45;&gt;MATH_010 -->
+<g id="edge_MATH_009_MATH_010" class="edge">
+<title>MATH_009&#45;&gt;MATH_010</title>
+<g id="a_edge_MATH_009_MATH_010"><a xlink:title="Decimal computation depends on tracking the value of each place.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M428.7,-892.4C421.02,-883.5 412.54,-873.65 404.58,-864.41"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="406.48,-863.14 400.52,-859.7 403.04,-866.11 406.48,-863.14"/>
+</a>
+</g>
+</g>
+<!-- MATH_010&#45;&gt;MATH_011 -->
+<g id="edge_MATH_010_MATH_011" class="edge">
+<title>MATH_010&#45;&gt;MATH_011</title>
+<g id="a_edge_MATH_010_MATH_011"><a xlink:title="Decimal division produces decimal representations of fractions.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M382.8,-796.4C385.39,-788 388.24,-778.77 390.95,-770"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="393.05,-770.91 392.79,-764.03 388.7,-769.57 393.05,-770.91"/>
+</a>
+</g>
+</g>
+<!-- MATH_011&#45;&gt;MATH_015 -->
+<g id="edge_MATH_011_MATH_015" class="edge">
+<title>MATH_011&#45;&gt;MATH_015</title>
+<g id="a_edge_MATH_011_MATH_015"><a xlink:title="Mixed fraction–decimal calculations require compatible numerical representations.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M474.64,-700.22C499.54,-689.79 527.68,-678.01 553.52,-667.2"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="554.09,-669.42 559.21,-664.81 552.34,-665.23 554.09,-669.42"/>
+</a>
+</g>
+</g>
+<!-- MATH_011&#45;&gt;MATH_019 -->
+<g id="edge_MATH_011_MATH_019" class="edge">
+<title>MATH_011&#45;&gt;MATH_019</title>
+<g id="a_edge_MATH_011_MATH_019"><a xlink:title="Fraction–decimal equivalence connects the numerical representations of percentages.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M366.81,-700.22C354.33,-689.69 340.22,-677.77 327.3,-666.86"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="328.77,-665.12 322.34,-662.67 325.84,-668.6 328.77,-665.12"/>
+</a>
+</g>
+</g>
+<!-- MATH_012&#45;&gt;MATH_013 -->
+<g id="edge_MATH_012_MATH_013" class="edge">
+<title>MATH_012&#45;&gt;MATH_013</title>
+<g id="a_edge_MATH_012_MATH_013"><a xlink:title="Signed positions and opposites explain integer sums and differences.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M1088.2,-1194.62C1073.56,-1185.28 1057.21,-1174.86 1041.76,-1165.02"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="1043.32,-1163.31 1036.61,-1161.74 1040.87,-1167.15 1043.32,-1163.31"/>
+</a>
+</g>
+</g>
+<!-- MATH_012&#45;&gt;MATH_037 -->
+<g id="edge_MATH_012_MATH_037" class="edge">
+<title>MATH_012&#45;&gt;MATH_037</title>
+<g id="a_edge_MATH_012_MATH_037"><a xlink:title="Signed number&#45;line positions determine coordinates in all four quadrants.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M1136.77,-1194.71C1138.25,-1155.64 1140.55,-1085.34 1140.55,-1025.2 1140.55,-1025.2 1140.55,-1025.2 1140.55,-922.4 1140.55,-869.58 1139.77,-808.51 1139.18,-770.17"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="1141.46,-770.47 1139.08,-764.01 1136.91,-770.54 1141.46,-770.47"/>
+</a>
+</g>
+</g>
+<!-- MATH_013&#45;&gt;MATH_014 -->
+<g id="edge_MATH_013_MATH_014" class="edge">
+<title>MATH_013&#45;&gt;MATH_014</title>
+<g id="a_edge_MATH_013_MATH_014"><a xlink:title="Signed addition patterns and additive inverses help explain multiplication sign rules.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M995.71,-1089.17C998.79,-1082.08 1002.06,-1074.56 1005.24,-1067.26"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="1007.21,-1068.45 1007.72,-1061.58 1003.04,-1066.63 1007.21,-1068.45"/>
+</a>
+</g>
+</g>
+<!-- MATH_013&#45;&gt;MATH_022 -->
+<g id="edge_MATH_013_MATH_022" class="edge">
+<title>MATH_013&#45;&gt;MATH_022</title>
+<g id="a_edge_MATH_013_MATH_022"><a xlink:title="Combining integer exponents requires signed addition and subtraction.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M952.24,-1089.3C944.71,-1079.78 936.69,-1069.39 929.55,-1059.6 875.45,-985.42 883.82,-948.25 814.55,-888 801.97,-877.06 787.04,-867.64 771.98,-859.72"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="773.37,-857.88 766.55,-856.95 771.3,-861.93 773.37,-857.88"/>
+</a>
+</g>
+</g>
+<!-- MATH_014&#45;&gt;MATH_015 -->
+<g id="edge_MATH_014_MATH_015" class="edge">
+<title>MATH_014&#45;&gt;MATH_015</title>
+<g id="a_edge_MATH_014_MATH_015"><a xlink:title="Integer sign rules extend to multiplication and division of rational numbers.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M982.36,-988.32C949.61,-960.77 902.49,-921.5 860.55,-888 843.46,-874.35 836.27,-874.17 821.55,-858 764.27,-795.08 776.32,-759.37 719.55,-696 711.95,-687.52 703.15,-679.29 694.21,-671.71"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="695.75,-670.03 689.29,-667.63 692.84,-673.53 695.75,-670.03"/>
+</a>
+</g>
+</g>
+<!-- MATH_015&#45;&gt;MATH_029 -->
+<g id="edge_MATH_015_MATH_029" class="edge">
+<title>MATH_015&#45;&gt;MATH_029</title>
+<g id="a_edge_MATH_015_MATH_029"><a xlink:title="Evaluation at signed rational inputs requires rational&#45;number arithmetic.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M638.55,-594.77C638.55,-587.98 638.55,-580.79 638.55,-573.77"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="640.82,-573.82 638.55,-567.32 636.27,-573.82 640.82,-573.82"/>
+</a>
+</g>
+</g>
+<!-- MATH_015&#45;&gt;MATH_030 -->
+<g id="edge_MATH_015_MATH_030" class="edge">
+<title>MATH_015&#45;&gt;MATH_030</title>
+<g id="a_edge_MATH_015_MATH_030"><a xlink:title="Rewriting expressions with rational coefficients requires signed rational arithmetic.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M715.59,-594.73C736.66,-585.18 759.49,-574.8 780.55,-565.2 783.55,-563.83 786.63,-562.43 789.73,-561.01"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="790.53,-563.14 795.5,-558.37 788.64,-559.01 790.53,-563.14"/>
+</a>
+</g>
+</g>
+<!-- MATH_016&#45;&gt;MATH_017 -->
+<g id="edge_MATH_016_MATH_017" class="edge">
+<title>MATH_016&#45;&gt;MATH_017</title>
+<g id="a_edge_MATH_016_MATH_017"><a xlink:title="A unit rate expresses a ratio with one unit of the reference quantity.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M157.29,-892.4C163.33,-883.67 170,-874.03 176.28,-864.94"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="178,-866.45 179.83,-859.81 174.26,-863.86 178,-866.45"/>
+</a>
+</g>
+</g>
+<!-- MATH_016&#45;&gt;MATH_019 -->
+<g id="edge_MATH_016_MATH_019" class="edge">
+<title>MATH_016&#45;&gt;MATH_019</title>
+<g id="a_edge_MATH_016_MATH_019"><a xlink:title="Percent expresses a multiplicative comparison per hundred.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M137.13,-892.24C138.4,-866.34 142.09,-828.3 152.55,-796.8 168.77,-747.96 176.74,-735.65 209.55,-696 218.12,-685.64 228.49,-675.63 238.78,-666.72"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="240.06,-668.62 243.55,-662.68 237.12,-665.15 240.06,-668.62"/>
+</a>
+</g>
+</g>
+<!-- MATH_017&#45;&gt;MATH_018 -->
+<g id="edge_MATH_017_MATH_018" class="edge">
+<title>MATH_017&#45;&gt;MATH_018</title>
+<g id="a_edge_MATH_017_MATH_018"><a xlink:title="A common unit rate identifies and generates proportional pairs.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M206.31,-796.22C212.6,-766.42 226.62,-721.68 256.55,-696 297.94,-660.48 323.63,-682.73 375.55,-666 377.24,-665.45 378.95,-664.89 380.67,-664.31"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="381.28,-666.51 386.69,-662.25 379.81,-662.21 381.28,-666.51"/>
+</a>
+</g>
+</g>
+<!-- MATH_018&#45;&gt;MATH_020 -->
+<g id="edge_MATH_018_MATH_020" class="edge">
+<title>MATH_018&#45;&gt;MATH_020</title>
+<g id="a_edge_MATH_018_MATH_020"><a xlink:title="Proportional scaling connects a percentage, its reference whole, and its corresponding amount.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M440.86,-599.42C433.56,-589.27 425.35,-577.84 417.74,-567.25"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="419.72,-566.1 414.07,-562.15 416.02,-568.75 419.72,-566.1"/>
+</a>
+</g>
+</g>
+<!-- MATH_018&#45;&gt;MATH_039 -->
+<g id="edge_MATH_018_MATH_039" class="edge">
+<title>MATH_018&#45;&gt;MATH_039</title>
+<g id="a_edge_MATH_018_MATH_039"><a xlink:title="Proportional reasoning establishes the constant multiplier represented across tables, equations, and graphs.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M535.25,-599.5C540.05,-597.94 544.85,-596.48 549.55,-595.2 632.45,-572.6 668.45,-611.95 740.55,-565.2 772.03,-544.79 760.76,-521.66 786.55,-494.4 794.77,-485.71 804.28,-477.39 813.96,-469.79"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="815.24,-471.67 819.01,-465.91 812.47,-468.06 815.24,-471.67"/>
+</a>
+</g>
+</g>
+<!-- MATH_019&#45;&gt;MATH_020 -->
+<g id="edge_MATH_019_MATH_020" class="edge">
+<title>MATH_019&#45;&gt;MATH_020</title>
+<g id="a_edge_MATH_019_MATH_020"><a xlink:title="Percent calculations require interpreting the percentage as a numerical rate.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M317.93,-599.42C329.13,-588.98 341.78,-577.19 353.4,-566.36"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="354.94,-568.03 358.15,-561.93 351.84,-564.7 354.94,-568.03"/>
+</a>
+</g>
+</g>
+<!-- MATH_021&#45;&gt;MATH_022 -->
+<g id="edge_MATH_021_MATH_022" class="edge">
+<title>MATH_021&#45;&gt;MATH_022</title>
+<g id="a_edge_MATH_021_MATH_022"><a xlink:title="Repeated multiplication explains the initial exponent laws.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M710.61,-892.4C708.11,-884 705.36,-874.77 702.75,-866"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="705.01,-865.61 700.97,-860.03 700.65,-866.91 705.01,-865.61"/>
+</a>
+</g>
+</g>
+<!-- MATH_021&#45;&gt;MATH_023 -->
+<g id="edge_MATH_021_MATH_023" class="edge">
+<title>MATH_021&#45;&gt;MATH_023</title>
+<g id="a_edge_MATH_021_MATH_023"><a xlink:title="Evaluating expressions containing powers requires understanding exponent notation.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M776.68,-892.4C794.99,-882.78 815.4,-872.06 834.2,-862.19"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="834.87,-864.41 839.57,-859.37 832.75,-860.38 834.87,-864.41"/>
+</a>
+</g>
+</g>
+<!-- MATH_023&#45;&gt;MATH_028 -->
+<g id="edge_MATH_023_MATH_028" class="edge">
+<title>MATH_023&#45;&gt;MATH_028</title>
+<g id="a_edge_MATH_023_MATH_028"><a xlink:title="Operation precedence determines an expression’s grouping and structure.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M884.99,-796.39C870.17,-763.57 846.3,-710.73 829.59,-673.76"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="831.79,-673.09 827.04,-668.11 827.64,-674.97 831.79,-673.09"/>
+</a>
+</g>
+</g>
+<!-- MATH_024&#45;&gt;MATH_030 -->
+<g id="edge_MATH_024_MATH_030" class="edge">
+<title>MATH_024&#45;&gt;MATH_030</title>
+<g id="a_edge_MATH_024_MATH_030"><a xlink:title="Reordering and regrouping allow like terms to be collected.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M977.65,-594.63C959.37,-585.07 939.58,-574.73 921.36,-565.2"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="922.48,-563.22 915.67,-562.23 920.37,-567.26 922.48,-563.22"/>
+</a>
+</g>
+</g>
+<!-- MATH_025&#45;&gt;MATH_030 -->
+<g id="edge_MATH_025_MATH_030" class="edge">
+<title>MATH_025&#45;&gt;MATH_030</title>
+<g id="a_edge_MATH_025_MATH_030"><a xlink:title="Distribution and its reverse justify expansion, factoring, and combining like terms.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M825.04,-993.13C876.76,-966.01 944.38,-920.73 975.55,-858 1016.34,-775.91 916.83,-644.7 892.55,-595.2 888.9,-587.75 884.74,-579.99 880.57,-572.53"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="882.76,-571.76 877.57,-567.23 878.8,-574.01 882.76,-571.76"/>
+</a>
+</g>
+</g>
+<!-- MATH_026&#45;&gt;MATH_031 -->
+<g id="edge_MATH_026_MATH_031" class="edge">
+<title>MATH_026&#45;&gt;MATH_031</title>
+<g id="a_edge_MATH_026_MATH_031"><a xlink:title="An equation asserts equality, which its solutions must make true.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M190.31,-507.73C240.79,-491.79 310.09,-469.92 362.31,-453.43"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="362.79,-455.67 368.3,-451.54 361.42,-451.33 362.79,-455.67"/>
+</a>
+</g>
+</g>
+<!-- MATH_026&#45;&gt;MATH_032 -->
+<g id="edge_MATH_026_MATH_032" class="edge">
+<title>MATH_026&#45;&gt;MATH_032</title>
+<g id="a_edge_MATH_026_MATH_032"><a xlink:title="Equality&#45;preserving transformations depend on understanding equality as a relation.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M107.66,-498.62C102.42,-488.66 96.53,-477.47 91.05,-467.05"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="93.15,-466.16 88.11,-461.47 89.12,-468.28 93.15,-466.16"/>
+</a>
+</g>
+</g>
+<!-- MATH_027&#45;&gt;MATH_028 -->
+<g id="edge_MATH_027_MATH_028" class="edge">
+<title>MATH_027&#45;&gt;MATH_028</title>
+<g id="a_edge_MATH_027_MATH_028"><a xlink:title="Reading algebraic expressions requires interpreting their variable symbols.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M1219.32,-701.08C1215.8,-699.13 1212.19,-697.4 1208.55,-696 1095.82,-652.76 1057.19,-688.4 938.55,-666 922.61,-662.99 905.75,-659.03 889.68,-654.88"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="890.34,-652.7 883.48,-653.24 889.18,-657.1 890.34,-652.7"/>
+</a>
+</g>
+</g>
+<!-- MATH_027&#45;&gt;MATH_038 -->
+<g id="edge_MATH_027_MATH_038" class="edge">
+<title>MATH_027&#45;&gt;MATH_038</title>
+<g id="a_edge_MATH_027_MATH_038"><a xlink:title="Variables identify the quantities whose corresponding values are tracked.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M1256.55,-700.52C1256.55,-665.39 1256.55,-607.03 1256.55,-568.74"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="1258.82,-569.05 1256.55,-562.55 1254.27,-569.05 1258.82,-569.05"/>
+</a>
+</g>
+</g>
+<!-- MATH_028&#45;&gt;MATH_029 -->
+<g id="edge_MATH_028_MATH_029" class="edge">
+<title>MATH_028&#45;&gt;MATH_029</title>
+<g id="a_edge_MATH_028_MATH_029"><a xlink:title="Substitution requires identifying variable occurrences and preserving expression structure.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M749.91,-594.77C735.78,-586.65 720.64,-577.96 706.23,-569.68"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="707.43,-567.75 700.66,-566.48 705.17,-571.69 707.43,-567.75"/>
+</a>
+</g>
+</g>
+<!-- MATH_028&#45;&gt;MATH_030 -->
+<g id="edge_MATH_028_MATH_030" class="edge">
+<title>MATH_028&#45;&gt;MATH_030</title>
+<g id="a_edge_MATH_028_MATH_030"><a xlink:title="Identifying terms and coefficients makes valid expression rewriting possible.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M826.41,-594.77C829.64,-587.68 833.07,-580.16 836.39,-572.86"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="838.36,-574.03 838.98,-567.17 834.22,-572.14 838.36,-574.03"/>
+</a>
+</g>
+</g>
+<!-- MATH_029&#45;&gt;MATH_031 -->
+<g id="edge_MATH_029_MATH_031" class="edge">
+<title>MATH_029&#45;&gt;MATH_031</title>
+<g id="a_edge_MATH_029_MATH_031"><a xlink:title="Substitution and evaluation establish whether a proposed value satisfies an equation.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M567.05,-493.83C548.71,-484.86 528.95,-475.2 510.5,-466.17"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="511.56,-464.15 504.72,-463.34 509.56,-468.24 511.56,-464.15"/>
+</a>
+</g>
+</g>
+<!-- MATH_029&#45;&gt;MATH_035 -->
+<g id="edge_MATH_029_MATH_035" class="edge">
+<title>MATH_029&#45;&gt;MATH_035</title>
+<g id="a_edge_MATH_029_MATH_035"><a xlink:title="Testing candidate values requires evaluating the expressions being compared.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M547.37,-508.69C469.37,-491.34 368.32,-468.45 359.55,-464.4 307.36,-440.28 255.48,-399.68 220.55,-369.25"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="222.29,-367.76 215.91,-365.17 219.29,-371.17 222.29,-367.76"/>
+</a>
+</g>
+</g>
+<!-- MATH_029&#45;&gt;MATH_039 -->
+<g id="edge_MATH_029_MATH_039" class="edge">
+<title>MATH_029&#45;&gt;MATH_039</title>
+<g id="a_edge_MATH_029_MATH_039"><a xlink:title="Evaluating y = kx connects its equation to table entries and plotted points.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M722.08,-493.83C742.04,-485.47 763.44,-476.51 783.71,-468.03"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="784.47,-470.18 789.59,-465.57 782.71,-465.98 784.47,-470.18"/>
+</a>
+</g>
+</g>
+<!-- MATH_029&#45;&gt;MATH_044 -->
+<g id="edge_MATH_029_MATH_044" class="edge">
+<title>MATH_029&#45;&gt;MATH_044</title>
+<g id="a_edge_MATH_029_MATH_044"><a xlink:title="Evaluating a function rule requires substituting inputs into an expression.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M655.44,-494.03C672.08,-459.79 697.52,-407.46 715.24,-370.98"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="717.16,-372.24 717.95,-365.4 713.07,-370.25 717.16,-372.24"/>
+</a>
+</g>
+</g>
+<!-- MATH_030&#45;&gt;MATH_034 -->
+<g id="edge_MATH_030_MATH_034" class="edge">
+<title>MATH_030&#45;&gt;MATH_034</title>
+<g id="a_edge_MATH_030_MATH_034"><a xlink:title="General linear equations require expanding expressions and collecting like terms.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M796.84,-505.32C711.63,-471.23 552.8,-407.7 451,-366.98"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="451.89,-364.89 445.01,-364.59 450.2,-369.11 451.89,-364.89"/>
+</a>
+</g>
+</g>
+<!-- MATH_031&#45;&gt;MATH_034 -->
+<g id="edge_MATH_031_MATH_034" class="edge">
+<title>MATH_031&#45;&gt;MATH_034</title>
+<g id="a_edge_MATH_031_MATH_034"><a xlink:title="Solving requires understanding what counts as a solution.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M408.34,-393.17C402.37,-385.79 396.01,-377.93 389.86,-370.35"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="391.67,-368.97 385.82,-365.35 388.14,-371.83 391.67,-368.97"/>
+</a>
+</g>
+</g>
+<!-- MATH_031&#45;&gt;MATH_046 -->
+<g id="edge_MATH_031_MATH_046" class="edge">
+<title>MATH_031&#45;&gt;MATH_046</title>
+<g id="a_edge_MATH_031_MATH_046"><a xlink:title="A simultaneous solution must satisfy each individual equation.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M477.44,-393.17C486.54,-385.42 496.25,-377.15 505.57,-369.21"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="506.89,-371.08 510.36,-365.13 503.94,-367.61 506.89,-371.08"/>
+</a>
+</g>
+</g>
+<!-- MATH_032&#45;&gt;MATH_034 -->
+<g id="edge_MATH_032_MATH_034" class="edge">
+<title>MATH_032&#45;&gt;MATH_034</title>
+<g id="a_edge_MATH_032_MATH_034"><a xlink:title="Valid transformations preserve the equation’s solution set.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M143.51,-403.33C178.28,-391.38 220.6,-376.79 258.55,-363.6 259.67,-363.21 260.79,-362.82 261.92,-362.43"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="262.5,-364.63 267.89,-360.35 261,-360.34 262.5,-364.63"/>
+</a>
+</g>
+</g>
+<!-- MATH_033&#45;&gt;MATH_034 -->
+<g id="edge_MATH_033_MATH_034" class="edge">
+<title>MATH_033&#45;&gt;MATH_034</title>
+<g id="a_edge_MATH_033_MATH_034"><a xlink:title="Inverse operations undo operations surrounding the unknown.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M111.33,-993.25C103.74,-983.05 96.49,-971.1 92.55,-958.8 82.94,-928.83 87.36,-919.04 92.55,-888 127.44,-679.14 265.44,-460.2 326.83,-370.85"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="328.7,-372.15 330.52,-365.51 324.96,-369.56 328.7,-372.15"/>
+</a>
+</g>
+</g>
+<!-- MATH_034&#45;&gt;MATH_036 -->
+<g id="edge_MATH_034_MATH_036" class="edge">
+<title>MATH_034&#45;&gt;MATH_036</title>
+<g id="a_edge_MATH_034_MATH_036"><a xlink:title="Linear equation solving supplies variable&#45;isolation procedures that inequalities adapt.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M305.43,-292.37C293.73,-284.4 281.22,-275.87 269.27,-267.73"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="270.72,-265.97 264.07,-264.19 268.16,-269.73 270.72,-265.97"/>
+</a>
+</g>
+</g>
+<!-- MATH_034&#45;&gt;MATH_042 -->
+<g id="edge_MATH_034_MATH_042" class="edge">
+<title>MATH_034&#45;&gt;MATH_042</title>
+<g id="a_edge_MATH_034_MATH_042"><a xlink:title="Rearranging linear equations and solving for intercepts support graphing different equation forms.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M356.07,-292.33C357.67,-261.26 365.26,-216.96 393.55,-192 440.11,-150.91 608.71,-138.11 716.45,-134.15"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="716.34,-136.43 722.75,-133.93 716.18,-131.88 716.34,-136.43"/>
+</a>
+</g>
+</g>
+<!-- MATH_034&#45;&gt;MATH_047 -->
+<g id="edge_MATH_034_MATH_047" class="edge">
+<title>MATH_034&#45;&gt;MATH_047</title>
+<g id="a_edge_MATH_034_MATH_047"><a xlink:title="Substitution and elimination reduce systems to linear equations in one variable.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M399.91,-292.37C409.65,-284.55 420.05,-276.19 430.02,-268.18"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="431.22,-270.14 434.86,-264.29 428.37,-266.59 431.22,-270.14"/>
+</a>
+</g>
+</g>
+<!-- MATH_035&#45;&gt;MATH_036 -->
+<g id="edge_MATH_035_MATH_036" class="edge">
+<title>MATH_035&#45;&gt;MATH_036</title>
+<g id="a_edge_MATH_035_MATH_036"><a xlink:title="Solving an inequality requires understanding its ordered comparison and solution set.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M189.53,-292.37C191.92,-285.43 194.45,-278.07 196.92,-270.91"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="199.05,-271.71 199.01,-264.83 194.75,-270.23 199.05,-271.71"/>
+</a>
+</g>
+</g>
+<!-- MATH_037&#45;&gt;MATH_039 -->
+<g id="edge_MATH_037_MATH_039" class="edge">
+<title>MATH_037&#45;&gt;MATH_039</title>
+<g id="a_edge_MATH_037_MATH_039"><a xlink:title="Coordinate plotting turns proportional value pairs into a graph.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M1150.55,-700.37C1160.03,-671.5 1168.91,-627.59 1150.55,-595.2 1129,-557.2 1030.71,-503.94 957.52,-468.27"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="958.86,-466.39 952.02,-465.6 956.87,-470.49 958.86,-466.39"/>
+</a>
+</g>
+</g>
+<!-- MATH_038&#45;&gt;MATH_039 -->
+<g id="edge_MATH_038_MATH_039" class="edge">
+<title>MATH_038&#45;&gt;MATH_039</title>
+<g id="a_edge_MATH_038_MATH_039"><a xlink:title="Tables of corresponding values represent how proportional quantities vary together.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M1186.73,-499.65C1180.97,-497.72 1175.19,-495.94 1169.55,-494.4 1086.21,-471.72 1061.47,-484.82 977.55,-464.4 974.49,-463.66 971.4,-462.86 968.28,-462.03"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="968.98,-459.86 962.11,-460.33 967.77,-464.25 968.98,-459.86"/>
+</a>
+</g>
+</g>
+<!-- MATH_038&#45;&gt;MATH_043 -->
+<g id="edge_MATH_038_MATH_043" class="edge">
+<title>MATH_038&#45;&gt;MATH_043</title>
+<g id="a_edge_MATH_038_MATH_043"><a xlink:title="Input–output correspondence makes the unique&#45;output condition meaningful.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M1198.81,-498.62C1171.63,-484.41 1139.63,-467.68 1114.03,-454.3"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="1115.28,-452.38 1108.46,-451.39 1113.17,-456.42 1115.28,-452.38"/>
+</a>
+</g>
+</g>
+<!-- MATH_038&#45;&gt;MATH_046 -->
+<g id="edge_MATH_038_MATH_046" class="edge">
+<title>MATH_038&#45;&gt;MATH_046</title>
+<g id="a_edge_MATH_038_MATH_046"><a xlink:title="Two&#45;variable system solutions specify corresponding values as ordered pairs.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M1186.65,-499.9C1180.91,-497.91 1175.16,-496.05 1169.55,-494.4 1103.48,-474.99 1074.58,-502.98 1017.55,-464.4 986.47,-443.37 1003.65,-413.02 971.55,-393.6 910.44,-356.63 721.34,-378.76 651.55,-363.6 650.41,-363.35 649.26,-363.1 648.12,-362.83"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="648.96,-360.7 642.11,-361.36 647.88,-365.12 648.96,-360.7"/>
+</a>
+</g>
+</g>
+<!-- MATH_039&#45;&gt;MATH_040 -->
+<g id="edge_MATH_039_MATH_040" class="edge">
+<title>MATH_039&#45;&gt;MATH_040</title>
+<g id="a_edge_MATH_039_MATH_040"><a xlink:title="Proportional representations provide the constant&#45;rate case extended by adding an initial value.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M882.66,-393.17C884.64,-384.66 886.76,-375.52 888.77,-366.89"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="890.94,-367.6 890.2,-360.75 886.51,-366.57 890.94,-367.6"/>
+</a>
+</g>
+</g>
+<!-- MATH_040&#45;&gt;MATH_041 -->
+<g id="edge_MATH_040_MATH_041" class="edge">
+<title>MATH_040&#45;&gt;MATH_041</title>
+<g id="a_edge_MATH_040_MATH_041"><a xlink:title="Constant rate of change gives conceptual meaning to the slope calculation.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M871.58,-297.02C862.77,-286.77 852.83,-275.22 843.65,-264.56"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="845.4,-263.1 839.44,-259.66 841.95,-266.07 845.4,-263.1"/>
+</a>
+</g>
+</g>
+<!-- MATH_041&#45;&gt;MATH_042 -->
+<g id="edge_MATH_041_MATH_042" class="edge">
+<title>MATH_041&#45;&gt;MATH_042</title>
+<g id="a_edge_MATH_041_MATH_042"><a xlink:title="Slope determines a line’s direction and the changes between its points.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M811.59,-196.4C811.33,-188.17 811.04,-179.15 810.76,-170.53"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="813.04,-170.53 810.56,-164.1 808.49,-170.67 813.04,-170.53"/>
+</a>
+</g>
+</g>
+<!-- MATH_042&#45;&gt;MATH_045 -->
+<g id="edge_MATH_042_MATH_045" class="edge">
+<title>MATH_042&#45;&gt;MATH_045</title>
+<g id="a_edge_MATH_042_MATH_045"><a xlink:title="Connections among line equations, slopes, and intercepts support constructing linear models.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M820.08,-100.4C823.03,-92 826.27,-82.77 829.35,-74"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="831.44,-74.9 831.45,-68.01 827.15,-73.39 831.44,-74.9"/>
+</a>
+</g>
+</g>
+<!-- MATH_042&#45;&gt;MATH_048 -->
+<g id="edge_MATH_042_MATH_048" class="edge">
+<title>MATH_042&#45;&gt;MATH_048</title>
+<g id="a_edge_MATH_042_MATH_048"><a xlink:title="Graphical system solving requires constructing and interpreting both lines.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M754.33,-100.4C739.58,-92.39 723.43,-83.61 707.95,-75.19"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="709.15,-73.26 702.35,-72.15 706.97,-77.26 709.15,-73.26"/>
+</a>
+</g>
+</g>
+<!-- MATH_043&#45;&gt;MATH_044 -->
+<g id="edge_MATH_043_MATH_044" class="edge">
+<title>MATH_043&#45;&gt;MATH_044</title>
+<g id="a_edge_MATH_043_MATH_044"><a xlink:title="Function notation names the output assigned to a specified input.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M1028.15,-401.19C1022.73,-398.29 1017.12,-395.65 1011.55,-393.6 930.5,-363.75 902.74,-386.79 819.55,-363.6 818.57,-363.33 817.58,-363.04 816.59,-362.76"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="817.43,-360.63 810.55,-360.89 816.09,-364.98 817.43,-360.63"/>
+</a>
+</g>
+</g>
+<!-- MATH_043&#45;&gt;MATH_045 -->
+<g id="edge_MATH_043_MATH_045" class="edge">
+<title>MATH_043&#45;&gt;MATH_045</title>
+<g id="a_edge_MATH_043_MATH_045"><a xlink:title="A linear function model assigns one predicted output to each allowed input.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M1056.34,-397.83C1033.34,-337.99 976.89,-201.35 905.55,-100.8 898.49,-90.86 889.9,-81 881.35,-72.1"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="883.1,-70.63 876.92,-67.59 879.85,-73.82 883.1,-70.63"/>
+</a>
+</g>
+</g>
+<!-- MATH_046&#45;&gt;MATH_047 -->
+<g id="edge_MATH_046_MATH_047" class="edge">
+<title>MATH_046&#45;&gt;MATH_047</title>
+<g id="a_edge_MATH_046_MATH_047"><a xlink:title="Algebraic system solving seeks values that satisfy every equation together.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M526.81,-292.37C521.36,-284.99 515.56,-277.13 509.95,-269.55"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="511.98,-268.47 506.29,-264.59 508.32,-271.17 511.98,-268.47"/>
+</a>
+</g>
+</g>
+<!-- MATH_046&#45;&gt;MATH_048 -->
+<g id="edge_MATH_046_MATH_048" class="edge">
+<title>MATH_046&#45;&gt;MATH_048</title>
+<g id="a_edge_MATH_046_MATH_048"><a xlink:title="Shared graph points represent simultaneous satisfaction of the equations.">
+<path fill="none" stroke="#b2bfbb" stroke-width="1.1" d="M562.6,-292.41C578.06,-238.88 607.64,-136.48 624.32,-78.73"/>
+<polygon fill="#b2bfbb" stroke="#b2bfbb" stroke-width="1.1" points="626.41,-79.7 626.03,-72.83 622.04,-78.44 626.41,-79.7"/>
+</a>
+</g>
+</g>
+<!-- MATH_001 -->
+<g id="MATH_001" class="node">
+<title>MATH_001</title>
+<g id="a_MATH_001"><a xlink:title="Interpret whole numbers using base&#45;ten units, relative size, and positions on a number line.">
+<path fill="#eff4f1" stroke="#43605b" stroke-width="1.2" d="M1222.1,-1362C1222.1,-1362 1049,-1362 1049,-1362 1043,-1362 1037,-1356 1037,-1350 1037,-1350 1037,-1303.2 1037,-1303.2 1037,-1297.2 1043,-1291.2 1049,-1291.2 1049,-1291.2 1222.1,-1291.2 1222.1,-1291.2 1228.1,-1291.2 1234.1,-1297.2 1234.1,-1303.2 1234.1,-1303.2 1234.1,-1350 1234.1,-1350 1234.1,-1356 1228.1,-1362 1222.1,-1362"/>
+<text xml:space="preserve" text-anchor="start" x="1112.79" y="-1346.4" font-family="Arial" font-size="9.00" fill="#43605b">MATH_001</text>
+<text xml:space="preserve" text-anchor="start" x="1047.2" y="-1328.8" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Whole&#45;number place value and</text>
+<text xml:space="preserve" text-anchor="start" x="1105.21" y="-1316.8" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">magnitude</text>
+<text xml:space="preserve" text-anchor="start" x="1113.29" y="-1299.6" font-family="Arial" font-size="9.00" fill="#64736e">Grades ≤5</text>
+</a>
+</g>
+</g>
+<!-- MATH_002 -->
+<g id="MATH_002" class="node">
+<title>MATH_002</title>
+<g id="a_MATH_002"><a xlink:title="Combine, separate, and compare whole&#45;number quantities, including regrouping across place values.">
+<path fill="#eff4f1" stroke="#43605b" stroke-width="1.2" d="M1015.07,-1261.2C1015.07,-1261.2 860.02,-1261.2 860.02,-1261.2 854.02,-1261.2 848.02,-1255.2 848.02,-1249.2 848.02,-1249.2 848.02,-1202.4 848.02,-1202.4 848.02,-1196.4 854.02,-1190.4 860.02,-1190.4 860.02,-1190.4 1015.07,-1190.4 1015.07,-1190.4 1021.07,-1190.4 1027.07,-1196.4 1027.07,-1202.4 1027.07,-1202.4 1027.07,-1249.2 1027.07,-1249.2 1027.07,-1255.2 1021.07,-1261.2 1015.07,-1261.2"/>
+<text xml:space="preserve" text-anchor="start" x="914.79" y="-1245.6" font-family="Arial" font-size="9.00" fill="#43605b">MATH_002</text>
+<text xml:space="preserve" text-anchor="start" x="858.22" y="-1228" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Whole&#45;number addition and</text>
+<text xml:space="preserve" text-anchor="start" x="904.88" y="-1216" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">subtraction</text>
+<text xml:space="preserve" text-anchor="start" x="915.29" y="-1198.8" font-family="Arial" font-size="9.00" fill="#64736e">Grades ≤5</text>
+</a>
+</g>
+</g>
+<!-- MATH_003 -->
+<g id="MATH_003" class="node">
+<title>MATH_003</title>
+<g id="a_MATH_003"><a xlink:title="Reason about equal groups, multiplicative comparisons, products, and quotients.">
+<path fill="#eff4f1" stroke="#43605b" stroke-width="1.2" d="M682.41,-1160.4C682.41,-1160.4 520.68,-1160.4 520.68,-1160.4 514.68,-1160.4 508.68,-1154.4 508.68,-1148.4 508.68,-1148.4 508.68,-1101.6 508.68,-1101.6 508.68,-1095.6 514.68,-1089.6 520.68,-1089.6 520.68,-1089.6 682.41,-1089.6 682.41,-1089.6 688.41,-1089.6 694.41,-1095.6 694.41,-1101.6 694.41,-1101.6 694.41,-1148.4 694.41,-1148.4 694.41,-1154.4 688.41,-1160.4 682.41,-1160.4"/>
+<text xml:space="preserve" text-anchor="start" x="578.79" y="-1144.8" font-family="Arial" font-size="9.00" fill="#43605b">MATH_003</text>
+<text xml:space="preserve" text-anchor="start" x="518.88" y="-1127.2" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Whole&#45;number multiplication</text>
+<text xml:space="preserve" text-anchor="start" x="566.54" y="-1115.2" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">and division</text>
+<text xml:space="preserve" text-anchor="start" x="573.03" y="-1098" font-family="Arial" font-size="9.00" fill="#64736e">Grades ≤5–6</text>
+</a>
+</g>
+</g>
+<!-- MATH_004 -->
+<g id="MATH_004" class="node">
+<title>MATH_004</title>
+<g id="a_MATH_004"><a xlink:title="Identify divisibility relationships, including common factors and common multiples.">
+<path fill="#f8f1ec" stroke="#866753" stroke-width="1.2" d="M608.76,-1054.8C608.76,-1054.8 488.33,-1054.8 488.33,-1054.8 482.33,-1054.8 476.33,-1048.8 476.33,-1042.8 476.33,-1042.8 476.33,-1005.6 476.33,-1005.6 476.33,-999.6 482.33,-993.6 488.33,-993.6 488.33,-993.6 608.76,-993.6 608.76,-993.6 614.76,-993.6 620.76,-999.6 620.76,-1005.6 620.76,-1005.6 620.76,-1042.8 620.76,-1042.8 620.76,-1048.8 614.76,-1054.8 608.76,-1054.8"/>
+<text xml:space="preserve" text-anchor="start" x="525.79" y="-1039.2" font-family="Arial" font-size="9.00" fill="#866753">MATH_004</text>
+<text xml:space="preserve" text-anchor="start" x="486.53" y="-1021.6" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Factors and multiples</text>
+<text xml:space="preserve" text-anchor="start" x="523.78" y="-1002" font-family="Arial" font-size="9.00" fill="#64736e">Grades 5–6</text>
+</a>
+</g>
+</g>
+<!-- MATH_005 -->
+<g id="MATH_005" class="node">
+<title>MATH_005</title>
+<g id="a_MATH_005"><a xlink:title="Interpret a fraction as a number, a quantity of equal&#45;sized parts, and a quotient.">
+<path fill="#edf8fa" stroke="#257a8a" stroke-width="1.2" d="M442.75,-1054.8C442.75,-1054.8 346.34,-1054.8 346.34,-1054.8 340.34,-1054.8 334.34,-1048.8 334.34,-1042.8 334.34,-1042.8 334.34,-1005.6 334.34,-1005.6 334.34,-999.6 340.34,-993.6 346.34,-993.6 346.34,-993.6 442.75,-993.6 442.75,-993.6 448.75,-993.6 454.75,-999.6 454.75,-1005.6 454.75,-1005.6 454.75,-1042.8 454.75,-1042.8 454.75,-1048.8 448.75,-1054.8 442.75,-1054.8"/>
+<text xml:space="preserve" text-anchor="start" x="371.79" y="-1039.2" font-family="Arial" font-size="9.00" fill="#257a8a">MATH_005</text>
+<text xml:space="preserve" text-anchor="start" x="344.54" y="-1021.6" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Fraction meaning</text>
+<text xml:space="preserve" text-anchor="start" x="372.29" y="-1002" font-family="Arial" font-size="9.00" fill="#64736e">Grades ≤5</text>
+</a>
+</g>
+</g>
+<!-- MATH_006 -->
+<g id="MATH_006" class="node">
+<title>MATH_006</title>
+<g id="a_MATH_006"><a xlink:title="Generate, recognize, and simplify fractions that represent the same number.">
+<path fill="#edf8fa" stroke="#257a8a" stroke-width="1.2" d="M584.09,-858C584.09,-858 473,-858 473,-858 467,-858 461,-852 461,-846 461,-846 461,-808.8 461,-808.8 461,-802.8 467,-796.8 473,-796.8 473,-796.8 584.09,-796.8 584.09,-796.8 590.09,-796.8 596.09,-802.8 596.09,-808.8 596.09,-808.8 596.09,-846 596.09,-846 596.09,-852 590.09,-858 584.09,-858"/>
+<text xml:space="preserve" text-anchor="start" x="505.79" y="-842.4" font-family="Arial" font-size="9.00" fill="#257a8a">MATH_006</text>
+<text xml:space="preserve" text-anchor="start" x="471.2" y="-824.8" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Equivalent fractions</text>
+<text xml:space="preserve" text-anchor="start" x="500.03" y="-805.2" font-family="Arial" font-size="9.00" fill="#64736e">Grades ≤5–6</text>
+</a>
+</g>
+</g>
+<!-- MATH_007 -->
+<g id="MATH_007" class="node">
+<title>MATH_007</title>
+<g id="a_MATH_007"><a xlink:title="Add and subtract nonnegative fractions by expressing quantities in common fractional units.">
+<path fill="#edf8fa" stroke="#257a8a" stroke-width="1.2" d="M696.75,-766.8C696.75,-766.8 578.35,-766.8 578.35,-766.8 572.35,-766.8 566.35,-760.8 566.35,-754.8 566.35,-754.8 566.35,-708 566.35,-708 566.35,-702 572.35,-696 578.35,-696 578.35,-696 696.75,-696 696.75,-696 702.75,-696 708.75,-702 708.75,-708 708.75,-708 708.75,-754.8 708.75,-754.8 708.75,-760.8 702.75,-766.8 696.75,-766.8"/>
+<text xml:space="preserve" text-anchor="start" x="614.79" y="-751.2" font-family="Arial" font-size="9.00" fill="#257a8a">MATH_007</text>
+<text xml:space="preserve" text-anchor="start" x="576.55" y="-733.6" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Fraction addition and</text>
+<text xml:space="preserve" text-anchor="start" x="604.88" y="-721.6" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">subtraction</text>
+<text xml:space="preserve" text-anchor="start" x="612.78" y="-704.4" font-family="Arial" font-size="9.00" fill="#64736e">Grades 5–6</text>
+</a>
+</g>
+</g>
+<!-- MATH_008 -->
+<g id="MATH_008" class="node">
+<title>MATH_008</title>
+<g id="a_MATH_008"><a xlink:title="Multiply and divide nonnegative fractions using scaling, grouping, and reciprocal relationships.">
+<path fill="#edf8fa" stroke="#257a8a" stroke-width="1.2" d="M353.42,-958.8C353.42,-958.8 203.68,-958.8 203.68,-958.8 197.68,-958.8 191.68,-952.8 191.68,-946.8 191.68,-946.8 191.68,-900 191.68,-900 191.68,-894 197.68,-888 203.68,-888 203.68,-888 353.42,-888 353.42,-888 359.42,-888 365.42,-894 365.42,-900 365.42,-900 365.42,-946.8 365.42,-946.8 365.42,-952.8 359.42,-958.8 353.42,-958.8"/>
+<text xml:space="preserve" text-anchor="start" x="255.79" y="-943.2" font-family="Arial" font-size="9.00" fill="#257a8a">MATH_008</text>
+<text xml:space="preserve" text-anchor="start" x="201.88" y="-925.6" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Fraction multiplication and</text>
+<text xml:space="preserve" text-anchor="start" x="255.88" y="-913.6" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">division</text>
+<text xml:space="preserve" text-anchor="start" x="253.78" y="-896.4" font-family="Arial" font-size="9.00" fill="#64736e">Grades 5–6</text>
+</a>
+</g>
+</g>
+<!-- MATH_009 -->
+<g id="MATH_009" class="node">
+<title>MATH_009</title>
+<g id="a_MATH_009"><a xlink:title="Interpret decimal digits as tenths, hundredths, and successive powers&#45;of&#45;ten fractional units.">
+<path fill="#edf8fa" stroke="#257a8a" stroke-width="1.2" d="M509.78,-954C509.78,-954 399.32,-954 399.32,-954 393.32,-954 387.32,-948 387.32,-942 387.32,-942 387.32,-904.8 387.32,-904.8 387.32,-898.8 393.32,-892.8 399.32,-892.8 399.32,-892.8 509.78,-892.8 509.78,-892.8 515.78,-892.8 521.78,-898.8 521.78,-904.8 521.78,-904.8 521.78,-942 521.78,-942 521.78,-948 515.78,-954 509.78,-954"/>
+<text xml:space="preserve" text-anchor="start" x="431.79" y="-938.4" font-family="Arial" font-size="9.00" fill="#257a8a">MATH_009</text>
+<text xml:space="preserve" text-anchor="start" x="397.52" y="-920.8" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Decimal place value</text>
+<text xml:space="preserve" text-anchor="start" x="426.03" y="-901.2" font-family="Arial" font-size="9.00" fill="#64736e">Grades ≤5–6</text>
+</a>
+</g>
+</g>
+<!-- MATH_010 -->
+<g id="MATH_010" class="node">
+<title>MATH_010</title>
+<g id="a_MATH_010"><a xlink:title="Add, subtract, multiply, and divide nonnegative decimals while accounting for place value.">
+<path fill="#edf8fa" stroke="#257a8a" stroke-width="1.2" d="M427.1,-858C427.1,-858 320,-858 320,-858 314,-858 308,-852 308,-846 308,-846 308,-808.8 308,-808.8 308,-802.8 314,-796.8 320,-796.8 320,-796.8 427.1,-796.8 427.1,-796.8 433.1,-796.8 439.1,-802.8 439.1,-808.8 439.1,-808.8 439.1,-846 439.1,-846 439.1,-852 433.1,-858 427.1,-858"/>
+<text xml:space="preserve" text-anchor="start" x="350.79" y="-842.4" font-family="Arial" font-size="9.00" fill="#257a8a">MATH_010</text>
+<text xml:space="preserve" text-anchor="start" x="318.2" y="-824.8" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Decimal operations</text>
+<text xml:space="preserve" text-anchor="start" x="348.78" y="-805.2" font-family="Arial" font-size="9.00" fill="#64736e">Grades 5–6</text>
+</a>
+</g>
+</g>
+<!-- MATH_011 -->
+<g id="MATH_011" class="node">
+<title>MATH_011</title>
+<g id="a_MATH_011"><a xlink:title="Express fractions as terminating or repeating decimals and terminating decimals as fractions.">
+<path fill="#edf8fa" stroke="#257a8a" stroke-width="1.2" d="M485.44,-762C485.44,-762 319.66,-762 319.66,-762 313.66,-762 307.66,-756 307.66,-750 307.66,-750 307.66,-712.8 307.66,-712.8 307.66,-706.8 313.66,-700.8 319.66,-700.8 319.66,-700.8 485.44,-700.8 485.44,-700.8 491.44,-700.8 497.44,-706.8 497.44,-712.8 497.44,-712.8 497.44,-750 497.44,-750 497.44,-756 491.44,-762 485.44,-762"/>
+<text xml:space="preserve" text-anchor="start" x="379.79" y="-746.4" font-family="Arial" font-size="9.00" fill="#257a8a">MATH_011</text>
+<text xml:space="preserve" text-anchor="start" x="317.86" y="-728.8" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Fraction–decimal conversion</text>
+<text xml:space="preserve" text-anchor="start" x="377.78" y="-709.2" font-family="Arial" font-size="9.00" fill="#64736e">Grades 5–7</text>
+</a>
+</g>
+</g>
+<!-- MATH_012 -->
+<g id="MATH_012" class="node">
+<title>MATH_012</title>
+<g id="a_MATH_012"><a xlink:title="Interpret positive and negative integers, opposites, zero, and order on a number line.">
+<path fill="#f0f5fd" stroke="#5579aa" stroke-width="1.2" d="M1210.09,-1256.4C1210.09,-1256.4 1061,-1256.4 1061,-1256.4 1055,-1256.4 1049,-1250.4 1049,-1244.4 1049,-1244.4 1049,-1207.2 1049,-1207.2 1049,-1201.2 1055,-1195.2 1061,-1195.2 1061,-1195.2 1210.09,-1195.2 1210.09,-1195.2 1216.09,-1195.2 1222.09,-1201.2 1222.09,-1207.2 1222.09,-1207.2 1222.09,-1244.4 1222.09,-1244.4 1222.09,-1250.4 1216.09,-1256.4 1210.09,-1256.4"/>
+<text xml:space="preserve" text-anchor="start" x="1112.79" y="-1240.8" font-family="Arial" font-size="9.00" fill="#5579aa">MATH_012</text>
+<text xml:space="preserve" text-anchor="start" x="1059.2" y="-1223.2" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Signed numbers and order</text>
+<text xml:space="preserve" text-anchor="start" x="1117.04" y="-1203.6" font-family="Arial" font-size="9.00" fill="#64736e">Grades 6</text>
+</a>
+</g>
+</g>
+<!-- MATH_013 -->
+<g id="MATH_013" class="node">
+<title>MATH_013</title>
+<g id="a_MATH_013"><a xlink:title="Add and subtract integers using signed changes, opposites, and additive inverses.">
+<path fill="#f0f5fd" stroke="#5579aa" stroke-width="1.2" d="M1036.08,-1160.4C1036.08,-1160.4 925.01,-1160.4 925.01,-1160.4 919.01,-1160.4 913.01,-1154.4 913.01,-1148.4 913.01,-1148.4 913.01,-1101.6 913.01,-1101.6 913.01,-1095.6 919.01,-1089.6 925.01,-1089.6 925.01,-1089.6 1036.08,-1089.6 1036.08,-1089.6 1042.08,-1089.6 1048.08,-1095.6 1048.08,-1101.6 1048.08,-1101.6 1048.08,-1148.4 1048.08,-1148.4 1048.08,-1154.4 1042.08,-1160.4 1036.08,-1160.4"/>
+<text xml:space="preserve" text-anchor="start" x="957.79" y="-1144.8" font-family="Arial" font-size="9.00" fill="#5579aa">MATH_013</text>
+<text xml:space="preserve" text-anchor="start" x="923.21" y="-1127.2" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Integer addition and</text>
+<text xml:space="preserve" text-anchor="start" x="947.88" y="-1115.2" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">subtraction</text>
+<text xml:space="preserve" text-anchor="start" x="955.78" y="-1098" font-family="Arial" font-size="9.00" fill="#64736e">Grades 6–7</text>
+</a>
+</g>
+</g>
+<!-- MATH_014 -->
+<g id="MATH_014" class="node">
+<title>MATH_014</title>
+<g id="a_MATH_014"><a xlink:title="Multiply and divide integers with consistent reasoning about signs.">
+<path fill="#f0f5fd" stroke="#5579aa" stroke-width="1.2" d="M1094.75,-1059.6C1094.75,-1059.6 952.34,-1059.6 952.34,-1059.6 946.34,-1059.6 940.34,-1053.6 940.34,-1047.6 940.34,-1047.6 940.34,-1000.8 940.34,-1000.8 940.34,-994.8 946.34,-988.8 952.34,-988.8 952.34,-988.8 1094.75,-988.8 1094.75,-988.8 1100.75,-988.8 1106.75,-994.8 1106.75,-1000.8 1106.75,-1000.8 1106.75,-1047.6 1106.75,-1047.6 1106.75,-1053.6 1100.75,-1059.6 1094.75,-1059.6"/>
+<text xml:space="preserve" text-anchor="start" x="1000.79" y="-1044" font-family="Arial" font-size="9.00" fill="#5579aa">MATH_014</text>
+<text xml:space="preserve" text-anchor="start" x="950.54" y="-1026.4" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Integer multiplication and</text>
+<text xml:space="preserve" text-anchor="start" x="1000.88" y="-1014.4" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">division</text>
+<text xml:space="preserve" text-anchor="start" x="998.78" y="-997.2" font-family="Arial" font-size="9.00" fill="#64736e">Grades 6–7</text>
+</a>
+</g>
+</g>
+<!-- MATH_015 -->
+<g id="MATH_015" class="node">
+<title>MATH_015</title>
+<g id="a_MATH_015"><a xlink:title="Compute with positive and negative fractions and decimals, including mixed representations.">
+<path fill="#f0f5fd" stroke="#5579aa" stroke-width="1.2" d="M704.09,-666C704.09,-666 573.01,-666 573.01,-666 567.01,-666 561.01,-660 561.01,-654 561.01,-654 561.01,-607.2 561.01,-607.2 561.01,-601.2 567.01,-595.2 573.01,-595.2 573.01,-595.2 704.09,-595.2 704.09,-595.2 710.09,-595.2 716.09,-601.2 716.09,-607.2 716.09,-607.2 716.09,-654 716.09,-654 716.09,-660 710.09,-666 704.09,-666"/>
+<text xml:space="preserve" text-anchor="start" x="615.79" y="-650.4" font-family="Arial" font-size="9.00" fill="#5579aa">MATH_015</text>
+<text xml:space="preserve" text-anchor="start" x="571.21" y="-632.8" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Signed rational&#45;number</text>
+<text xml:space="preserve" text-anchor="start" x="607.88" y="-620.8" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">operations</text>
+<text xml:space="preserve" text-anchor="start" x="620.04" y="-603.6" font-family="Arial" font-size="9.00" fill="#64736e">Grades 7</text>
+</a>
+</g>
+</g>
+<!-- MATH_016 -->
+<g id="MATH_016" class="node">
+<title>MATH_016</title>
+<g id="a_MATH_016"><a xlink:title="Interpret an ordered comparison of quantities in multiplicative terms.">
+<path fill="#fff7e6" stroke="#a27027" stroke-width="1.2" d="M157.51,-954C157.51,-954 115.59,-954 115.59,-954 109.59,-954 103.59,-948 103.59,-942 103.59,-942 103.59,-904.8 103.59,-904.8 103.59,-898.8 109.59,-892.8 115.59,-892.8 115.59,-892.8 157.51,-892.8 157.51,-892.8 163.51,-892.8 169.51,-898.8 169.51,-904.8 169.51,-904.8 169.51,-942 169.51,-942 169.51,-948 163.51,-954 157.51,-954"/>
+<text xml:space="preserve" text-anchor="start" x="113.79" y="-938.4" font-family="Arial" font-size="9.00" fill="#a27027">MATH_016</text>
+<text xml:space="preserve" text-anchor="start" x="118.21" y="-920.8" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Ratios</text>
+<text xml:space="preserve" text-anchor="start" x="118.04" y="-901.2" font-family="Arial" font-size="9.00" fill="#64736e">Grades 6</text>
+</a>
+</g>
+</g>
+<!-- MATH_017 -->
+<g id="MATH_017" class="node">
+<title>MATH_017</title>
+<g id="a_MATH_017"><a xlink:title="Determine and interpret an amount per one unit, including rates involving fractions.">
+<path fill="#fff7e6" stroke="#a27027" stroke-width="1.2" d="M227.42,-858C227.42,-858 175.67,-858 175.67,-858 169.67,-858 163.67,-852 163.67,-846 163.67,-846 163.67,-808.8 163.67,-808.8 163.67,-802.8 169.67,-796.8 175.67,-796.8 175.67,-796.8 227.42,-796.8 227.42,-796.8 233.42,-796.8 239.42,-802.8 239.42,-808.8 239.42,-808.8 239.42,-846 239.42,-846 239.42,-852 233.42,-858 227.42,-858"/>
+<text xml:space="preserve" text-anchor="start" x="178.79" y="-842.4" font-family="Arial" font-size="9.00" fill="#a27027">MATH_017</text>
+<text xml:space="preserve" text-anchor="start" x="173.87" y="-824.8" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Unit rates</text>
+<text xml:space="preserve" text-anchor="start" x="176.78" y="-805.2" font-family="Arial" font-size="9.00" fill="#64736e">Grades 6–7</text>
+</a>
+</g>
+</g>
+<!-- MATH_018 -->
+<g id="MATH_018" class="node">
+<title>MATH_018</title>
+<g id="a_MATH_018"><a xlink:title="Recognize equivalent ratios and determine missing quantities through consistent multiplicative scaling.">
+<path fill="#fff7e6" stroke="#a27027" stroke-width="1.2" d="M526.75,-661.2C526.75,-661.2 398.34,-661.2 398.34,-661.2 392.34,-661.2 386.34,-655.2 386.34,-649.2 386.34,-649.2 386.34,-612 386.34,-612 386.34,-606 392.34,-600 398.34,-600 398.34,-600 526.75,-600 526.75,-600 532.75,-600 538.75,-606 538.75,-612 538.75,-612 538.75,-649.2 538.75,-649.2 538.75,-655.2 532.75,-661.2 526.75,-661.2"/>
+<text xml:space="preserve" text-anchor="start" x="439.79" y="-645.6" font-family="Arial" font-size="9.00" fill="#a27027">MATH_018</text>
+<text xml:space="preserve" text-anchor="start" x="396.54" y="-628" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Proportional reasoning</text>
+<text xml:space="preserve" text-anchor="start" x="437.78" y="-608.4" font-family="Arial" font-size="9.00" fill="#64736e">Grades 6–7</text>
+</a>
+</g>
+</g>
+<!-- MATH_019 -->
+<g id="MATH_019" class="node">
+<title>MATH_019</title>
+<g id="a_MATH_019"><a xlink:title="Interpret percent as a rate per hundred and express it using fractions and decimals.">
+<path fill="#fff7e6" stroke="#a27027" stroke-width="1.2" d="M352.44,-661.2C352.44,-661.2 218.66,-661.2 218.66,-661.2 212.66,-661.2 206.66,-655.2 206.66,-649.2 206.66,-649.2 206.66,-612 206.66,-612 206.66,-606 212.66,-600 218.66,-600 218.66,-600 352.44,-600 352.44,-600 358.44,-600 364.44,-606 364.44,-612 364.44,-612 364.44,-649.2 364.44,-649.2 364.44,-655.2 358.44,-661.2 352.44,-661.2"/>
+<text xml:space="preserve" text-anchor="start" x="262.79" y="-645.6" font-family="Arial" font-size="9.00" fill="#a27027">MATH_019</text>
+<text xml:space="preserve" text-anchor="start" x="216.86" y="-628" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Percent representations</text>
+<text xml:space="preserve" text-anchor="start" x="260.78" y="-608.4" font-family="Arial" font-size="9.00" fill="#64736e">Grades 6–7</text>
+</a>
+</g>
+</g>
+<!-- MATH_020 -->
+<g id="MATH_020" class="node">
+<title>MATH_020</title>
+<g id="a_MATH_020"><a xlink:title="Determine a part, whole, percentage, or percent change using proportional relationships.">
+<path fill="#fff7e6" stroke="#a27027" stroke-width="1.2" d="M459.76,-560.4C459.76,-560.4 323.33,-560.4 323.33,-560.4 317.33,-560.4 311.33,-554.4 311.33,-548.4 311.33,-548.4 311.33,-511.2 311.33,-511.2 311.33,-505.2 317.33,-499.2 323.33,-499.2 323.33,-499.2 459.76,-499.2 459.76,-499.2 465.76,-499.2 471.76,-505.2 471.76,-511.2 471.76,-511.2 471.76,-548.4 471.76,-548.4 471.76,-554.4 465.76,-560.4 459.76,-560.4"/>
+<text xml:space="preserve" text-anchor="start" x="368.79" y="-544.8" font-family="Arial" font-size="9.00" fill="#a27027">MATH_020</text>
+<text xml:space="preserve" text-anchor="start" x="321.53" y="-527.2" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Percent problem solving</text>
+<text xml:space="preserve" text-anchor="start" x="366.78" y="-507.6" font-family="Arial" font-size="9.00" fill="#64736e">Grades 6–7</text>
+</a>
+</g>
+</g>
+<!-- MATH_021 -->
+<g id="MATH_021" class="node">
+<title>MATH_021</title>
+<g id="a_MATH_021"><a xlink:title="Interpret and evaluate powers with positive whole&#45;number exponents as repeated multiplication.">
+<path fill="#f8f1ec" stroke="#866753" stroke-width="1.2" d="M791.42,-954C791.42,-954 647.68,-954 647.68,-954 641.68,-954 635.68,-948 635.68,-942 635.68,-942 635.68,-904.8 635.68,-904.8 635.68,-898.8 641.68,-892.8 647.68,-892.8 647.68,-892.8 791.42,-892.8 791.42,-892.8 797.42,-892.8 803.42,-898.8 803.42,-904.8 803.42,-904.8 803.42,-942 803.42,-942 803.42,-948 797.42,-954 791.42,-954"/>
+<text xml:space="preserve" text-anchor="start" x="696.79" y="-938.4" font-family="Arial" font-size="9.00" fill="#866753">MATH_021</text>
+<text xml:space="preserve" text-anchor="start" x="645.88" y="-920.8" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Whole&#45;number exponents</text>
+<text xml:space="preserve" text-anchor="start" x="694.78" y="-901.2" font-family="Arial" font-size="9.00" fill="#64736e">Grades 5–6</text>
+</a>
+</g>
+</g>
+<!-- MATH_022 -->
+<g id="MATH_022" class="node">
+<title>MATH_022</title>
+<g id="a_MATH_022"><a xlink:title="Apply product, quotient, and power laws, including zero and negative exponents with appropriate nonzero bases.">
+<path fill="#f8f1ec" stroke="#866753" stroke-width="1.2" d="M752.76,-858C752.76,-858 630.33,-858 630.33,-858 624.33,-858 618.33,-852 618.33,-846 618.33,-846 618.33,-808.8 618.33,-808.8 618.33,-802.8 624.33,-796.8 630.33,-796.8 630.33,-796.8 752.76,-796.8 752.76,-796.8 758.76,-796.8 764.76,-802.8 764.76,-808.8 764.76,-808.8 764.76,-846 764.76,-846 764.76,-852 758.76,-858 752.76,-858"/>
+<text xml:space="preserve" text-anchor="start" x="668.79" y="-842.4" font-family="Arial" font-size="9.00" fill="#866753">MATH_022</text>
+<text xml:space="preserve" text-anchor="start" x="628.53" y="-824.8" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Integer exponent laws</text>
+<text xml:space="preserve" text-anchor="start" x="666.78" y="-805.2" font-family="Arial" font-size="9.00" fill="#64736e">Grades 8–9</text>
+</a>
+</g>
+</g>
+<!-- MATH_023 -->
+<g id="MATH_023" class="node">
+<title>MATH_023</title>
+<g id="a_MATH_023"><a xlink:title="Evaluate numerical expressions using grouping, exponents, and conventional operation precedence.">
+<path fill="#f8f1ec" stroke="#866753" stroke-width="1.2" d="M952.75,-858C952.75,-858 844.34,-858 844.34,-858 838.34,-858 832.34,-852 832.34,-846 832.34,-846 832.34,-808.8 832.34,-808.8 832.34,-802.8 838.34,-796.8 844.34,-796.8 844.34,-796.8 952.75,-796.8 952.75,-796.8 958.75,-796.8 964.75,-802.8 964.75,-808.8 964.75,-808.8 964.75,-846 964.75,-846 964.75,-852 958.75,-858 952.75,-858"/>
+<text xml:space="preserve" text-anchor="start" x="875.79" y="-842.4" font-family="Arial" font-size="9.00" fill="#866753">MATH_023</text>
+<text xml:space="preserve" text-anchor="start" x="842.54" y="-824.8" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Order of operations</text>
+<text xml:space="preserve" text-anchor="start" x="873.78" y="-805.2" font-family="Arial" font-size="9.00" fill="#64736e">Grades 5–6</text>
+</a>
+</g>
+</g>
+<!-- MATH_024 -->
+<g id="MATH_024" class="node">
+<title>MATH_024</title>
+<g id="a_MATH_024"><a xlink:title="Recognize when reordering or regrouping addition or multiplication preserves a value.">
+<path fill="#f8f1ec" stroke="#866753" stroke-width="1.2" d="M1127.11,-666C1127.11,-666 961.98,-666 961.98,-666 955.98,-666 949.98,-660 949.98,-654 949.98,-654 949.98,-607.2 949.98,-607.2 949.98,-601.2 955.98,-595.2 961.98,-595.2 961.98,-595.2 1127.11,-595.2 1127.11,-595.2 1133.11,-595.2 1139.11,-601.2 1139.11,-607.2 1139.11,-607.2 1139.11,-654 1139.11,-654 1139.11,-660 1133.11,-666 1127.11,-666"/>
+<text xml:space="preserve" text-anchor="start" x="1021.79" y="-650.4" font-family="Arial" font-size="9.00" fill="#866753">MATH_024</text>
+<text xml:space="preserve" text-anchor="start" x="960.18" y="-632.8" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Commutative and associative</text>
+<text xml:space="preserve" text-anchor="start" x="1015.21" y="-620.8" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">properties</text>
+<text xml:space="preserve" text-anchor="start" x="1016.03" y="-603.6" font-family="Arial" font-size="9.00" fill="#64736e">Grades ≤5–6</text>
+</a>
+</g>
+</g>
+<!-- MATH_025 -->
+<g id="MATH_025" class="node">
+<title>MATH_025</title>
+<g id="a_MATH_025"><a xlink:title="Understand why multiplying a sum or difference equals combining the corresponding products.">
+<path fill="#f8f1ec" stroke="#866753" stroke-width="1.2" d="M814.76,-1054.8C814.76,-1054.8 700.34,-1054.8 700.34,-1054.8 694.34,-1054.8 688.34,-1048.8 688.34,-1042.8 688.34,-1042.8 688.34,-1005.6 688.34,-1005.6 688.34,-999.6 694.34,-993.6 700.34,-993.6 700.34,-993.6 814.76,-993.6 814.76,-993.6 820.76,-993.6 826.76,-999.6 826.76,-1005.6 826.76,-1005.6 826.76,-1042.8 826.76,-1042.8 826.76,-1048.8 820.76,-1054.8 814.76,-1054.8"/>
+<text xml:space="preserve" text-anchor="start" x="734.79" y="-1039.2" font-family="Arial" font-size="9.00" fill="#866753">MATH_025</text>
+<text xml:space="preserve" text-anchor="start" x="698.54" y="-1021.6" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Distributive property</text>
+<text xml:space="preserve" text-anchor="start" x="732.78" y="-1002" font-family="Arial" font-size="9.00" fill="#64736e">Grades 5–7</text>
+</a>
+</g>
+</g>
+<!-- MATH_026 -->
+<g id="MATH_026" class="node">
+<title>MATH_026</title>
+<g id="a_MATH_026"><a xlink:title="Interpret the equals sign as asserting that two quantities or expressions have the same value.">
+<path fill="#eff4f1" stroke="#43605b" stroke-width="1.2" d="M177.75,-560.4C177.75,-560.4 69.34,-560.4 69.34,-560.4 63.34,-560.4 57.34,-554.4 57.34,-548.4 57.34,-548.4 57.34,-511.2 57.34,-511.2 57.34,-505.2 63.34,-499.2 69.34,-499.2 69.34,-499.2 177.75,-499.2 177.75,-499.2 183.75,-499.2 189.75,-505.2 189.75,-511.2 189.75,-511.2 189.75,-548.4 189.75,-548.4 189.75,-554.4 183.75,-560.4 177.75,-560.4"/>
+<text xml:space="preserve" text-anchor="start" x="100.79" y="-544.8" font-family="Arial" font-size="9.00" fill="#43605b">MATH_026</text>
+<text xml:space="preserve" text-anchor="start" x="67.54" y="-527.2" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Meaning of equality</text>
+<text xml:space="preserve" text-anchor="start" x="101.29" y="-507.6" font-family="Arial" font-size="9.00" fill="#64736e">Grades ≤5</text>
+</a>
+</g>
+</g>
+<!-- MATH_027 -->
+<g id="MATH_027" class="node">
+<title>MATH_027</title>
+<g id="a_MATH_027"><a xlink:title="Interpret a symbol as an unknown, a varying quantity, or an arbitrary number.">
+<path fill="#f5f1fc" stroke="#7967a3" stroke-width="1.2" d="M1281.43,-762C1281.43,-762 1231.66,-762 1231.66,-762 1225.66,-762 1219.66,-756 1219.66,-750 1219.66,-750 1219.66,-712.8 1219.66,-712.8 1219.66,-706.8 1225.66,-700.8 1231.66,-700.8 1231.66,-700.8 1281.43,-700.8 1281.43,-700.8 1287.43,-700.8 1293.43,-706.8 1293.43,-712.8 1293.43,-712.8 1293.43,-750 1293.43,-750 1293.43,-756 1287.43,-762 1281.43,-762"/>
+<text xml:space="preserve" text-anchor="start" x="1233.79" y="-746.4" font-family="Arial" font-size="9.00" fill="#7967a3">MATH_027</text>
+<text xml:space="preserve" text-anchor="start" x="1229.86" y="-728.8" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Variables</text>
+<text xml:space="preserve" text-anchor="start" x="1231.78" y="-709.2" font-family="Arial" font-size="9.00" fill="#64736e">Grades 5–6</text>
+</a>
+</g>
+</g>
+<!-- MATH_028 -->
+<g id="MATH_028" class="node">
+<title>MATH_028</title>
+<g id="a_MATH_028"><a xlink:title="Read and construct expressions, identifying terms, coefficients, factors, powers, and grouping.">
+<path fill="#f5f1fc" stroke="#7967a3" stroke-width="1.2" d="M869.44,-666C869.44,-666 751.66,-666 751.66,-666 745.66,-666 739.66,-660 739.66,-654 739.66,-654 739.66,-607.2 739.66,-607.2 739.66,-601.2 745.66,-595.2 751.66,-595.2 751.66,-595.2 869.44,-595.2 869.44,-595.2 875.44,-595.2 881.44,-601.2 881.44,-607.2 881.44,-607.2 881.44,-654 881.44,-654 881.44,-660 875.44,-666 869.44,-666"/>
+<text xml:space="preserve" text-anchor="start" x="787.79" y="-650.4" font-family="Arial" font-size="9.00" fill="#7967a3">MATH_028</text>
+<text xml:space="preserve" text-anchor="start" x="749.86" y="-632.8" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Algebraic expression</text>
+<text xml:space="preserve" text-anchor="start" x="784.54" y="-620.8" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">structure</text>
+<text xml:space="preserve" text-anchor="start" x="785.78" y="-603.6" font-family="Arial" font-size="9.00" fill="#64736e">Grades 6–7</text>
+</a>
+</g>
+</g>
+<!-- MATH_029 -->
+<g id="MATH_029" class="node">
+<title>MATH_029</title>
+<g id="a_MATH_029"><a xlink:title="Replace variables with specified rational values and compute the resulting expression.">
+<path fill="#f5f1fc" stroke="#7967a3" stroke-width="1.2" d="M717.42,-565.2C717.42,-565.2 559.67,-565.2 559.67,-565.2 553.67,-565.2 547.67,-559.2 547.67,-553.2 547.67,-553.2 547.67,-506.4 547.67,-506.4 547.67,-500.4 553.67,-494.4 559.67,-494.4 559.67,-494.4 717.42,-494.4 717.42,-494.4 723.42,-494.4 729.42,-500.4 729.42,-506.4 729.42,-506.4 729.42,-553.2 729.42,-553.2 729.42,-559.2 723.42,-565.2 717.42,-565.2"/>
+<text xml:space="preserve" text-anchor="start" x="615.79" y="-549.6" font-family="Arial" font-size="9.00" fill="#7967a3">MATH_029</text>
+<text xml:space="preserve" text-anchor="start" x="557.87" y="-532" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Substitution and expression</text>
+<text xml:space="preserve" text-anchor="start" x="608.87" y="-520" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">evaluation</text>
+<text xml:space="preserve" text-anchor="start" x="613.78" y="-502.8" font-family="Arial" font-size="9.00" fill="#64736e">Grades 6–7</text>
+</a>
+</g>
+</g>
+<!-- MATH_030 -->
+<g id="MATH_030" class="node">
+<title>MATH_030</title>
+<g id="a_MATH_030"><a xlink:title="Rewrite linear expressions with rational coefficients through distribution, factoring, and combining like terms.">
+<path fill="#f5f1fc" stroke="#7967a3" stroke-width="1.2" d="M901.76,-565.2C901.76,-565.2 809.33,-565.2 809.33,-565.2 803.33,-565.2 797.33,-559.2 797.33,-553.2 797.33,-553.2 797.33,-506.4 797.33,-506.4 797.33,-500.4 803.33,-494.4 809.33,-494.4 809.33,-494.4 901.76,-494.4 901.76,-494.4 907.76,-494.4 913.76,-500.4 913.76,-506.4 913.76,-506.4 913.76,-553.2 913.76,-553.2 913.76,-559.2 907.76,-565.2 901.76,-565.2"/>
+<text xml:space="preserve" text-anchor="start" x="832.79" y="-549.6" font-family="Arial" font-size="9.00" fill="#7967a3">MATH_030</text>
+<text xml:space="preserve" text-anchor="start" x="807.53" y="-532" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Equivalent linear</text>
+<text xml:space="preserve" text-anchor="start" x="820.53" y="-520" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">expressions</text>
+<text xml:space="preserve" text-anchor="start" x="830.78" y="-502.8" font-family="Arial" font-size="9.00" fill="#64736e">Grades 6–8</text>
+</a>
+</g>
+</g>
+<!-- MATH_031 -->
+<g id="MATH_031" class="node">
+<title>MATH_031</title>
+<g id="a_MATH_031"><a xlink:title="Interpret an equation as a condition and a solution as a value that makes it true.">
+<path fill="#f5f1fc" stroke="#7967a3" stroke-width="1.2" d="M490.75,-464.4C490.75,-464.4 382.34,-464.4 382.34,-464.4 376.34,-464.4 370.34,-458.4 370.34,-452.4 370.34,-452.4 370.34,-405.6 370.34,-405.6 370.34,-399.6 376.34,-393.6 382.34,-393.6 382.34,-393.6 490.75,-393.6 490.75,-393.6 496.75,-393.6 502.75,-399.6 502.75,-405.6 502.75,-405.6 502.75,-452.4 502.75,-452.4 502.75,-458.4 496.75,-464.4 490.75,-464.4"/>
+<text xml:space="preserve" text-anchor="start" x="413.79" y="-448.8" font-family="Arial" font-size="9.00" fill="#7967a3">MATH_031</text>
+<text xml:space="preserve" text-anchor="start" x="380.54" y="-431.2" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Equations and their</text>
+<text xml:space="preserve" text-anchor="start" x="409.88" y="-419.2" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">solutions</text>
+<text xml:space="preserve" text-anchor="start" x="411.78" y="-402" font-family="Arial" font-size="9.00" fill="#64736e">Grades 6–7</text>
+</a>
+</g>
+</g>
+<!-- MATH_032 -->
+<g id="MATH_032" class="node">
+<title>MATH_032</title>
+<g id="a_MATH_032"><a xlink:title="Preserve equality by applying the same valid operation to both sides, avoiding division by zero.">
+<path fill="#f5f1fc" stroke="#7967a3" stroke-width="1.2" d="M131.1,-459.6C131.1,-459.6 12,-459.6 12,-459.6 6,-459.6 0,-453.6 0,-447.6 0,-447.6 0,-410.4 0,-410.4 0,-404.4 6,-398.4 12,-398.4 12,-398.4 131.1,-398.4 131.1,-398.4 137.1,-398.4 143.1,-404.4 143.1,-410.4 143.1,-410.4 143.1,-447.6 143.1,-447.6 143.1,-453.6 137.1,-459.6 131.1,-459.6"/>
+<text xml:space="preserve" text-anchor="start" x="48.79" y="-444" font-family="Arial" font-size="9.00" fill="#7967a3">MATH_032</text>
+<text xml:space="preserve" text-anchor="start" x="10.2" y="-426.4" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Properties of equality</text>
+<text xml:space="preserve" text-anchor="start" x="46.78" y="-406.8" font-family="Arial" font-size="9.00" fill="#64736e">Grades 6–7</text>
+</a>
+</g>
+</g>
+<!-- MATH_033 -->
+<g id="MATH_033" class="node">
+<title>MATH_033</title>
+<g id="a_MATH_033"><a xlink:title="Recognize how addition and subtraction, and multiplication and division, undo one another.">
+<path fill="#f8f1ec" stroke="#866753" stroke-width="1.2" d="M190.1,-1054.8C190.1,-1054.8 87,-1054.8 87,-1054.8 81,-1054.8 75,-1048.8 75,-1042.8 75,-1042.8 75,-1005.6 75,-1005.6 75,-999.6 81,-993.6 87,-993.6 87,-993.6 190.1,-993.6 190.1,-993.6 196.1,-993.6 202.1,-999.6 202.1,-1005.6 202.1,-1005.6 202.1,-1042.8 202.1,-1042.8 202.1,-1048.8 196.1,-1054.8 190.1,-1054.8"/>
+<text xml:space="preserve" text-anchor="start" x="115.79" y="-1039.2" font-family="Arial" font-size="9.00" fill="#866753">MATH_033</text>
+<text xml:space="preserve" text-anchor="start" x="85.2" y="-1021.6" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Inverse operations</text>
+<text xml:space="preserve" text-anchor="start" x="113.78" y="-1002" font-family="Arial" font-size="9.00" fill="#64736e">Grades 5–7</text>
+</a>
+</g>
+</g>
+<!-- MATH_034 -->
+<g id="MATH_034" class="node">
+<title>MATH_034</title>
+<g id="a_MATH_034"><a xlink:title="Solve rational&#45;coefficient linear equations, including variables on both sides and zero, one, or infinitely many solutions.">
+<path fill="#f5f1fc" stroke="#7967a3" stroke-width="1.2" d="M431.09,-363.6C431.09,-363.6 282,-363.6 282,-363.6 276,-363.6 270,-357.6 270,-351.6 270,-351.6 270,-304.8 270,-304.8 270,-298.8 276,-292.8 282,-292.8 282,-292.8 431.09,-292.8 431.09,-292.8 437.09,-292.8 443.09,-298.8 443.09,-304.8 443.09,-304.8 443.09,-351.6 443.09,-351.6 443.09,-357.6 437.09,-363.6 431.09,-363.6"/>
+<text xml:space="preserve" text-anchor="start" x="333.79" y="-348" font-family="Arial" font-size="9.00" fill="#7967a3">MATH_034</text>
+<text xml:space="preserve" text-anchor="start" x="280.2" y="-330.4" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Solving linear equations in</text>
+<text xml:space="preserve" text-anchor="start" x="321.53" y="-318.4" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">one variable</text>
+<text xml:space="preserve" text-anchor="start" x="331.78" y="-301.2" font-family="Arial" font-size="9.00" fill="#64736e">Grades 7–9</text>
+</a>
+</g>
+</g>
+<!-- MATH_035 -->
+<g id="MATH_035" class="node">
+<title>MATH_035</title>
+<g id="a_MATH_035"><a xlink:title="Interpret inequalities as ordered comparisons and describe satisfying values, including number&#45;line representations.">
+<path fill="#f5f1fc" stroke="#7967a3" stroke-width="1.2" d="M235.76,-363.6C235.76,-363.6 119.34,-363.6 119.34,-363.6 113.34,-363.6 107.34,-357.6 107.34,-351.6 107.34,-351.6 107.34,-304.8 107.34,-304.8 107.34,-298.8 113.34,-292.8 119.34,-292.8 119.34,-292.8 235.76,-292.8 235.76,-292.8 241.76,-292.8 247.76,-298.8 247.76,-304.8 247.76,-304.8 247.76,-351.6 247.76,-351.6 247.76,-357.6 241.76,-363.6 235.76,-363.6"/>
+<text xml:space="preserve" text-anchor="start" x="154.79" y="-348" font-family="Arial" font-size="9.00" fill="#7967a3">MATH_035</text>
+<text xml:space="preserve" text-anchor="start" x="117.54" y="-330.4" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Inequalities and their</text>
+<text xml:space="preserve" text-anchor="start" x="140.54" y="-318.4" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">solution sets</text>
+<text xml:space="preserve" text-anchor="start" x="152.78" y="-301.2" font-family="Arial" font-size="9.00" fill="#64736e">Grades 6–7</text>
+</a>
+</g>
+</g>
+<!-- MATH_036 -->
+<g id="MATH_036" class="node">
+<title>MATH_036</title>
+<g id="a_MATH_036"><a xlink:title="Isolate a variable while preserving the solution set, reversing order when multiplying or dividing by a negative.">
+<path fill="#f5f1fc" stroke="#7967a3" stroke-width="1.2" d="M283.77,-262.8C283.77,-262.8 139.33,-262.8 139.33,-262.8 133.33,-262.8 127.33,-256.8 127.33,-250.8 127.33,-250.8 127.33,-204 127.33,-204 127.33,-198 133.33,-192 139.33,-192 139.33,-192 283.77,-192 283.77,-192 289.77,-192 295.77,-198 295.77,-204 295.77,-204 295.77,-250.8 295.77,-250.8 295.77,-256.8 289.77,-262.8 283.77,-262.8"/>
+<text xml:space="preserve" text-anchor="start" x="188.79" y="-247.2" font-family="Arial" font-size="9.00" fill="#7967a3">MATH_036</text>
+<text xml:space="preserve" text-anchor="start" x="137.53" y="-229.6" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Solving linear inequalities</text>
+<text xml:space="preserve" text-anchor="start" x="169.53" y="-217.6" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">in one variable</text>
+<text xml:space="preserve" text-anchor="start" x="186.78" y="-200.4" font-family="Arial" font-size="9.00" fill="#64736e">Grades 7–9</text>
+</a>
+</g>
+</g>
+<!-- MATH_037 -->
+<g id="MATH_037" class="node">
+<title>MATH_037</title>
+<g id="a_MATH_037"><a xlink:title="Locate and interpret ordered pairs on scaled perpendicular axes, including negative and fractional coordinates.">
+<path fill="#eef8f3" stroke="#3a8470" stroke-width="1.2" d="M1185.75,-762C1185.75,-762 1091.34,-762 1091.34,-762 1085.34,-762 1079.34,-756 1079.34,-750 1079.34,-750 1079.34,-712.8 1079.34,-712.8 1079.34,-706.8 1085.34,-700.8 1091.34,-700.8 1091.34,-700.8 1185.75,-700.8 1185.75,-700.8 1191.75,-700.8 1197.75,-706.8 1197.75,-712.8 1197.75,-712.8 1197.75,-750 1197.75,-750 1197.75,-756 1191.75,-762 1185.75,-762"/>
+<text xml:space="preserve" text-anchor="start" x="1115.79" y="-746.4" font-family="Arial" font-size="9.00" fill="#3a8470">MATH_037</text>
+<text xml:space="preserve" text-anchor="start" x="1089.54" y="-728.8" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Coordinate plane</text>
+<text xml:space="preserve" text-anchor="start" x="1113.78" y="-709.2" font-family="Arial" font-size="9.00" fill="#64736e">Grades 5–6</text>
+</a>
+</g>
+</g>
+<!-- MATH_038 -->
+<g id="MATH_038" class="node">
+<title>MATH_038</title>
+<g id="a_MATH_038"><a xlink:title="Represent corresponding values of two varying quantities using ordered pairs and tables.">
+<path fill="#eef8f3" stroke="#3a8470" stroke-width="1.2" d="M1314.09,-560.4C1314.09,-560.4 1199,-560.4 1199,-560.4 1193,-560.4 1187,-554.4 1187,-548.4 1187,-548.4 1187,-511.2 1187,-511.2 1187,-505.2 1193,-499.2 1199,-499.2 1199,-499.2 1314.09,-499.2 1314.09,-499.2 1320.09,-499.2 1326.09,-505.2 1326.09,-511.2 1326.09,-511.2 1326.09,-548.4 1326.09,-548.4 1326.09,-554.4 1320.09,-560.4 1314.09,-560.4"/>
+<text xml:space="preserve" text-anchor="start" x="1233.79" y="-544.8" font-family="Arial" font-size="9.00" fill="#3a8470">MATH_038</text>
+<text xml:space="preserve" text-anchor="start" x="1197.2" y="-527.2" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Covarying quantities</text>
+<text xml:space="preserve" text-anchor="start" x="1231.78" y="-507.6" font-family="Arial" font-size="9.00" fill="#64736e">Grades 6–7</text>
+</a>
+</g>
+</g>
+<!-- MATH_039 -->
+<g id="MATH_039" class="node">
+<title>MATH_039</title>
+<g id="a_MATH_039"><a xlink:title="Connect equivalent&#45;ratio tables, equations of the form y = kx, and straight&#45;line graphs through the origin.">
+<path fill="#fff7e6" stroke="#a27027" stroke-width="1.2" d="M948.08,-464.4C948.08,-464.4 801.01,-464.4 801.01,-464.4 795.01,-464.4 789.01,-458.4 789.01,-452.4 789.01,-452.4 789.01,-405.6 789.01,-405.6 789.01,-399.6 795.01,-393.6 801.01,-393.6 801.01,-393.6 948.08,-393.6 948.08,-393.6 954.08,-393.6 960.08,-399.6 960.08,-405.6 960.08,-405.6 960.08,-452.4 960.08,-452.4 960.08,-458.4 954.08,-464.4 948.08,-464.4"/>
+<text xml:space="preserve" text-anchor="start" x="851.79" y="-448.8" font-family="Arial" font-size="9.00" fill="#a27027">MATH_039</text>
+<text xml:space="preserve" text-anchor="start" x="799.21" y="-431.2" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Representing proportional</text>
+<text xml:space="preserve" text-anchor="start" x="837.21" y="-419.2" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">relationships</text>
+<text xml:space="preserve" text-anchor="start" x="849.78" y="-402" font-family="Arial" font-size="9.00" fill="#64736e">Grades 7–8</text>
+</a>
+</g>
+</g>
+<!-- MATH_040 -->
+<g id="MATH_040" class="node">
+<title>MATH_040</title>
+<g id="a_MATH_040"><a xlink:title="Recognize a constant rate of change between quantities, allowing a nonzero initial value.">
+<path fill="#eef8f3" stroke="#3a8470" stroke-width="1.2" d="M952.76,-358.8C952.76,-358.8 842.33,-358.8 842.33,-358.8 836.33,-358.8 830.33,-352.8 830.33,-346.8 830.33,-346.8 830.33,-309.6 830.33,-309.6 830.33,-303.6 836.33,-297.6 842.33,-297.6 842.33,-297.6 952.76,-297.6 952.76,-297.6 958.76,-297.6 964.76,-303.6 964.76,-309.6 964.76,-309.6 964.76,-346.8 964.76,-346.8 964.76,-352.8 958.76,-358.8 952.76,-358.8"/>
+<text xml:space="preserve" text-anchor="start" x="874.79" y="-343.2" font-family="Arial" font-size="9.00" fill="#3a8470">MATH_040</text>
+<text xml:space="preserve" text-anchor="start" x="840.53" y="-325.6" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Linear relationships</text>
+<text xml:space="preserve" text-anchor="start" x="872.78" y="-306" font-family="Arial" font-size="9.00" fill="#64736e">Grades 7–8</text>
+</a>
+</g>
+</g>
+<!-- MATH_041 -->
+<g id="MATH_041" class="node">
+<title>MATH_041</title>
+<g id="a_MATH_041"><a xlink:title="Interpret and calculate Δy/Δx as a line’s rate of change; recognize undefined slope for vertical lines.">
+<path fill="#eef8f3" stroke="#3a8470" stroke-width="1.2" d="M835.51,-258C835.51,-258 789.58,-258 789.58,-258 783.58,-258 777.58,-252 777.58,-246 777.58,-246 777.58,-208.8 777.58,-208.8 777.58,-202.8 783.58,-196.8 789.58,-196.8 789.58,-196.8 835.51,-196.8 835.51,-196.8 841.51,-196.8 847.51,-202.8 847.51,-208.8 847.51,-208.8 847.51,-246 847.51,-246 847.51,-252 841.51,-258 835.51,-258"/>
+<text xml:space="preserve" text-anchor="start" x="789.79" y="-242.4" font-family="Arial" font-size="9.00" fill="#3a8470">MATH_041</text>
+<text xml:space="preserve" text-anchor="start" x="796.21" y="-224.8" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Slope</text>
+<text xml:space="preserve" text-anchor="start" x="787.78" y="-205.2" font-family="Arial" font-size="9.00" fill="#64736e">Grades 8–9</text>
+</a>
+</g>
+</g>
+<!-- MATH_042 -->
+<g id="MATH_042" class="node">
+<title>MATH_042</title>
+<g id="a_MATH_042"><a xlink:title="Graph two&#45;variable linear equations using slope, intercepts, or equivalent forms, including horizontal and vertical lines.">
+<path fill="#eef8f3" stroke="#3a8470" stroke-width="1.2" d="M882.09,-162C882.09,-162 737,-162 737,-162 731,-162 725,-156 725,-150 725,-150 725,-112.8 725,-112.8 725,-106.8 731,-100.8 737,-100.8 737,-100.8 882.09,-100.8 882.09,-100.8 888.09,-100.8 894.09,-106.8 894.09,-112.8 894.09,-112.8 894.09,-150 894.09,-150 894.09,-156 888.09,-162 882.09,-162"/>
+<text xml:space="preserve" text-anchor="start" x="786.79" y="-146.4" font-family="Arial" font-size="9.00" fill="#3a8470">MATH_042</text>
+<text xml:space="preserve" text-anchor="start" x="735.2" y="-128.8" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Graphing linear equations</text>
+<text xml:space="preserve" text-anchor="start" x="784.78" y="-109.2" font-family="Arial" font-size="9.00" fill="#64736e">Grades 8–9</text>
+</a>
+</g>
+</g>
+<!-- MATH_043 -->
+<g id="MATH_043" class="node">
+<title>MATH_043</title>
+<g id="a_MATH_043"><a xlink:title="Recognize a correspondence that assigns exactly one output to each allowed input.">
+<path fill="#eef8f3" stroke="#3a8470" stroke-width="1.2" d="M1094.41,-459.6C1094.41,-459.6 1040.68,-459.6 1040.68,-459.6 1034.68,-459.6 1028.68,-453.6 1028.68,-447.6 1028.68,-447.6 1028.68,-410.4 1028.68,-410.4 1028.68,-404.4 1034.68,-398.4 1040.68,-398.4 1040.68,-398.4 1094.41,-398.4 1094.41,-398.4 1100.41,-398.4 1106.41,-404.4 1106.41,-410.4 1106.41,-410.4 1106.41,-447.6 1106.41,-447.6 1106.41,-453.6 1100.41,-459.6 1094.41,-459.6"/>
+<text xml:space="preserve" text-anchor="start" x="1044.79" y="-444" font-family="Arial" font-size="9.00" fill="#3a8470">MATH_043</text>
+<text xml:space="preserve" text-anchor="start" x="1038.88" y="-426.4" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Functions</text>
+<text xml:space="preserve" text-anchor="start" x="1042.78" y="-406.8" font-family="Arial" font-size="9.00" fill="#64736e">Grades 8–9</text>
+</a>
+</g>
+</g>
+<!-- MATH_044 -->
+<g id="MATH_044" class="node">
+<title>MATH_044</title>
+<g id="a_MATH_044"><a xlink:title="Interpret f(x) as an output and evaluate a function rule at specified inputs.">
+<path fill="#eef8f3" stroke="#3a8470" stroke-width="1.2" d="M796.74,-363.6C796.74,-363.6 674.36,-363.6 674.36,-363.6 668.36,-363.6 662.36,-357.6 662.36,-351.6 662.36,-351.6 662.36,-304.8 662.36,-304.8 662.36,-298.8 668.36,-292.8 674.36,-292.8 674.36,-292.8 796.74,-292.8 796.74,-292.8 802.74,-292.8 808.74,-298.8 808.74,-304.8 808.74,-304.8 808.74,-351.6 808.74,-351.6 808.74,-357.6 802.74,-363.6 796.74,-363.6"/>
+<text xml:space="preserve" text-anchor="start" x="712.79" y="-348" font-family="Arial" font-size="9.00" fill="#3a8470">MATH_044</text>
+<text xml:space="preserve" text-anchor="start" x="672.56" y="-330.4" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Function notation and</text>
+<text xml:space="preserve" text-anchor="start" x="705.87" y="-318.4" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">evaluation</text>
+<text xml:space="preserve" text-anchor="start" x="710.78" y="-301.2" font-family="Arial" font-size="9.00" fill="#64736e">Grades 8–9</text>
+</a>
+</g>
+</g>
+<!-- MATH_045 -->
+<g id="MATH_045" class="node">
+<title>MATH_045</title>
+<g id="a_MATH_045"><a xlink:title="Construct a linear function from a table, graph, two points, or contextual rate and initial value.">
+<path fill="#eef8f3" stroke="#3a8470" stroke-width="1.2" d="M918.43,-66C918.43,-66 766.67,-66 766.67,-66 760.67,-66 754.67,-60 754.67,-54 754.67,-54 754.67,-16.8 754.67,-16.8 754.67,-10.8 760.67,-4.8 766.67,-4.8 766.67,-4.8 918.43,-4.8 918.43,-4.8 924.43,-4.8 930.43,-10.8 930.43,-16.8 930.43,-16.8 930.43,-54 930.43,-54 930.43,-60 924.43,-66 918.43,-66"/>
+<text xml:space="preserve" text-anchor="start" x="819.79" y="-50.4" font-family="Arial" font-size="9.00" fill="#3a8470">MATH_045</text>
+<text xml:space="preserve" text-anchor="start" x="764.87" y="-32.8" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Constructing linear models</text>
+<text xml:space="preserve" text-anchor="start" x="817.78" y="-13.2" font-family="Arial" font-size="9.00" fill="#64736e">Grades 8–9</text>
+</a>
+</g>
+</g>
+<!-- MATH_046 -->
+<g id="MATH_046" class="node">
+<title>MATH_046</title>
+<g id="a_MATH_046"><a xlink:title="Interpret a linear system’s solution as an ordered pair satisfying every equation simultaneously.">
+<path fill="#fff1f1" stroke="#b05e62" stroke-width="1.2" d="M628.11,-363.6C628.11,-363.6 476.99,-363.6 476.99,-363.6 470.99,-363.6 464.99,-357.6 464.99,-351.6 464.99,-351.6 464.99,-304.8 464.99,-304.8 464.99,-298.8 470.99,-292.8 476.99,-292.8 476.99,-292.8 628.11,-292.8 628.11,-292.8 634.11,-292.8 640.11,-298.8 640.11,-304.8 640.11,-304.8 640.11,-351.6 640.11,-351.6 640.11,-357.6 634.11,-363.6 628.11,-363.6"/>
+<text xml:space="preserve" text-anchor="start" x="529.79" y="-348" font-family="Arial" font-size="9.00" fill="#b05e62">MATH_046</text>
+<text xml:space="preserve" text-anchor="start" x="475.19" y="-330.4" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Systems and simultaneous</text>
+<text xml:space="preserve" text-anchor="start" x="525.88" y="-318.4" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">solutions</text>
+<text xml:space="preserve" text-anchor="start" x="527.78" y="-301.2" font-family="Arial" font-size="9.00" fill="#64736e">Grades 8–9</text>
+</a>
+</g>
+</g>
+<!-- MATH_047 -->
+<g id="MATH_047" class="node">
+<title>MATH_047</title>
+<g id="a_MATH_047"><a xlink:title="Solve two&#45;variable linear systems through substitution or elimination and identify the number of solutions.">
+<path fill="#fff1f1" stroke="#b05e62" stroke-width="1.2" d="M542.77,-262.8C542.77,-262.8 416.32,-262.8 416.32,-262.8 410.32,-262.8 404.32,-256.8 404.32,-250.8 404.32,-250.8 404.32,-204 404.32,-204 404.32,-198 410.32,-192 416.32,-192 416.32,-192 542.77,-192 542.77,-192 548.77,-192 554.77,-198 554.77,-204 554.77,-204 554.77,-250.8 554.77,-250.8 554.77,-256.8 548.77,-262.8 542.77,-262.8"/>
+<text xml:space="preserve" text-anchor="start" x="456.79" y="-247.2" font-family="Arial" font-size="9.00" fill="#b05e62">MATH_047</text>
+<text xml:space="preserve" text-anchor="start" x="414.52" y="-229.6" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Solving linear systems</text>
+<text xml:space="preserve" text-anchor="start" x="443.19" y="-217.6" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">algebraically</text>
+<text xml:space="preserve" text-anchor="start" x="454.78" y="-200.4" font-family="Arial" font-size="9.00" fill="#64736e">Grades 8–9</text>
+</a>
+</g>
+</g>
+<!-- MATH_048 -->
+<g id="MATH_048" class="node">
+<title>MATH_048</title>
+<g id="a_MATH_048"><a xlink:title="Determine or estimate shared solutions from intersecting, parallel, or coincident lines.">
+<path fill="#fff1f1" stroke="#b05e62" stroke-width="1.2" d="M699.78,-70.8C699.78,-70.8 573.32,-70.8 573.32,-70.8 567.32,-70.8 561.32,-64.8 561.32,-58.8 561.32,-58.8 561.32,-12 561.32,-12 561.32,-6 567.32,0 573.32,0 573.32,0 699.78,0 699.78,0 705.78,0 711.78,-6 711.78,-12 711.78,-12 711.78,-58.8 711.78,-58.8 711.78,-64.8 705.78,-70.8 699.78,-70.8"/>
+<text xml:space="preserve" text-anchor="start" x="613.79" y="-55.2" font-family="Arial" font-size="9.00" fill="#b05e62">MATH_048</text>
+<text xml:space="preserve" text-anchor="start" x="571.52" y="-37.6" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">Solving linear systems</text>
+<text xml:space="preserve" text-anchor="start" x="604.87" y="-25.6" font-family="Arial" font-weight="bold" font-size="12.00" fill="#253b36">graphically</text>
+<text xml:space="preserve" text-anchor="start" x="611.78" y="-8.4" font-family="Arial" font-size="9.00" fill="#64736e">Grades 8–9</text>
+</a>
+</g>
+</g>
+</g>
+</svg>
+<div class="direction">Prerequisite ↓ Dependent concept</div></div>
+<div id="legend" class="legend" aria-label="Concept domain colors"></div>
+</section>
+<aside class="sidebar">
+<div class="search-wrap"><label for="search">FIND A CONCEPT</label><input id="search" type="search" placeholder="Try “slope” or “MATH_034”" autocomplete="off" aria-controls="results"><div id="results" aria-label="Search results"></div></div>
+<div class="view-controls"><label for="mode">Trace</label><select id="mode"><option value="upstream">All prerequisites</option><option value="direct">Direct prerequisites</option><option value="downstream">Downstream concepts</option></select></div>
+<hr class="rule">
+<div id="intro" class="intro"><div class="eyebrow">One concept leads to another</div><h2>Follow the foundations.</h2><p>Select a concept to reveal the mathematical knowledge it builds on. Arrows point from each prerequisite toward the concept it supports.</p><button data-example="MATH_034">Explore linear equations →</button><button data-example="MATH_041">Explore slope →</button><button data-example="MATH_048">Explore systems of equations →</button><hr class="rule"><p><strong>How to read the map</strong><br>Each box is one concept. Colors group mathematical domains. Every arrow represents <strong>PREREQUISITE_OF</strong>; hover over an arrow for its rationale.</p><p class="note">Grades are approximate U.S. placements. “≤5” includes earlier foundations. Vertical position indicates prerequisite depth, not grade level.</p></div>
+<div id="details" hidden aria-live="polite"></div>
+<button id="reset" hidden>Clear selection · Show whole graph</button>
+</aside>
+</main>
+<script>
+const data = {"nodes":[{"id":"MATH_001","name":"Whole-number place value and magnitude","category":"Arithmetic foundations","grade":"≤5","definition":"Interpret whole numbers using base-ten units, relative size, and positions on a number line.","prerequisites":[],"group":"Arithmetic foundations"},{"id":"MATH_002","name":"Whole-number addition and subtraction","category":"Arithmetic foundations","grade":"≤5","definition":"Combine, separate, and compare whole-number quantities, including regrouping across place values.","prerequisites":["MATH_001"],"group":"Arithmetic foundations"},{"id":"MATH_003","name":"Whole-number multiplication and division","category":"Arithmetic foundations","grade":"≤5–6","definition":"Reason about equal groups, multiplicative comparisons, products, and quotients.","prerequisites":["MATH_002"],"group":"Arithmetic foundations"},{"id":"MATH_004","name":"Factors and multiples","category":"Number structure","grade":"5–6","definition":"Identify divisibility relationships, including common factors and common multiples.","prerequisites":["MATH_003"],"group":"Number structure & properties"},{"id":"MATH_005","name":"Fraction meaning","category":"Fractions","grade":"≤5","definition":"Interpret a fraction as a number, a quantity of equal-sized parts, and a quotient.","prerequisites":["MATH_003"],"group":"Fractions & decimals"},{"id":"MATH_006","name":"Equivalent fractions","category":"Fractions","grade":"≤5–6","definition":"Generate, recognize, and simplify fractions that represent the same number.","prerequisites":["MATH_004","MATH_005"],"group":"Fractions & decimals"},{"id":"MATH_007","name":"Fraction addition and subtraction","category":"Fractions","grade":"5–6","definition":"Add and subtract nonnegative fractions by expressing quantities in common fractional units.","prerequisites":["MATH_006"],"group":"Fractions & decimals"},{"id":"MATH_008","name":"Fraction multiplication and division","category":"Fractions","grade":"5–6","definition":"Multiply and divide nonnegative fractions using scaling, grouping, and reciprocal relationships.","prerequisites":["MATH_005"],"group":"Fractions & decimals"},{"id":"MATH_009","name":"Decimal place value","category":"Decimals","grade":"≤5–6","definition":"Interpret decimal digits as tenths, hundredths, and successive powers-of-ten fractional units.","prerequisites":["MATH_005"],"group":"Fractions & decimals"},{"id":"MATH_010","name":"Decimal operations","category":"Decimals","grade":"5–6","definition":"Add, subtract, multiply, and divide nonnegative decimals while accounting for place value.","prerequisites":["MATH_009"],"group":"Fractions & decimals"},{"id":"MATH_011","name":"Fraction–decimal conversion","category":"Rational numbers","grade":"5–7","definition":"Express fractions as terminating or repeating decimals and terminating decimals as fractions.","prerequisites":["MATH_006","MATH_010"],"group":"Fractions & decimals"},{"id":"MATH_012","name":"Signed numbers and order","category":"Signed numbers","grade":"6","definition":"Interpret positive and negative integers, opposites, zero, and order on a number line.","prerequisites":["MATH_001"],"group":"Signed numbers"},{"id":"MATH_013","name":"Integer addition and subtraction","category":"Signed numbers","grade":"6–7","definition":"Add and subtract integers using signed changes, opposites, and additive inverses.","prerequisites":["MATH_002","MATH_012"],"group":"Signed numbers"},{"id":"MATH_014","name":"Integer multiplication and division","category":"Signed numbers","grade":"6–7","definition":"Multiply and divide integers with consistent reasoning about signs.","prerequisites":["MATH_003","MATH_013"],"group":"Signed numbers"},{"id":"MATH_015","name":"Signed rational-number operations","category":"Rational numbers","grade":"7","definition":"Compute with positive and negative fractions and decimals, including mixed representations.","prerequisites":["MATH_007","MATH_008","MATH_011","MATH_014"],"group":"Signed numbers"},{"id":"MATH_016","name":"Ratios","category":"Ratios and proportionality","grade":"6","definition":"Interpret an ordered comparison of quantities in multiplicative terms.","prerequisites":["MATH_003"],"group":"Ratios & percentages"},{"id":"MATH_017","name":"Unit rates","category":"Ratios and proportionality","grade":"6–7","definition":"Determine and interpret an amount per one unit, including rates involving fractions.","prerequisites":["MATH_016","MATH_008"],"group":"Ratios & percentages"},{"id":"MATH_018","name":"Proportional reasoning","category":"Ratios and proportionality","grade":"6–7","definition":"Recognize equivalent ratios and determine missing quantities through consistent multiplicative scaling.","prerequisites":["MATH_017","MATH_006"],"group":"Ratios & percentages"},{"id":"MATH_019","name":"Percent representations","category":"Percentages","grade":"6–7","definition":"Interpret percent as a rate per hundred and express it using fractions and decimals.","prerequisites":["MATH_011","MATH_016"],"group":"Ratios & percentages"},{"id":"MATH_020","name":"Percent problem solving","category":"Percentages","grade":"6–7","definition":"Determine a part, whole, percentage, or percent change using proportional relationships.","prerequisites":["MATH_018","MATH_019"],"group":"Ratios & percentages"},{"id":"MATH_021","name":"Whole-number exponents","category":"Number structure","grade":"5–6","definition":"Interpret and evaluate powers with positive whole-number exponents as repeated multiplication.","prerequisites":["MATH_003"],"group":"Number structure & properties"},{"id":"MATH_022","name":"Integer exponent laws","category":"Number structure","grade":"8–9","definition":"Apply product, quotient, and power laws, including zero and negative exponents with appropriate nonzero bases.","prerequisites":["MATH_021","MATH_013","MATH_008"],"group":"Number structure & properties"},{"id":"MATH_023","name":"Order of operations","category":"Arithmetic structure","grade":"5–6","definition":"Evaluate numerical expressions using grouping, exponents, and conventional operation precedence.","prerequisites":["MATH_021"],"group":"Number structure & properties"},{"id":"MATH_024","name":"Commutative and associative properties","category":"Properties of operations","grade":"≤5–6","definition":"Recognize when reordering or regrouping addition or multiplication preserves a value.","prerequisites":["MATH_003"],"group":"Number structure & properties"},{"id":"MATH_025","name":"Distributive property","category":"Properties of operations","grade":"5–7","definition":"Understand why multiplying a sum or difference equals combining the corresponding products.","prerequisites":["MATH_003"],"group":"Number structure & properties"},{"id":"MATH_026","name":"Meaning of equality","category":"Equality foundations","grade":"≤5","definition":"Interpret the equals sign as asserting that two quantities or expressions have the same value.","prerequisites":[],"group":"Arithmetic foundations"},{"id":"MATH_027","name":"Variables","category":"Algebraic expressions","grade":"5–6","definition":"Interpret a symbol as an unknown, a varying quantity, or an arbitrary number.","prerequisites":["MATH_001"],"group":"Expressions & equations"},{"id":"MATH_028","name":"Algebraic expression structure","category":"Algebraic expressions","grade":"6–7","definition":"Read and construct expressions, identifying terms, coefficients, factors, powers, and grouping.","prerequisites":["MATH_027","MATH_023"],"group":"Expressions & equations"},{"id":"MATH_029","name":"Substitution and expression evaluation","category":"Algebraic expressions","grade":"6–7","definition":"Replace variables with specified rational values and compute the resulting expression.","prerequisites":["MATH_028","MATH_015"],"group":"Expressions & equations"},{"id":"MATH_030","name":"Equivalent linear expressions","category":"Algebraic expressions","grade":"6–8","definition":"Rewrite linear expressions with rational coefficients through distribution, factoring, and combining like terms.","prerequisites":["MATH_028","MATH_024","MATH_025","MATH_015"],"group":"Expressions & equations"},{"id":"MATH_031","name":"Equations and their solutions","category":"Equations","grade":"6–7","definition":"Interpret an equation as a condition and a solution as a value that makes it true.","prerequisites":["MATH_026","MATH_029"],"group":"Expressions & equations"},{"id":"MATH_032","name":"Properties of equality","category":"Equations","grade":"6–7","definition":"Preserve equality by applying the same valid operation to both sides, avoiding division by zero.","prerequisites":["MATH_026","MATH_003"],"group":"Expressions & equations"},{"id":"MATH_033","name":"Inverse operations","category":"Properties of operations","grade":"5–7","definition":"Recognize how addition and subtraction, and multiplication and division, undo one another.","prerequisites":["MATH_003"],"group":"Number structure & properties"},{"id":"MATH_034","name":"Solving linear equations in one variable","category":"Equations","grade":"7–9","definition":"Solve rational-coefficient linear equations, including variables on both sides and zero, one, or infinitely many solutions.","prerequisites":["MATH_031","MATH_032","MATH_033","MATH_030"],"group":"Expressions & equations"},{"id":"MATH_035","name":"Inequalities and their solution sets","category":"Inequalities","grade":"6–7","definition":"Interpret inequalities as ordered comparisons and describe satisfying values, including number-line representations.","prerequisites":["MATH_029"],"group":"Expressions & equations"},{"id":"MATH_036","name":"Solving linear inequalities in one variable","category":"Inequalities","grade":"7–9","definition":"Isolate a variable while preserving the solution set, reversing order when multiplying or dividing by a negative.","prerequisites":["MATH_035","MATH_034"],"group":"Expressions & equations"},{"id":"MATH_037","name":"Coordinate plane","category":"Coordinate geometry","grade":"5–6","definition":"Locate and interpret ordered pairs on scaled perpendicular axes, including negative and fractional coordinates.","prerequisites":["MATH_012","MATH_006"],"group":"Coordinates & functions"},{"id":"MATH_038","name":"Covarying quantities","category":"Relationships","grade":"6–7","definition":"Represent corresponding values of two varying quantities using ordered pairs and tables.","prerequisites":["MATH_027"],"group":"Coordinates & functions"},{"id":"MATH_039","name":"Representing proportional relationships","category":"Relationships","grade":"7–8","definition":"Connect equivalent-ratio tables, equations of the form y = kx, and straight-line graphs through the origin.","prerequisites":["MATH_018","MATH_037","MATH_038","MATH_029"],"group":"Ratios & percentages"},{"id":"MATH_040","name":"Linear relationships","category":"Relationships","grade":"7–8","definition":"Recognize a constant rate of change between quantities, allowing a nonzero initial value.","prerequisites":["MATH_039"],"group":"Coordinates & functions"},{"id":"MATH_041","name":"Slope","category":"Linear algebra foundations","grade":"8–9","definition":"Interpret and calculate Δy/Δx as a line’s rate of change; recognize undefined slope for vertical lines.","prerequisites":["MATH_040"],"group":"Coordinates & functions"},{"id":"MATH_042","name":"Graphing linear equations","category":"Linear algebra foundations","grade":"8–9","definition":"Graph two-variable linear equations using slope, intercepts, or equivalent forms, including horizontal and vertical lines.","prerequisites":["MATH_041","MATH_034"],"group":"Coordinates & functions"},{"id":"MATH_043","name":"Functions","category":"Functions","grade":"8–9","definition":"Recognize a correspondence that assigns exactly one output to each allowed input.","prerequisites":["MATH_038"],"group":"Coordinates & functions"},{"id":"MATH_044","name":"Function notation and evaluation","category":"Functions","grade":"8–9","definition":"Interpret f(x) as an output and evaluate a function rule at specified inputs.","prerequisites":["MATH_043","MATH_029"],"group":"Coordinates & functions"},{"id":"MATH_045","name":"Constructing linear models","category":"Functions","grade":"8–9","definition":"Construct a linear function from a table, graph, two points, or contextual rate and initial value.","prerequisites":["MATH_042","MATH_043"],"group":"Coordinates & functions"},{"id":"MATH_046","name":"Systems and simultaneous solutions","category":"Systems of equations","grade":"8–9","definition":"Interpret a linear system’s solution as an ordered pair satisfying every equation simultaneously.","prerequisites":["MATH_031","MATH_038"],"group":"Systems of equations"},{"id":"MATH_047","name":"Solving linear systems algebraically","category":"Systems of equations","grade":"8–9","definition":"Solve two-variable linear systems through substitution or elimination and identify the number of solutions.","prerequisites":["MATH_046","MATH_034"],"group":"Systems of equations"},{"id":"MATH_048","name":"Solving linear systems graphically","category":"Systems of equations","grade":"8–9","definition":"Determine or estimate shared solutions from intersecting, parallel, or coincident lines.","prerequisites":["MATH_046","MATH_042"],"group":"Systems of equations"}],"edges":[{"source":"MATH_001","target":"MATH_002","relationship":"PREREQUISITE_OF","rationale":"Place-value units explain regrouping in addition and subtraction."},{"source":"MATH_002","target":"MATH_003","relationship":"PREREQUISITE_OF","rationale":"Combining equal groups and repeated subtraction ground multiplication and division."},{"source":"MATH_003","target":"MATH_004","relationship":"PREREQUISITE_OF","rationale":"Factors and multiples describe exact multiplication and division relationships."},{"source":"MATH_003","target":"MATH_005","relationship":"PREREQUISITE_OF","rationale":"Equal sharing and division ground the interpretation of fractions as quotients."},{"source":"MATH_004","target":"MATH_006","relationship":"PREREQUISITE_OF","rationale":"Common factors explain simplifying fractions without changing their value."},{"source":"MATH_005","target":"MATH_006","relationship":"PREREQUISITE_OF","rationale":"Fraction units explain why different numerator–denominator pairs can represent one quantity."},{"source":"MATH_006","target":"MATH_007","relationship":"PREREQUISITE_OF","rationale":"Equivalent fractions provide common units for addition and subtraction."},{"source":"MATH_005","target":"MATH_008","relationship":"PREREQUISITE_OF","rationale":"Fraction quantities ground fractional scaling and division by fractional amounts."},{"source":"MATH_005","target":"MATH_009","relationship":"PREREQUISITE_OF","rationale":"Decimal places represent fractional units with powers-of-ten denominators."},{"source":"MATH_009","target":"MATH_010","relationship":"PREREQUISITE_OF","rationale":"Decimal computation depends on tracking the value of each place."},{"source":"MATH_006","target":"MATH_011","relationship":"PREREQUISITE_OF","rationale":"Equivalent fractions connect terminating decimals to simplified fractional representations."},{"source":"MATH_010","target":"MATH_011","relationship":"PREREQUISITE_OF","rationale":"Decimal division produces decimal representations of fractions."},{"source":"MATH_001","target":"MATH_012","relationship":"PREREQUISITE_OF","rationale":"Number-line magnitude and order extend to positions below zero."},{"source":"MATH_002","target":"MATH_013","relationship":"PREREQUISITE_OF","rationale":"Integer addition and subtraction extend whole-number combining and difference operations."},{"source":"MATH_012","target":"MATH_013","relationship":"PREREQUISITE_OF","rationale":"Signed positions and opposites explain integer sums and differences."},{"source":"MATH_003","target":"MATH_014","relationship":"PREREQUISITE_OF","rationale":"Integer products and quotients extend whole-number multiplication and division."},{"source":"MATH_013","target":"MATH_014","relationship":"PREREQUISITE_OF","rationale":"Signed addition patterns and additive inverses help explain multiplication sign rules."},{"source":"MATH_007","target":"MATH_015","relationship":"PREREQUISITE_OF","rationale":"Signed fractional sums retain the need for common fractional units."},{"source":"MATH_008","target":"MATH_015","relationship":"PREREQUISITE_OF","rationale":"Signed fractional products and quotients extend fraction multiplication and division."},{"source":"MATH_011","target":"MATH_015","relationship":"PREREQUISITE_OF","rationale":"Mixed fraction–decimal calculations require compatible numerical representations."},{"source":"MATH_014","target":"MATH_015","relationship":"PREREQUISITE_OF","rationale":"Integer sign rules extend to multiplication and division of rational numbers."},{"source":"MATH_003","target":"MATH_016","relationship":"PREREQUISITE_OF","rationale":"Ratios express multiplicative comparisons rather than additive differences."},{"source":"MATH_016","target":"MATH_017","relationship":"PREREQUISITE_OF","rationale":"A unit rate expresses a ratio with one unit of the reference quantity."},{"source":"MATH_008","target":"MATH_017","relationship":"PREREQUISITE_OF","rationale":"Rates involving fractional quantities require division of fractions."},{"source":"MATH_017","target":"MATH_018","relationship":"PREREQUISITE_OF","rationale":"A common unit rate identifies and generates proportional pairs."},{"source":"MATH_006","target":"MATH_018","relationship":"PREREQUISITE_OF","rationale":"Equivalent fractions support recognizing and scaling equivalent ratios."},{"source":"MATH_011","target":"MATH_019","relationship":"PREREQUISITE_OF","rationale":"Fraction–decimal equivalence connects the numerical representations of percentages."},{"source":"MATH_016","target":"MATH_019","relationship":"PREREQUISITE_OF","rationale":"Percent expresses a multiplicative comparison per hundred."},{"source":"MATH_018","target":"MATH_020","relationship":"PREREQUISITE_OF","rationale":"Proportional scaling connects a percentage, its reference whole, and its corresponding amount."},{"source":"MATH_019","target":"MATH_020","relationship":"PREREQUISITE_OF","rationale":"Percent calculations require interpreting the percentage as a numerical rate."},{"source":"MATH_003","target":"MATH_021","relationship":"PREREQUISITE_OF","rationale":"Positive whole-number powers abbreviate repeated multiplication."},{"source":"MATH_021","target":"MATH_022","relationship":"PREREQUISITE_OF","rationale":"Repeated multiplication explains the initial exponent laws."},{"source":"MATH_013","target":"MATH_022","relationship":"PREREQUISITE_OF","rationale":"Combining integer exponents requires signed addition and subtraction."},{"source":"MATH_008","target":"MATH_022","relationship":"PREREQUISITE_OF","rationale":"Reciprocals explain negative exponents and quotients of powers."},{"source":"MATH_021","target":"MATH_023","relationship":"PREREQUISITE_OF","rationale":"Evaluating expressions containing powers requires understanding exponent notation."},{"source":"MATH_003","target":"MATH_024","relationship":"PREREQUISITE_OF","rationale":"Arithmetic operations provide meaning for reordering and regrouping sums and products."},{"source":"MATH_003","target":"MATH_025","relationship":"PREREQUISITE_OF","rationale":"Equal-group multiplication explains distributing a factor across a sum."},{"source":"MATH_001","target":"MATH_027","relationship":"PREREQUISITE_OF","rationale":"Variables stand for numbers or numerical quantities."},{"source":"MATH_027","target":"MATH_028","relationship":"PREREQUISITE_OF","rationale":"Reading algebraic expressions requires interpreting their variable symbols."},{"source":"MATH_023","target":"MATH_028","relationship":"PREREQUISITE_OF","rationale":"Operation precedence determines an expression’s grouping and structure."},{"source":"MATH_028","target":"MATH_029","relationship":"PREREQUISITE_OF","rationale":"Substitution requires identifying variable occurrences and preserving expression structure."},{"source":"MATH_015","target":"MATH_029","relationship":"PREREQUISITE_OF","rationale":"Evaluation at signed rational inputs requires rational-number arithmetic."},{"source":"MATH_028","target":"MATH_030","relationship":"PREREQUISITE_OF","rationale":"Identifying terms and coefficients makes valid expression rewriting possible."},{"source":"MATH_024","target":"MATH_030","relationship":"PREREQUISITE_OF","rationale":"Reordering and regrouping allow like terms to be collected."},{"source":"MATH_025","target":"MATH_030","relationship":"PREREQUISITE_OF","rationale":"Distribution and its reverse justify expansion, factoring, and combining like terms."},{"source":"MATH_015","target":"MATH_030","relationship":"PREREQUISITE_OF","rationale":"Rewriting expressions with rational coefficients requires signed rational arithmetic."},{"source":"MATH_026","target":"MATH_031","relationship":"PREREQUISITE_OF","rationale":"An equation asserts equality, which its solutions must make true."},{"source":"MATH_029","target":"MATH_031","relationship":"PREREQUISITE_OF","rationale":"Substitution and evaluation establish whether a proposed value satisfies an equation."},{"source":"MATH_026","target":"MATH_032","relationship":"PREREQUISITE_OF","rationale":"Equality-preserving transformations depend on understanding equality as a relation."},{"source":"MATH_003","target":"MATH_032","relationship":"PREREQUISITE_OF","rationale":"Arithmetic operations give meaning to performing the same operation on both sides."},{"source":"MATH_003","target":"MATH_033","relationship":"PREREQUISITE_OF","rationale":"Familiar arithmetic operations provide the pairs whose actions can be undone."},{"source":"MATH_031","target":"MATH_034","relationship":"PREREQUISITE_OF","rationale":"Solving requires understanding what counts as a solution."},{"source":"MATH_032","target":"MATH_034","relationship":"PREREQUISITE_OF","rationale":"Valid transformations preserve the equation’s solution set."},{"source":"MATH_033","target":"MATH_034","relationship":"PREREQUISITE_OF","rationale":"Inverse operations undo operations surrounding the unknown."},{"source":"MATH_030","target":"MATH_034","relationship":"PREREQUISITE_OF","rationale":"General linear equations require expanding expressions and collecting like terms."},{"source":"MATH_029","target":"MATH_035","relationship":"PREREQUISITE_OF","rationale":"Testing candidate values requires evaluating the expressions being compared."},{"source":"MATH_035","target":"MATH_036","relationship":"PREREQUISITE_OF","rationale":"Solving an inequality requires understanding its ordered comparison and solution set."},{"source":"MATH_034","target":"MATH_036","relationship":"PREREQUISITE_OF","rationale":"Linear equation solving supplies variable-isolation procedures that inequalities adapt."},{"source":"MATH_012","target":"MATH_037","relationship":"PREREQUISITE_OF","rationale":"Signed number-line positions determine coordinates in all four quadrants."},{"source":"MATH_006","target":"MATH_037","relationship":"PREREQUISITE_OF","rationale":"Equivalent fractional units support locating rational coordinates on differently scaled axes."},{"source":"MATH_027","target":"MATH_038","relationship":"PREREQUISITE_OF","rationale":"Variables identify the quantities whose corresponding values are tracked."},{"source":"MATH_018","target":"MATH_039","relationship":"PREREQUISITE_OF","rationale":"Proportional reasoning establishes the constant multiplier represented across tables, equations, and graphs."},{"source":"MATH_037","target":"MATH_039","relationship":"PREREQUISITE_OF","rationale":"Coordinate plotting turns proportional value pairs into a graph."},{"source":"MATH_038","target":"MATH_039","relationship":"PREREQUISITE_OF","rationale":"Tables of corresponding values represent how proportional quantities vary together."},{"source":"MATH_029","target":"MATH_039","relationship":"PREREQUISITE_OF","rationale":"Evaluating y = kx connects its equation to table entries and plotted points."},{"source":"MATH_039","target":"MATH_040","relationship":"PREREQUISITE_OF","rationale":"Proportional representations provide the constant-rate case extended by adding an initial value."},{"source":"MATH_040","target":"MATH_041","relationship":"PREREQUISITE_OF","rationale":"Constant rate of change gives conceptual meaning to the slope calculation."},{"source":"MATH_041","target":"MATH_042","relationship":"PREREQUISITE_OF","rationale":"Slope determines a line’s direction and the changes between its points."},{"source":"MATH_034","target":"MATH_042","relationship":"PREREQUISITE_OF","rationale":"Rearranging linear equations and solving for intercepts support graphing different equation forms."},{"source":"MATH_038","target":"MATH_043","relationship":"PREREQUISITE_OF","rationale":"Input–output correspondence makes the unique-output condition meaningful."},{"source":"MATH_043","target":"MATH_044","relationship":"PREREQUISITE_OF","rationale":"Function notation names the output assigned to a specified input."},{"source":"MATH_029","target":"MATH_044","relationship":"PREREQUISITE_OF","rationale":"Evaluating a function rule requires substituting inputs into an expression."},{"source":"MATH_042","target":"MATH_045","relationship":"PREREQUISITE_OF","rationale":"Connections among line equations, slopes, and intercepts support constructing linear models."},{"source":"MATH_043","target":"MATH_045","relationship":"PREREQUISITE_OF","rationale":"A linear function model assigns one predicted output to each allowed input."},{"source":"MATH_031","target":"MATH_046","relationship":"PREREQUISITE_OF","rationale":"A simultaneous solution must satisfy each individual equation."},{"source":"MATH_038","target":"MATH_046","relationship":"PREREQUISITE_OF","rationale":"Two-variable system solutions specify corresponding values as ordered pairs."},{"source":"MATH_046","target":"MATH_047","relationship":"PREREQUISITE_OF","rationale":"Algebraic system solving seeks values that satisfy every equation together."},{"source":"MATH_034","target":"MATH_047","relationship":"PREREQUISITE_OF","rationale":"Substitution and elimination reduce systems to linear equations in one variable."},{"source":"MATH_046","target":"MATH_048","relationship":"PREREQUISITE_OF","rationale":"Shared graph points represent simultaneous satisfaction of the equations."},{"source":"MATH_042","target":"MATH_048","relationship":"PREREQUISITE_OF","rationale":"Graphical system solving requires constructing and interpreting both lines."}]}; const groups = [{"name":"Arithmetic foundations","color":"#43605b","fill":"#eff4f1","ids":[1,2,3,26]},{"name":"Fractions & decimals","color":"#257a8a","fill":"#edf8fa","ids":[5,6,7,8,9,10,11]},{"name":"Signed numbers","color":"#5579aa","fill":"#f0f5fd","ids":[12,13,14,15]},{"name":"Ratios & percentages","color":"#a27027","fill":"#fff7e6","ids":[16,17,18,19,20,39]},{"name":"Number structure & properties","color":"#866753","fill":"#f8f1ec","ids":[4,21,22,23,24,25,33]},{"name":"Expressions & equations","color":"#7967a3","fill":"#f5f1fc","ids":[27,28,29,30,31,32,34,35,36]},{"name":"Coordinates & functions","color":"#3a8470","fill":"#eef8f3","ids":[37,38,40,41,42,43,44,45]},{"name":"Systems of equations","color":"#b05e62","fill":"#fff1f1","ids":[46,47,48]}];
+const $=s=>document.querySelector(s), byId=new Map(data.nodes.map(n=>[n.id,n]));
+const svg=$('#viewport svg'), original=svg.getAttribute('viewBox').split(/\s+/).map(Number), viewport=$('#viewport');
+svg.removeAttribute('width');svg.removeAttribute('height');svg.setAttribute('role','group');svg.setAttribute('aria-label','Interactive mathematics prerequisite graph, 48 concepts and 80 relationships');
+const nodeEls=new Map(data.nodes.map(n=>[n.id,document.getElementById(n.id)]));
+let selected=null,focused=false,view=[...original],drag=null,moved=false;
+function setView(v){view=v;svg.setAttribute('viewBox',v.join(' '));}
+function relatives(id,direction='upstream'){
+  const seen=new Set();const stack=[id];
+  while(stack.length){const cur=stack.pop();const next=direction==='downstream'?data.edges.filter(e=>e.source===cur).map(e=>e.target):byId.get(cur).prerequisites;
+    for(const n of next)if(!seen.has(n)){seen.add(n);stack.push(n);}}
+  return seen;
+}
+function activeIds(){if(!selected)return new Set(byId.keys());const mode=$('#mode').value;return new Set([selected,...(mode==='direct'?byId.get(selected).prerequisites:relatives(selected,mode))]);}
+function fit(activeOnly=false){
+  if(!activeOnly){setView([...original]);return;}
+  const active=activeIds(),boxes=[...active].map(id=>{const el=nodeEls.get(id),b=el.getBBox(),matrix=el.getCTM(),inv=svg.getCTM().inverse();return {b,m:inv.multiply(matrix)};});
+  const points=boxes.flatMap(({b,m})=>[{x:b.x,y:b.y},{x:b.x+b.width,y:b.y+b.height}].map(p=>new DOMPoint(p.x,p.y).matrixTransform(m)));
+  const x=Math.min(...points.map(p=>p.x))-35,y=Math.min(...points.map(p=>p.y))-35,w=Math.max(...points.map(p=>p.x))-x+35,h=Math.max(...points.map(p=>p.y))-y+35;
+  setView([x,y,w,h]);
+}
+function paint(){
+  const active=activeIds();
+  for(const [id,el]of nodeEls){el.classList.toggle('selected',id===selected);el.classList.toggle('direct',!!selected&&byId.get(selected).prerequisites.includes(id));el.classList.toggle('dim',!active.has(id));el.classList.toggle('hidden',focused&&!active.has(id));el.setAttribute('aria-pressed',String(id===selected));el.setAttribute('tabindex',focused&&!active.has(id)?'-1':'0');}
+  for(const e of data.edges){const el=document.getElementById(`edge_${e.source}_${e.target}`);const isActive=active.has(e.source)&&active.has(e.target)&&($('#mode').value!=='direct'||!selected||e.target===selected);el.classList.toggle('active',!!selected&&isActive);el.classList.toggle('dim',!isActive);el.classList.toggle('hidden',focused&&!isActive);}
+  $('#focus').disabled=!selected;$('#focus').textContent=focused?'Show whole graph':'Focus branch';$('#status').textContent=selected?`${active.size} concepts ${focused?'shown':'highlighted'}`:'48 concepts shown';
+}
+function el(tag,text,className){const e=document.createElement(tag);if(text)e.textContent=text;if(className)e.className=className;return e;}
+function select(id){
+  selected=id;const n=byId.get(id),details=$('#details');details.replaceChildren();$('#intro').hidden=true;details.hidden=false;$('#reset').hidden=false;$('#results').replaceChildren();$('#search').value='';
+  details.append(el('div',n.id,'node-id'),el('h2',n.name),el('span',n.category,'badge'),el('span','Grades '+n.grade,'badge'),el('p',n.definition,'definition'));
+  const counts=el('div',null,'counts');for(const [count,label]of [[n.prerequisites.length,'direct prerequisites'],[relatives(id).size,'total upstream']]){const c=el('div');c.append(el('strong',String(count)),el('small',label));counts.append(c);}details.append(counts,el('div','Direct prerequisites','section-label'));
+  if(!n.prerequisites.length)details.append(el('p','Foundational entry point. No prerequisites are represented within this ontology.','note'));
+  for(const p of n.prerequisites){const b=el('button',null,'prereq');b.append(el('small',p),el('span',byId.get(p).name),el('em',data.edges.find(e=>e.source===p&&e.target===id).rationale));b.onclick=()=>select(p);details.append(b);}
+  const downstream=data.edges.filter(e=>e.source===id);if(downstream.length){details.append(el('div','Directly supports','section-label'));for(const e of downstream){const b=el('button',null,'prereq');b.append(el('small',e.target),el('span',byId.get(e.target).name));b.onclick=()=>select(e.target);details.append(b);}}
+  paint();if(focused)fit(true);
+}
+for(const n of data.nodes){const e=nodeEls.get(n.id);e.setAttribute('role','button');e.setAttribute('aria-label',`${n.name}, ${n.id}, grades ${n.grade}`);e.setAttribute('tabindex','0');e.onclick=()=>{if(!moved)select(n.id);};e.onkeydown=ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();select(n.id);}};}
+groups.forEach(g=>{const item=el('span'),dot=el('i');dot.style.background=g.color;item.append(dot,document.createTextNode(g.name));$('#legend').append(item);});
+document.querySelectorAll('[data-example]').forEach(b=>b.onclick=()=>select(b.dataset.example));
+$('#reset').onclick=()=>{selected=null;focused=false;$('#details').hidden=true;$('#intro').hidden=false;$('#reset').hidden=true;$('#search').value='';$('#results').replaceChildren();paint();fit();};
+$('#mode').onchange=()=>{paint();if(focused)fit(true);};
+$('#focus').onclick=()=>{focused=!focused;paint();fit(focused);};
+$('#fit').onclick=()=>fit(focused);
+function zoom(factor,point){const min=original[2]/12,max=original[2]*2,nextW=Math.max(min,Math.min(max,view[2]*factor)),actual=nextW/view[2];const p=point||{x:view[0]+view[2]/2,y:view[1]+view[3]/2};setView([p.x-(p.x-view[0])*actual,p.y-(p.y-view[1])*actual,nextW,view[3]*actual]);}
+$('#zoom-in').onclick=()=>zoom(.75);$('#zoom-out').onclick=()=>zoom(1.33);
+viewport.addEventListener('wheel',e=>{e.preventDefault();const p=new DOMPoint(e.clientX,e.clientY).matrixTransform(svg.getScreenCTM().inverse());zoom(Math.exp(e.deltaY*.0015),p);},{passive:false});
+viewport.addEventListener('pointerdown',e=>{if(e.button!==0)return;drag={x:e.clientX,y:e.clientY,view:[...view],matrix:svg.getScreenCTM().inverse()};moved=false;});
+viewport.addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-drag.x,dy=e.clientY-drag.y;if(Math.abs(dx)+Math.abs(dy)>4){moved=true;viewport.classList.add('dragging');viewport.setPointerCapture(e.pointerId);}setView([drag.view[0]-dx*drag.matrix.a,drag.view[1]-dy*drag.matrix.d,drag.view[2],drag.view[3]]);});
+function endDrag(){drag=null;viewport.classList.remove('dragging');}viewport.addEventListener('pointerup',endDrag);viewport.addEventListener('pointercancel',endDrag);
+$('#search').oninput=()=>{const q=$('#search').value.trim().toLowerCase(),results=$('#results');results.replaceChildren();if(!q)return;const matches=data.nodes.filter(n=>(n.name+' '+n.id+' '+n.category).toLowerCase().includes(q));if(!matches.length)results.append(el('p','No matching concepts.'));for(const n of matches){const b=el('button');b.append(el('small',n.id),el('span',n.name));b.onclick=()=>select(n.id);results.append(b);}};
+$('#search').onkeydown=e=>{if(e.key==='Enter')$('#results button')?.click();if(e.key==='Escape'){$('#search').value='';$('#results').replaceChildren();}};
+$('#export').onclick=()=>{const clone=svg.cloneNode(true);clone.setAttribute('viewBox',original.join(' '));clone.setAttribute('width',original[2]);clone.setAttribute('height',original[3]);clone.setAttribute('xmlns','http://www.w3.org/2000/svg');clone.removeAttribute('style');clone.querySelectorAll('.node,.edge').forEach(e=>{e.removeAttribute('class');e.removeAttribute('tabindex');e.removeAttribute('role');e.removeAttribute('aria-pressed');});const title=document.createElementNS('http://www.w3.org/2000/svg','title');title.textContent='Mathematics prerequisite graph — 48 concepts, 80 relationships; arrows point from prerequisite to dependent concept';clone.prepend(title);const url=URL.createObjectURL(new Blob([new XMLSerializer().serializeToString(clone)],{type:'image/svg+xml'}));const a=el('a');a.href=url;a.download='mathematics-ontology.svg';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
+paint();
+</script>
+</body>
+</html>

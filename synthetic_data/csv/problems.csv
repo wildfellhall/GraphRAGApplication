@@ -1,0 +1,97 @@
+problem_id,concept_id,problem_variant,prompt,correct_answer,answer_format
+P001_01,MATH_001,1,"What is the value of the digit 7 in 47,205?",7000,integer
+P001_02,MATH_001,2,"Order 50,408; 50,480; and 50,084 from least to greatest.","50084, 50408, 50480",ordered list
+P002_01,MATH_002,1,"Calculate 4,708 + 2,596.",7304,integer
+P002_02,MATH_002,2,"Calculate 8,002 - 3,587.",4415,integer
+P003_01,MATH_003,1,Calculate 24 times 16.,384,integer
+P003_02,MATH_003,2,Calculate 864 divided by 12.,72,integer
+P004_01,MATH_004,1,Find the greatest common factor of 18 and 24.,6,integer
+P004_02,MATH_004,2,Find the least common multiple of 6 and 8.,24,integer
+P005_01,MATH_005,1,Three identical pizzas are shared equally among four people. How much pizza does each person get?,3/4,fraction
+P005_02,MATH_005,2,A number line from 0 to 1 is divided into 8 equal intervals. What number is at the third mark after 0?,3/8,fraction
+P006_01,MATH_006,1,Simplify 18/24.,3/4,fraction
+P006_02,MATH_006,2,Complete the equivalent fraction: 5/6 = ?/42.,35,integer
+P007_01,MATH_007,1,Calculate 3/4 + 2/3. Give an improper fraction.,17/12,fraction
+P007_02,MATH_007,2,Calculate 5/6 - 1/4.,7/12,fraction
+P008_01,MATH_008,1,Calculate 2/3 times 3/5.,2/5,fraction
+P008_02,MATH_008,2,Calculate (3/4) divided by (2/5).,15/8,fraction
+P009_01,MATH_009,1,What is the value of the digit 7 in 4.072?,0.07,decimal
+P009_02,MATH_009,2,Write 6 tenths plus 3 thousandths as a decimal.,0.603,decimal
+P010_01,MATH_010,1,Calculate 3.75 + 0.86.,4.61,decimal
+P010_02,MATH_010,2,Calculate 4.2 divided by 0.6.,7,number
+P011_01,MATH_011,1,Write 3/8 as a decimal.,0.375,decimal
+P011_02,MATH_011,2,Write 0.45 as a fraction in simplest form.,9/20,fraction
+P012_01,MATH_012,1,Order -7; 3; -2; and 0 from least to greatest.,"-7, -2, 0, 3",ordered list
+P012_02,MATH_012,2,What is the opposite of -9?,9,integer
+P013_01,MATH_013,1,Calculate -7 + 12.,5,integer
+P013_02,MATH_013,2,Calculate -4 - (-9).,5,integer
+P014_01,MATH_014,1,Calculate (-6) times (-8).,48,integer
+P014_02,MATH_014,2,Calculate -42 divided by 7.,-6,integer
+P015_01,MATH_015,1,Calculate -3/4 + 0.5. Give a fraction.,-1/4,fraction
+P015_02,MATH_015,2,Calculate (-1.2) divided by (3/5).,-2,number
+P016_01,MATH_016,1,A bag contains 8 red and 12 blue counters. Write the red-to-blue ratio in simplest form.,2:3,ratio
+P016_02,MATH_016,2,A recipe uses 3 cups of water for 2 cups of rice. Write the water-to-rice ratio.,3:2,ratio
+P017_01,MATH_017,1,A car travels 150 miles in 3 hours. Find its speed in miles per hour.,50,number
+P017_02,MATH_017,2,A cyclist travels 3/4 mile in 1/6 hour. Find the speed in miles per hour.,4.5,number
+P018_01,MATH_018,1,Four notebooks cost $10 at a constant unit price. How much do 10 notebooks cost?,25,number
+P018_02,MATH_018,2,Solve the proportion x/15 = 4/5.,12,number
+P019_01,MATH_019,1,Write 35% as a decimal.,0.35,decimal
+P019_02,MATH_019,2,Write 3/5 as a percentage.,60%,percentage
+P020_01,MATH_020,1,Find 20% of 85.,17,number
+P020_02,MATH_020,2,A price increases from $40 to $50. What is the percent increase?,25%,percentage
+P021_01,MATH_021,1,Evaluate 3^4.,81,integer
+P021_02,MATH_021,2,Write 5 times 5 times 5 using exponent notation.,5^3,expression
+P022_01,MATH_022,1,Simplify 2^3 times 2^(-5) to a fraction.,1/4,fraction
+P022_02,MATH_022,2,"For nonzero x, simplify (x^3)^2 / x^4.",x^2,expression
+P023_01,MATH_023,1,Evaluate 6 + 3 times 4^2.,54,integer
+P023_02,MATH_023,2,Evaluate (18 - 6) / 3 + 2.,6,integer
+P024_01,MATH_024,1,Which property changes 7 + (3 + 5) to (7 + 3) + 5?,associative property of addition,text
+P024_02,MATH_024,2,Which property changes 4 times 9 to 9 times 4?,commutative property of multiplication,text
+P025_01,MATH_025,1,Use the distributive property to expand 6(10 + 4).,6*10 + 6*4,expression
+P025_02,MATH_025,2,Use the distributive property to rewrite 8 times 19 as 8(20 - 1). What is the value?,152,integer
+P026_01,MATH_026,1,Fill the blank to make the statement true: 8 + 4 = __ + 5.,7,integer
+P026_02,MATH_026,2,True or false: 3 + 9 = 7 + 5.,true,boolean
+P027_01,MATH_027,1,"In n + 8 = 15, does n represent an unknown number or an operation?",unknown number,text
+P027_02,MATH_027,2,A box contains b books. Write the number of books in five such boxes.,5b,expression
+P028_01,MATH_028,1,What is the coefficient of x in 4x + 7?,4,integer
+P028_02,MATH_028,2,Write an expression for three times the sum of x and 2.,3(x+2),expression
+P029_01,MATH_029,1,Evaluate 3x - 2 when x = -4.,-14,integer
+P029_02,MATH_029,2,Evaluate 2a + b when a = 3/4 and b = -0.5.,1,number
+P030_01,MATH_030,1,Simplify 3(x + 4) + 2x.,5x+12,expression
+P030_02,MATH_030,2,Simplify (1/2)(6x - 4) - x.,2x-2,expression
+P031_01,MATH_031,1,Does x = 4 satisfy 3x + 2 = 14? Answer yes or no.,yes,text
+P031_02,MATH_031,2,Which value satisfies 2x - 5 = 1: x = 2 or x = 3?,3,integer
+P032_01,MATH_032,1,Subtract 7 from both sides of x + 7 = 12. Write the resulting equation.,x=5,equation
+P032_02,MATH_032,2,What operation on both sides preserves equality and isolates x in 4x = 20?,divide both sides by 4,text
+P033_01,MATH_033,1,Which operation undoes adding 9?,subtracting 9,text
+P033_02,MATH_033,2,Which operation undoes multiplying by 5?,dividing by 5,text
+P034_01,MATH_034,1,Solve 3(x - 2) + 4 = 2x + 9.,11,number
+P034_02,MATH_034,2,Solve x/2 + 3 = x/4 + 5.,8,number
+P035_01,MATH_035,1,"Which values in {-3, 0, 2, 5} satisfy x < 2?","{-3, 0}",set
+P035_02,MATH_035,2,Describe the number-line graph of x >= -1 using endpoint type and shading direction.,closed circle at -1; shade right,text
+P036_01,MATH_036,1,Solve -3x + 2 > 11.,x < -3,inequality
+P036_02,MATH_036,2,Solve 2(x - 1) <= 8.,x <= 5,inequality
+P037_01,MATH_037,1,"In which quadrant is the point (-3, 2)?",II,text
+P037_02,MATH_037,2,A point is 1.5 units right of the origin and 2 units down. Give its coordinates.,"(1.5, -2)",ordered pair
+P038_01,MATH_038,1,"The corresponding x and y values are x: 1, 2, 3 and y: 4, 7, 10. Which ordered pair has x = 2?","(2, 7)",ordered pair
+P038_02,MATH_038,2,"A table pairs hours 1, 2, 3 with distances 5, 10, 15. How much does distance change when hours increase from 2 to 3?",5,number
+P039_01,MATH_039,1,"A proportional table contains (2, 6), (4, 12), and (6, 18). Write its equation.",y=3x,equation
+P039_02,MATH_039,2,The graph of y = 2.5x passes through the origin. What is y when x = 4?,10,number
+P040_01,MATH_040,1,"The table x: 0, 1, 2, 3 and y: 5, 8, 11, 14 describes a linear relationship. What is its constant rate of change?",3,number
+P040_02,MATH_040,2,Which rule describes a linear relationship with a nonzero initial value: y = 4x + 2 or y = x^2?,y=4x+2,equation
+P041_01,MATH_041,1,"Find the slope through (1, 2) and (5, 10).",2,number
+P041_02,MATH_041,2,"Find the slope through (-2, 5) and (4, -1).",-1,number
+P042_01,MATH_042,1,"To graph y = 2x - 3, start at its y-intercept and move one unit right. State the starting point and the vertical move.","(0, -3); up 2",text
+P042_02,MATH_042,2,Describe the graph of x = -2 as horizontal or vertical and give an axis point it passes through.,"vertical; (-2, 0)",text
+P043_01,MATH_043,1,"Do the pairs {(1, 2), (2, 3), (1, 4)} define a function? Answer yes or no.",no,text
+P043_02,MATH_043,2,"Do the pairs {(1, 5), (2, 5), (3, 5)} define a function? Answer yes or no.",yes,text
+P044_01,MATH_044,1,"If f(x) = 2x^2 - 1, find f(-3).",17,number
+P044_02,MATH_044,2,"If g(t) = 5 - 2t, find g(4).",-3,number
+P045_01,MATH_045,1,A taxi charges $4 plus $2 per mile. Write cost C as a function of miles m.,C=2m+4,equation
+P045_02,MATH_045,2,"Write the linear function through (0, 3) and (2, 7).",y=2x+3,equation
+P046_01,MATH_046,1,"Does (2, 1) satisfy both x + y = 3 and 2x - y = 3? Answer yes or no.",yes,text
+P046_02,MATH_046,2,"Does (1, 2) satisfy both x + y = 3 and x - y = 1? Answer yes or no.",no,text
+P047_01,MATH_047,1,Solve the system x + y = 7 and x - y = 1.,"(4, 3)",ordered pair
+P047_02,MATH_047,2,Solve the system y = 2x + 1 and x + y = 10.,"(3, 7)",ordered pair
+P048_01,MATH_048,1,"On a coordinate graph, lines A and B intersect at (2, 3). What is the solution of the system represented by those lines?","(2, 3)",ordered pair
+P048_02,MATH_048,2,The graphs of two distinct linear equations are parallel. How many solutions does the system have?,0,text
