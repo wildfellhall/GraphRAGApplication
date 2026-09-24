@@ -2,6 +2,8 @@
 
 A text-first teacher workspace backed by the existing mathematics graph and the local Qwen 27B GGUF. The flat React interface includes class/student context, a searchable roster, saved conversations with deletion, clickable evidence citations, prerequisite paths, and the exact Cypher queries used for each answer.
 
+Soon to be made into an installable Mac app that allows you to upload your own real CSV information. 
+
 ## Open or start
 
 The built application runs at **http://localhost:4310**. Neo4j Browser is at **http://localhost:7474/browser/**.
