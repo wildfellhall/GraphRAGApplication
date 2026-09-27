@@ -1,6 +1,6 @@
 # Meridian — local teacher Graph RAG
 
-A text-first teacher workspace backed by the existing mathematics graph and the local Qwen 27B GGUF. The flat React interface includes class/student context, a searchable roster, saved conversations with deletion, clickable evidence citations, prerequisite paths, and the exact Cypher queries used for each answer.
+A text-first teacher workspace backed by the existing mathematics graph and the local Qwen 27B GGUF. Note: The version of Qwen originally used is incredibly compressed for the purpose of saving storage. The flat React interface includes class/student context, a searchable roster, saved conversations with deletion, clickable evidence citations, prerequisite paths, and the exact Cypher queries used for each answer.
 
 Soon to be made into an installable Mac app that allows you to upload your own real CSV information. 
 
